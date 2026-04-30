@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./TopoMobile/TopoClaw1.png" alt="TopoClaw" />
+  <img src="./TopoMobile/TopoClaw1.png" alt="TopoClaw" height="72" />
 </p>
 
 <h1 align="center">TopoClaw：你的全场景 AI 数字助手</h1>
