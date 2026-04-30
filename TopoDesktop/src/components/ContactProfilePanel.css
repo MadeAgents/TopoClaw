@@ -1,0 +1,931 @@
+/* 与通讯录 .contacts-main 并排时各占一半 flex 空间（不含左侧主导航） */
+.contact-profile-panel {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+  background: var(--color-bg);
+  border-left: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.contact-profile-close {
+  position: absolute;
+  top: var(--space-6);
+  right: var(--space-6);
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-profile-close:hover {
+  background: var(--color-border);
+  color: var(--color-text);
+}
+
+.contact-profile-top-right-group-toggles {
+  position: absolute;
+  top: var(--space-6);
+  right: 42px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-6);
+  z-index: 5;
+}
+
+.contact-profile-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-12) var(--space-10);
+  overflow-y: auto;
+  position: relative;
+}
+
+.contact-profile-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+}
+
+.contact-profile-header {
+  text-align: center;
+  padding: var(--space-12) 0 var(--space-12);
+  width: 100%;
+  max-width: 220px;
+}
+
+.contact-profile-avatar-wrap {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--space-8);
+  border-radius: var(--radius-xl);
+  background: var(--color-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-lg);
+  overflow: hidden;
+}
+
+.contact-profile-avatar-wrap-group {
+  background: transparent;
+}
+
+.contact-profile-avatar-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact-profile-avatar-previewable {
+  cursor: zoom-in;
+}
+
+.contact-profile-avatar-previewable:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.contact-profile-avatar-letter {
+  font-weight: var(--font-weight-semibold);
+}
+
+.contact-profile-name {
+  margin: 0 0 var(--space-3);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.contact-profile-sub {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.contact-profile-sub.contact-profile-baseurl {
+  margin-top: var(--space-4);
+  word-break: break-all;
+  font-family: ui-monospace, monospace;
+}
+
+.contact-profile-body {
+  flex: 1;
+  min-height: 48px;
+  width: 100%;
+  /* 与上方 center 同为 flex:1 时，footer 可能画进 body 的矩形内；body 在 DOM 中靠后会挡住点击。
+     容器本身不接收事件，子元素（群成员、服务器设置等）仍可交互。 */
+  pointer-events: none;
+}
+
+/* 无群成员、无「服务器设置」时 body 无元素子节点（JSX 间空白不算），避免仍占半高导致头像与按钮挤在上半屏 */
+.contact-profile-body:not(:has(> *)) {
+  flex: 0 0 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.contact-profile-body * {
+  pointer-events: auto;
+}
+
+.contact-profile-server-settings {
+  padding: var(--space-8) 0;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.contact-profile-server-title {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.contact-profile-server-desc {
+  margin: 0 0 var(--space-6);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.contact-profile-server-input {
+  width: 100%;
+  padding: 8px var(--space-6);
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.contact-profile-server-input:focus {
+  border-color: var(--color-primary);
+}
+
+.contact-profile-server-save {
+  padding: var(--space-4) var(--space-8);
+  border: none;
+  border-radius: var(--radius-md);
+  background: rgb(199, 252, 252);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.contact-profile-server-save:hover {
+  background: rgb(167, 248, 248);
+}
+
+.contact-profile-server-save:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+.contact-profile-friend-details {
+  width: 100%;
+  padding: var(--space-8) 0;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.contact-profile-friend-details-grid {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.contact-profile-friend-detail-item {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.contact-profile-friend-detail-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.contact-profile-friend-detail-value {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.contact-profile-footer {
+  flex-shrink: 0;
+  width: 100%;
+  padding-top: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.contact-profile-btn-log {
+  width: 100%;
+  max-width: 160px;
+  padding: var(--space-4) var(--space-8);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.contact-profile-btn-log:hover {
+  background: var(--color-border);
+  color: var(--color-text);
+}
+
+.contact-profile-btn-export-log {
+  width: 100%;
+  max-width: 160px;
+  padding: var(--space-4) var(--space-8);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.contact-profile-btn-export-log:hover:not(:disabled) {
+  background: var(--color-border);
+  color: var(--color-text);
+}
+
+.contact-profile-btn-export-log:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.contact-profile-btn-restart {
+  width: 100%;
+  max-width: 160px;
+  padding: var(--space-4) var(--space-8);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.contact-profile-btn-restart:hover:not(:disabled) {
+  background: var(--color-border);
+  color: var(--color-text);
+}
+.contact-profile-btn-restart:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.contact-profile-btn-send {
+  width: 100%;
+  max-width: 160px;
+  padding: var(--space-6) var(--space-10);
+  border: none;
+  border-radius: var(--radius-lg);
+  background: rgb(199, 252, 252);
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.contact-profile-btn-send:hover {
+  background: rgb(167, 248, 248);
+}
+
+/* 群组成员列表 */
+.contact-profile-group-members {
+  width: 100%;
+  padding: var(--space-8) 0;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.contact-profile-group-members-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: var(--color-bg);
+  padding: calc(var(--space-12) + var(--space-8)) var(--space-10) var(--space-8);
+  border-top: none;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.contact-profile-group-members-overlay .contact-profile-group-members-list {
+  flex: 1;
+  min-height: 0;
+  max-height: none;
+  overflow-y: auto;
+}
+
+.contact-profile-group-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.contact-profile-group-entry-btn {
+  padding: 6px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.contact-profile-group-entry-btn:hover {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text);
+}
+
+.contact-profile-group-members-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.contact-profile-group-members-title {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.contact-profile-group-header-actions {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  margin-left: auto;
+}
+
+.contact-profile-group-discovery-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.contact-profile-group-discovery-toggle input {
+  cursor: pointer;
+}
+
+.contact-profile-group-discovery-toggle-top {
+  padding: 4px 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+}
+
+.contact-profile-group-manage-btn,
+.contact-profile-group-add-btn {
+  padding: 4px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.contact-profile-group-manage-btn:hover,
+.contact-profile-group-add-btn:hover {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text);
+}
+
+.contact-profile-group-manage-btn.active {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.contact-profile-group-add-btn {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.contact-profile-group-members-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.contact-profile-group-member-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-2) 0;
+  border-radius: var(--radius-md);
+}
+
+.contact-profile-group-member-item-clickable {
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.contact-profile-group-member-item-clickable:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.contact-profile-group-member-item-clickable:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+}
+
+.contact-profile-group-member-avatar {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-bg-tertiary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.contact-profile-group-member-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact-profile-group-member-name {
+  flex: 1;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+.contact-profile-group-member-type-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  flex-shrink: 0;
+  border: 1px solid transparent;
+}
+
+.contact-profile-group-member-type-icon-assistant {
+  color: #0b5d8c;
+  background: #d9f0ff;
+  border-color: #9ecff2;
+}
+
+.contact-profile-group-member-type-icon-user {
+  color: #2f5f1f;
+  background: #e6f7dc;
+  border-color: #b9dfab;
+}
+
+.contact-profile-group-manager-badge {
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  background: rgba(var(--color-primary-rgb, 98, 0, 238), 0.15);
+  border: 1px solid rgba(var(--color-primary-rgb, 98, 0, 238), 0.4);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.contact-profile-group-manager-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.contact-profile-group-manager-toggle input {
+  cursor: pointer;
+}
+
+.contact-profile-group-role-btn {
+  padding: 3px 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.contact-profile-group-role-btn:hover {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text);
+}
+
+.contact-profile-group-member-remove {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-danger);
+  color: #fff;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.contact-profile-group-member-remove:hover {
+  opacity: 0.9;
+}
+
+.contact-profile-group-error {
+  margin: var(--space-4) 0 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-danger);
+}
+
+/* 添加成员弹窗 */
+.contact-profile-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.contact-profile-modal {
+  background: var(--color-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  max-width: 280px;
+  width: 90%;
+  max-height: 70%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-profile-file-editor-modal {
+  width: min(92vw, 920px);
+  max-width: min(92vw, 920px);
+}
+
+.contact-profile-member-homepage-modal {
+  width: min(92vw, 920px);
+  height: min(86vh, 760px);
+  background: var(--color-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  display: flex;
+}
+
+.contact-profile-member-homepage-modal .contact-profile-panel {
+  border-left: none;
+}
+
+.contact-profile-file-editor-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-height: min(74vh, 760px);
+}
+
+.contact-profile-file-editor-card {
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+}
+
+.contact-profile-file-editor-card-title {
+  margin: 0;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+}
+
+.contact-profile-file-editor-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  margin-bottom: var(--space-4);
+}
+
+.contact-profile-file-editor-snippets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.contact-profile-file-editor-chip {
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+  padding: 3px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.contact-profile-file-editor-chip:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.contact-profile-file-editor-chip:hover {
+  background: var(--color-border);
+  color: var(--color-text);
+}
+
+.contact-profile-file-editor-textarea {
+  width: 100%;
+  min-height: 420px;
+  resize: vertical;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  box-sizing: border-box;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+.contact-profile-file-editor-textarea[readonly] {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+  cursor: default;
+}
+
+.contact-profile-file-editor-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.contact-profile-file-editor-reset {
+  padding: 3px 10px;
+  border: 1px solid var(--color-danger);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-danger);
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.contact-profile-file-editor-reset:hover:not(:disabled) {
+  background: rgba(220, 53, 69, 0.1);
+}
+
+.contact-profile-file-editor-reset:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.contact-profile-modal-header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.contact-profile-modal-edit-btn {
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.contact-profile-modal-edit-btn:hover:not(:disabled) {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text);
+}
+
+.contact-profile-modal-edit-btn.is-editing {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.contact-profile-modal-edit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .contact-profile-file-editor-textarea {
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 520px) {
+  .contact-profile-file-editor-modal {
+    width: 96vw;
+    max-width: 96vw;
+  }
+}
+
+.contact-profile-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-8) var(--space-10);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.contact-profile-modal-header h4 {
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.contact-profile-modal-close {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.contact-profile-modal-close:hover {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text);
+}
+
+.contact-profile-modal-body {
+  padding: var(--space-8);
+  overflow-y: auto;
+}
+
+.contact-profile-modal-section {
+  margin-bottom: var(--space-8);
+}
+
+.contact-profile-modal-section:last-child {
+  margin-bottom: 0;
+}
+
+.contact-profile-modal-section-title {
+  margin: 0 0 var(--space-4);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.contact-profile-modal-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  padding: var(--space-4) 0;
+  border: none;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.contact-profile-modal-item:hover:not(:disabled) {
+  background: var(--color-bg-tertiary);
+}
+
+.contact-profile-modal-item:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.contact-profile-modal-empty {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.contact-profile-roleprompt-tip {
+  margin: 0 0 var(--space-6);
+}
+
+.contact-profile-roleprompt-input {
+  width: 100%;
+  min-height: 160px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  color: var(--color-text);
+  padding: var(--space-6);
+  font-size: var(--font-size-sm);
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.contact-profile-roleprompt-actions {
+  margin-top: var(--space-8);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-6);
+}
+
+.contact-profile-roleprompt-save-btn {
+  width: auto;
+  min-width: 92px;
+  max-width: none;
+}
+
+.contact-profile-conversation-summary-modal {
+  width: min(640px, 92vw);
+}
+
+.contact-profile-conversation-summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  max-height: min(56vh, 520px);
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.contact-profile-conversation-summary-item {
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-tertiary);
+  padding: var(--space-6);
+}
+
+.contact-profile-conversation-summary-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-6);
+  margin-bottom: var(--space-4);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+}
+
+.contact-profile-conversation-summary-text {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  white-space: pre-wrap;
+  word-break: break-word;
+}

@@ -1,0 +1,207 @@
+.builtin-log-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  /* 允许点击穿透到下方界面（换页、点导航等），避免误关日志；仅弹窗本体接收点击 */
+  pointer-events: none;
+}
+
+.builtin-log-modal {
+  pointer-events: auto;
+  width: 90%;
+  max-width: 720px;
+  height: 70%;
+  max-height: 500px;
+  background: var(--color-bg);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.builtin-log-modal-fullscreen {
+  width: 96vw;
+  max-width: none;
+  height: 92vh;
+  max-height: none;
+}
+
+.builtin-log-header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-6) var(--space-8);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.builtin-log-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.builtin-log-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.builtin-log-search-btn,
+.builtin-log-fullscreen-btn {
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.builtin-log-search-btn:hover,
+.builtin-log-fullscreen-btn:hover {
+  background: var(--color-border);
+  color: var(--color-text);
+}
+
+.builtin-log-filters {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.builtin-log-filter-btn {
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.builtin-log-filter-btn:hover {
+  background: var(--color-border);
+  color: var(--color-text);
+}
+
+.builtin-log-filter-btn.active {
+  border-color: var(--color-primary);
+  background: rgba(24, 144, 255, 0.14);
+  color: var(--color-primary);
+}
+
+.builtin-log-refresh {
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.builtin-log-refresh:hover:not(:disabled) {
+  background: var(--color-border);
+  color: var(--color-text);
+}
+
+.builtin-log-refresh:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.builtin-log-close {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.builtin-log-close:hover {
+  background: var(--color-border);
+  color: var(--color-text);
+}
+
+.builtin-log-banner {
+  flex-shrink: 0;
+  margin: 0;
+  padding: var(--space-4) var(--space-6);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-tertiary);
+  border-bottom: 1px solid var(--color-border);
+  line-height: 1.45;
+}
+
+.builtin-log-search-row {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: var(--space-4) var(--space-8);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+}
+
+.builtin-log-search-input {
+  flex: 1;
+  min-width: 180px;
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 12px;
+}
+
+.builtin-log-search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.builtin-log-search-count {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.builtin-log-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-4);
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  background: #1e1e1e;
+  color: #d4d4d4;
+}
+
+.builtin-log-empty {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.builtin-log-pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-all;
+  min-height: 100%;
+}

@@ -1,0 +1,12 @@
+{
+  "name": "topoclaw-mobile-license-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "License notice generation for TopoMobile",
+  "scripts": {
+    "licenses:generate": "node scripts/generate-third-party-notices.cjs"
+  },
+  "devDependencies": {
+    "license-checker": "^25.0.1"
+  }
+}

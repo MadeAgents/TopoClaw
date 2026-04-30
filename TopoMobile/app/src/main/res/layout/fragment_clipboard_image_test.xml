@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical"
+        android:background="#FFF5F5F5"
+        android:elevation="4dp"
+        android:fitsSystemWindows="false">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_arrow_back"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/cd_back"
+            android:tint="@android:color/black"
+            android:padding="12dp"
+            android:layout_marginStart="-8dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/clipboard_image_test"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:gravity="center" />
+
+        <View
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/clipboard_image_test_desc"
+                android:textSize="14sp"
+                android:textColor="#666666"
+                android:layout_marginBottom="12dp" />
+
+            <Button
+                android:id="@+id/btnInsertImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/clipboard_image_test_insert" />
+
+            <ImageView
+                android:id="@+id/ivPreview"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="#FFF5F5F5"
+                android:contentDescription="@string/image"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/tvSelectedImageStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/clipboard_image_test_selected_none"
+                android:textSize="12sp"
+                android:textColor="#777777"
+                android:layout_marginBottom="12dp" />
+
+            <Button
+                android:id="@+id/btnCopyToClipboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/clipboard_image_test_copy" />
+
+            <TextView
+                android:id="@+id/tvCopiedImageStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/clipboard_image_test_copied_none"
+                android:textSize="12sp"
+                android:textColor="#777777" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,848 @@
+{
+  "schema_version": "1.0.0",
+  "source": "TopoDesktop",
+  "catalog_version": "2026-04-12",
+  "total": 81,
+  "items": [
+    {
+      "id": 1,
+      "app_name": "系统",
+      "feature_name": "SET_ALARM：设置闹钟（8:00）",
+      "deeplink": "intent:#Intent;action=android.intent.action.SET_ALARM;i.android.intent.extra.alarm.HOUR=8;i.android.intent.extra.alarm.MINUTES=0;S.android.intent.extra.alarm.MESSAGE=TopoClaw闹钟测试;B.android.intent.extra.alarm.SKIP_UI=true;end",
+      "call_method": "Intent URI",
+      "description": "SET_ALARM：设置闹钟（8:00）",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 2,
+      "app_name": "系统",
+      "feature_name": "CALL_PHONE：直接拨打 10086",
+      "deeplink": "intent://10086#Intent;scheme=tel;action=android.intent.action.CALL;end",
+      "call_method": "Intent URI",
+      "description": "CALL_PHONE：直接拨打 10086",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 3,
+      "app_name": "系统",
+      "feature_name": "CAMERA：打开相机拍照",
+      "deeplink": "intent:#Intent;action=android.media.action.IMAGE_CAPTURE;end",
+      "call_method": "Intent URI",
+      "description": "CAMERA：打开相机拍照",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 4,
+      "app_name": "系统",
+      "feature_name": "编辑短信（10086）",
+      "deeplink": "intent://10086#Intent;scheme=smsto;action=android.intent.action.SENDTO;S.sms_body=TopoClaw短信测试;end",
+      "call_method": "Intent URI",
+      "description": "编辑短信（10086）",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 5,
+      "app_name": "系统",
+      "feature_name": "编辑日历（日程新建）",
+      "deeplink": "intent://com.android.calendar/events#Intent;scheme=content;action=android.intent.action.INSERT;S.title=TopoClaw日历测试;l.beginTime=1776000000000;l.endTime=1776003600000;end",
+      "call_method": "Intent URI",
+      "description": "编辑日历（日程新建）",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 6,
+      "app_name": "系统",
+      "feature_name": "新建联系人",
+      "deeplink": "intent:#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/contact;S.name=TopoClaw测试联系人;S.phone=13800138000;end",
+      "call_method": "Intent URI",
+      "description": "新建联系人",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 7,
+      "app_name": "支付宝",
+      "feature_name": "扫一扫",
+      "deeplink": "alipayqr://platformapi/startapp?saId=10000007",
+      "call_method": "Scheme Deeplink",
+      "description": "扫一扫",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 8,
+      "app_name": "支付宝",
+      "feature_name": "付款码",
+      "deeplink": "alipayqr://platformapi/startapp?saId=20000056",
+      "call_method": "Scheme Deeplink",
+      "description": "付款码",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 9,
+      "app_name": "支付宝",
+      "feature_name": "收款码",
+      "deeplink": "alipays://platformapi/startapp?appId=20000123",
+      "call_method": "Scheme Deeplink",
+      "description": "收款码",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 10,
+      "app_name": "支付宝",
+      "feature_name": "账单",
+      "deeplink": "alipays://platformapi/startapp?appId=20000003",
+      "call_method": "Scheme Deeplink",
+      "description": "账单",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 11,
+      "app_name": "支付宝",
+      "feature_name": "余额宝",
+      "deeplink": "alipays://platformapi/startapp?appId=20000032",
+      "call_method": "Scheme Deeplink",
+      "description": "余额宝",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 12,
+      "app_name": "支付宝",
+      "feature_name": "花呗",
+      "deeplink": "alipays://platformapi/startapp?appId=20000199",
+      "call_method": "Scheme Deeplink",
+      "description": "花呗",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 13,
+      "app_name": "支付宝",
+      "feature_name": "借呗",
+      "deeplink": "alipays://platformapi/startapp?appId=20000180",
+      "call_method": "Scheme Deeplink",
+      "description": "借呗",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 14,
+      "app_name": "支付宝",
+      "feature_name": "还信用卡",
+      "deeplink": "alipays://platformapi/startapp?appId=09999999",
+      "call_method": "Scheme Deeplink",
+      "description": "还信用卡",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 15,
+      "app_name": "支付宝",
+      "feature_name": "芝麻信用",
+      "deeplink": "alipays://platformapi/startapp?appId=20000118",
+      "call_method": "Scheme Deeplink",
+      "description": "芝麻信用",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 16,
+      "app_name": "支付宝",
+      "feature_name": "蚂蚁森林",
+      "deeplink": "alipays://platformapi/startapp?appId=60000002",
+      "call_method": "Scheme Deeplink",
+      "description": "蚂蚁森林",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 17,
+      "app_name": "支付宝",
+      "feature_name": "蚂蚁庄园",
+      "deeplink": "alipays://platformapi/startapp?appId=66666674",
+      "call_method": "Scheme Deeplink",
+      "description": "蚂蚁庄园",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 18,
+      "app_name": "支付宝",
+      "feature_name": "蚂蚁会员",
+      "deeplink": "alipays://platformapi/startapp?appId=20000160",
+      "call_method": "Scheme Deeplink",
+      "description": "蚂蚁会员",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 19,
+      "app_name": "支付宝",
+      "feature_name": "手机充值",
+      "deeplink": "alipays://platformapi/startapp?appId=10000003",
+      "call_method": "Scheme Deeplink",
+      "description": "手机充值",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 20,
+      "app_name": "支付宝",
+      "feature_name": "生活缴费",
+      "deeplink": "alipays://platformapi/startapp?appId=20000193",
+      "call_method": "Scheme Deeplink",
+      "description": "生活缴费",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 21,
+      "app_name": "支付宝",
+      "feature_name": "快递查询",
+      "deeplink": "alipays://platformapi/startapp?appId=20000754",
+      "call_method": "Scheme Deeplink",
+      "description": "快递查询",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 22,
+      "app_name": "支付宝",
+      "feature_name": "火车票/机票",
+      "deeplink": "alipays://platformapi/startapp?appId=20000135",
+      "call_method": "Scheme Deeplink",
+      "description": "火车票/机票",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 23,
+      "app_name": "支付宝",
+      "feature_name": "股票",
+      "deeplink": "alipays://platformapi/startapp?appId=20000134",
+      "call_method": "Scheme Deeplink",
+      "description": "股票",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 24,
+      "app_name": "支付宝",
+      "feature_name": "记账本",
+      "deeplink": "alipays://platformapi/startapp?appId=20000168",
+      "call_method": "Scheme Deeplink",
+      "description": "记账本",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 25,
+      "app_name": "支付宝",
+      "feature_name": "乘车码",
+      "deeplink": "alipayqr://platformapi/startapp?saId=200011235",
+      "call_method": "Scheme Deeplink",
+      "description": "乘车码",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 26,
+      "app_name": "QQ音乐",
+      "feature_name": "打开QQ音乐",
+      "deeplink": "qqmusic://",
+      "call_method": "Scheme Deeplink",
+      "description": "打开QQ音乐",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 27,
+      "app_name": "QQ音乐",
+      "feature_name": "搜索歌曲",
+      "deeplink": "qqmusic://qq.com/ui/search",
+      "call_method": "Scheme Deeplink",
+      "description": "搜索歌曲",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 28,
+      "app_name": "QQ音乐",
+      "feature_name": "听歌识曲",
+      "deeplink": "qqmusic://qq.com/ui/recognize",
+      "call_method": "Scheme Deeplink",
+      "description": "听歌识曲",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 29,
+      "app_name": "QQ音乐",
+      "feature_name": "我喜欢",
+      "deeplink": "qqmusic://qq.com/ui/myTab?p=%7B%22tab%22%3A%22fav%22%7D",
+      "call_method": "Scheme Deeplink",
+      "description": "我喜欢",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 30,
+      "app_name": "QQ音乐",
+      "feature_name": "继续播放",
+      "deeplink": "qqmusic://qq.com/media/resumeSong?p={}",
+      "call_method": "Scheme Deeplink",
+      "description": "继续播放",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 31,
+      "app_name": "小红书",
+      "feature_name": "主页",
+      "deeplink": "xhsdiscover://home/",
+      "call_method": "Scheme Deeplink",
+      "description": "主页",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 32,
+      "app_name": "小红书",
+      "feature_name": "发现",
+      "deeplink": "xhsdiscover://home/explore/",
+      "call_method": "Scheme Deeplink",
+      "description": "发现",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 33,
+      "app_name": "小红书",
+      "feature_name": "关注列表",
+      "deeplink": "xhsdiscover://home/follow/",
+      "call_method": "Scheme Deeplink",
+      "description": "关注列表",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 34,
+      "app_name": "小红书",
+      "feature_name": "同城",
+      "deeplink": "xhsdiscover://home/localfeed/",
+      "call_method": "Scheme Deeplink",
+      "description": "同城",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 35,
+      "app_name": "小红书",
+      "feature_name": "商城",
+      "deeplink": "xhsdiscover://home/store/",
+      "call_method": "Scheme Deeplink",
+      "description": "商城",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 36,
+      "app_name": "小红书",
+      "feature_name": "搜索关键词",
+      "deeplink": "xhsdiscover://search/result?keyword=关键词",
+      "call_method": "Scheme Deeplink",
+      "description": "搜索关键词",
+      "parameters": [
+        "关键词"
+      ],
+      "notes": ""
+    },
+    {
+      "id": 37,
+      "app_name": "小红书",
+      "feature_name": "搜索笔记",
+      "deeplink": "xhsdiscover://search/result?keyword=关键词&target_search=notes",
+      "call_method": "Scheme Deeplink",
+      "description": "搜索笔记",
+      "parameters": [
+        "关键词"
+      ],
+      "notes": ""
+    },
+    {
+      "id": 38,
+      "app_name": "小红书",
+      "feature_name": "搜索商品(搜索页)",
+      "deeplink": "xhsdiscover://search/result?keyword=关键词&target_search=goods",
+      "call_method": "Scheme Deeplink",
+      "description": "搜索商品(搜索页)",
+      "parameters": [
+        "关键词"
+      ],
+      "notes": ""
+    },
+    {
+      "id": 39,
+      "app_name": "小红书",
+      "feature_name": "搜索用户",
+      "deeplink": "xhsdiscover://search/result?keyword=关键词&target_search=users",
+      "call_method": "Scheme Deeplink",
+      "description": "搜索用户",
+      "parameters": [
+        "关键词"
+      ],
+      "notes": ""
+    },
+    {
+      "id": 40,
+      "app_name": "小红书",
+      "feature_name": "我的主页",
+      "deeplink": "xhsdiscover://profile/",
+      "call_method": "Scheme Deeplink",
+      "description": "我的主页",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 41,
+      "app_name": "小红书",
+      "feature_name": "编辑资料",
+      "deeplink": "xhsdiscover://me/profile/",
+      "call_method": "Scheme Deeplink",
+      "description": "编辑资料",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 42,
+      "app_name": "小红书",
+      "feature_name": "消息中心",
+      "deeplink": "xhsdiscover://messages/",
+      "call_method": "Scheme Deeplink",
+      "description": "消息中心",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 43,
+      "app_name": "小红书",
+      "feature_name": "收到的赞和收藏",
+      "deeplink": "xhsdiscover://message/collections",
+      "call_method": "Scheme Deeplink",
+      "description": "收到的赞和收藏",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 44,
+      "app_name": "小红书",
+      "feature_name": "收到的评论",
+      "deeplink": "xhsdiscover://message/comments",
+      "call_method": "Scheme Deeplink",
+      "description": "收到的评论",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 45,
+      "app_name": "小红书",
+      "feature_name": "新增关注",
+      "deeplink": "xhsdiscover://message/followers",
+      "call_method": "Scheme Deeplink",
+      "description": "新增关注",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 46,
+      "app_name": "小红书",
+      "feature_name": "发布笔记",
+      "deeplink": "xhsdiscover://post_note/",
+      "call_method": "Scheme Deeplink",
+      "description": "发布笔记",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 47,
+      "app_name": "小红书",
+      "feature_name": "发布视频",
+      "deeplink": "xhsdiscover://post_video/",
+      "call_method": "Scheme Deeplink",
+      "description": "发布视频",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 48,
+      "app_name": "小红书",
+      "feature_name": "话题页",
+      "deeplink": "xhsdiscover://topic/v2/{keyword}",
+      "call_method": "Scheme Deeplink",
+      "description": "话题页",
+      "parameters": [
+        "keyword"
+      ],
+      "notes": ""
+    },
+    {
+      "id": 49,
+      "app_name": "小红书",
+      "feature_name": "通用设置",
+      "deeplink": "xhsdiscover://general_setting/",
+      "call_method": "Scheme Deeplink",
+      "description": "通用设置",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 50,
+      "app_name": "小红书",
+      "feature_name": "通知设置",
+      "deeplink": "xhsdiscover://notification_setting/",
+      "call_method": "Scheme Deeplink",
+      "description": "通知设置",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 51,
+      "app_name": "小红书",
+      "feature_name": "账号绑定",
+      "deeplink": "xhsdiscover://account/bind/",
+      "call_method": "Scheme Deeplink",
+      "description": "账号绑定",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 52,
+      "app_name": "小红书",
+      "feature_name": "深色模式",
+      "deeplink": "xhsdiscover://dark_mode_setting/",
+      "call_method": "Scheme Deeplink",
+      "description": "深色模式",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 53,
+      "app_name": "QQ",
+      "feature_name": "打开QQ",
+      "deeplink": "mqq://",
+      "call_method": "Scheme Deeplink",
+      "description": "打开QQ",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 54,
+      "app_name": "QQ",
+      "feature_name": "加好友/查看名片",
+      "deeplink": "mqqapi://card/show_pslcard?src_type=internal&version=1&uin={QQ号}",
+      "call_method": "Scheme Deeplink",
+      "description": "加好友/查看名片",
+      "parameters": [
+        "QQ号"
+      ],
+      "notes": ""
+    },
+    {
+      "id": 55,
+      "app_name": "QQ",
+      "feature_name": "打开QQ群",
+      "deeplink": "mqqapi://card/show_pslcard?src_type=internal&version=1&card_type=group&uin={QQ群号}",
+      "call_method": "Scheme Deeplink",
+      "description": "打开QQ群",
+      "parameters": [
+        "QQ群号"
+      ],
+      "notes": ""
+    },
+    {
+      "id": 56,
+      "app_name": "QQ",
+      "feature_name": "与指定QQ聊天",
+      "deeplink": "mqqwpa://im/chat?chat_type=wpa&uin={QQ号}",
+      "call_method": "Scheme Deeplink",
+      "description": "与指定QQ聊天",
+      "parameters": [
+        "QQ号"
+      ],
+      "notes": ""
+    },
+    {
+      "id": 57,
+      "app_name": "抖音",
+      "feature_name": "首页Feed",
+      "deeplink": "snssdk1128://feed?refer=web",
+      "call_method": "Scheme Deeplink",
+      "description": "首页Feed",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 58,
+      "app_name": "抖音",
+      "feature_name": "搜索",
+      "deeplink": "snssdk1128://search?keyword={关键词}",
+      "call_method": "Scheme Deeplink",
+      "description": "搜索",
+      "parameters": [
+        "关键词"
+      ],
+      "notes": ""
+    },
+    {
+      "id": 59,
+      "app_name": "抖音",
+      "feature_name": "热搜词榜",
+      "deeplink": "snssdk1128://search/trending",
+      "call_method": "Scheme Deeplink",
+      "description": "热搜词榜",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 60,
+      "app_name": "微博",
+      "feature_name": "打开首页",
+      "deeplink": "sinaweibo://gotohome",
+      "call_method": "Scheme Deeplink",
+      "description": "打开首页",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 61,
+      "app_name": "微博",
+      "feature_name": "发现页面",
+      "deeplink": "sinaweibo://discover",
+      "call_method": "Scheme Deeplink",
+      "description": "发现页面",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 62,
+      "app_name": "微博",
+      "feature_name": "搜索",
+      "deeplink": "sinaweibo://searchall?q={关键词}",
+      "call_method": "Scheme Deeplink",
+      "description": "搜索",
+      "parameters": [
+        "关键词"
+      ],
+      "notes": ""
+    },
+    {
+      "id": 63,
+      "app_name": "微博",
+      "feature_name": "扫一扫",
+      "deeplink": "sinaweibo://qrcode",
+      "call_method": "Scheme Deeplink",
+      "description": "扫一扫",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 64,
+      "app_name": "京东",
+      "feature_name": "打开京东",
+      "deeplink": "openApp.jdMobile://",
+      "call_method": "Scheme Deeplink",
+      "description": "打开京东",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 65,
+      "app_name": "京东",
+      "feature_name": "搜索商品",
+      "deeplink": "openApp.jdMobile://virtual?params=%7B%22category%22%3A%22jump%22%2C%22des%22%3A%22search%22%2C%22keyword%22%3A%22关键词%22%7D",
+      "call_method": "Scheme Deeplink",
+      "description": "搜索商品",
+      "parameters": [
+        "关键词"
+      ],
+      "notes": ""
+    },
+    {
+      "id": 66,
+      "app_name": "京东",
+      "feature_name": "购物车",
+      "deeplink": "openApp.jdMobile://virtual?params=%7B%22category%22%3A%22jump%22%2C%22des%22%3A%22cart%22%7D",
+      "call_method": "Scheme Deeplink",
+      "description": "购物车",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 67,
+      "app_name": "京东",
+      "feature_name": "领京豆签到",
+      "deeplink": "openApp.jdMobile://virtual?params=%7B%22category%22%3A%22jump%22%2C%22modulename%22%3A%22JDReactCollectJDBeans%22%2C%22des%22%3A%22jdreactcommon%22%2C%22param%22%3A%7B%22page%22%3A%22collectJDBeansHomePage%22%7D%7D",
+      "call_method": "Scheme Deeplink",
+      "description": "领京豆签到",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 68,
+      "app_name": "拼多多",
+      "feature_name": "打开拼多多",
+      "deeplink": "pinduoduo://",
+      "call_method": "Scheme Deeplink",
+      "description": "打开拼多多",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 69,
+      "app_name": "拼多多",
+      "feature_name": "搜索商品",
+      "deeplink": "pinduoduo://com.xunmeng.pinduoduo/search_result.html?search_key={关键词}",
+      "call_method": "Scheme Deeplink",
+      "description": "搜索商品",
+      "parameters": [
+        "关键词"
+      ],
+      "notes": ""
+    },
+    {
+      "id": 70,
+      "app_name": "拼多多",
+      "feature_name": "签到",
+      "deeplink": "pinduoduo://com.xunmeng.pinduoduo/https://mobile.yangkeduo.com/pythagoras_ctc_ca.html",
+      "call_method": "Scheme Deeplink",
+      "description": "签到",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 71,
+      "app_name": "拼多多",
+      "feature_name": "个人中心",
+      "deeplink": "pinduoduo://com.xunmeng.pinduoduo/personal.html",
+      "call_method": "Scheme Deeplink",
+      "description": "个人中心",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 72,
+      "app_name": "美团",
+      "feature_name": "打开美团",
+      "deeplink": "imeituan://",
+      "call_method": "Scheme Deeplink",
+      "description": "打开美团",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 73,
+      "app_name": "美团",
+      "feature_name": "美团搜索",
+      "deeplink": "imeituan://www.meituan.com/search?q=火锅",
+      "call_method": "Scheme Deeplink",
+      "description": "美团搜索",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 74,
+      "app_name": "美团",
+      "feature_name": "扫一扫",
+      "deeplink": "imeituan://www.meituan.com/scanQRCode",
+      "call_method": "Scheme Deeplink",
+      "description": "扫一扫",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 75,
+      "app_name": "QQ邮箱",
+      "feature_name": "打开QQ邮箱",
+      "deeplink": "qqmail://",
+      "call_method": "Scheme Deeplink",
+      "description": "打开QQ邮箱",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 76,
+      "app_name": "QQ邮箱",
+      "feature_name": "写邮件",
+      "deeplink": "intent://{邮箱}?subject={主题}&body={正文}#Intent;scheme=mailto;package=com.tencent.androidqqmail;end",
+      "call_method": "Intent URI",
+      "description": "写邮件",
+      "parameters": [
+        "邮箱",
+        "主题",
+        "正文"
+      ],
+      "notes": ""
+    },
+    {
+      "id": 77,
+      "app_name": "哔哩哔哩",
+      "feature_name": "打开首页",
+      "deeplink": "bilibili://home",
+      "call_method": "Scheme Deeplink",
+      "description": "打开首页",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 78,
+      "app_name": "哔哩哔哩",
+      "feature_name": "搜索",
+      "deeplink": "bilibili://search?keyword={关键词}",
+      "call_method": "Scheme Deeplink",
+      "description": "搜索",
+      "parameters": [
+        "关键词"
+      ],
+      "notes": ""
+    },
+    {
+      "id": 79,
+      "app_name": "哔哩哔哩",
+      "feature_name": "扫一扫",
+      "deeplink": "bilibili://qrcode",
+      "call_method": "Scheme Deeplink",
+      "description": "扫一扫",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 80,
+      "app_name": "哔哩哔哩",
+      "feature_name": "动态",
+      "deeplink": "bilibili://following/home",
+      "call_method": "Scheme Deeplink",
+      "description": "动态",
+      "parameters": [],
+      "notes": ""
+    },
+    {
+      "id": 81,
+      "app_name": "哔哩哔哩",
+      "feature_name": "收藏",
+      "deeplink": "bilibili://main/favorite",
+      "call_method": "Scheme Deeplink",
+      "description": "收藏",
+      "parameters": [],
+      "notes": ""
+    }
+  ]
+}

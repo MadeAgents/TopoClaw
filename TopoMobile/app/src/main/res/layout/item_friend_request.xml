@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:layout_marginBottom="8dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+    
+    <!-- 顶部信息区域 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="12dp">
+        
+        <!-- 头像 -->
+        <ImageView
+            android:id="@+id/ivFriendAvatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_person"
+            android:background="@drawable/circle_background"
+            android:clipToOutline="true" />
+        
+        <!-- 信息区域 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="12dp">
+            
+            <!-- 名字 -->
+            <TextView
+                android:id="@+id/tvFriendName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="好友名字"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp" />
+            
+            <!-- IMEI -->
+            <TextView
+                android:id="@+id/tvFriendImei"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="IMEI: 12345678..."
+                android:textSize="12sp"
+                android:textColor="#999999"
+                android:layout_marginBottom="2dp" />
+            
+            <!-- 时间 -->
+            <TextView
+                android:id="@+id/tvFriendTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2024-01-01 12:00"
+                android:textSize="12sp"
+                android:textColor="#999999" />
+        </LinearLayout>
+    </LinearLayout>
+    
+    <!-- 按钮区域 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end">
+        
+        <Button
+            android:id="@+id/btnViewInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:text="查看信息"
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:minWidth="80dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
+        
+        <Button
+            android:id="@+id/btnReject"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:text="拒绝"
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:minWidth="60dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
+        
+        <Button
+            android:id="@+id/btnAccept"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="同意"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_add_friend_background"
+            android:minWidth="60dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:elevation="1dp" />
+    </LinearLayout>
+    
+</LinearLayout>
+

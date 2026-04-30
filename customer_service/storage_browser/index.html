@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>customer_service2 存储浏览</title>
+  <style>
+    :root {
+      --bg: #f0f2f5;
+      --panel: #ffffff;
+      --sidebar: #e8ecf2;
+      --border: #d4dce6;
+      --text: #1c2430;
+      --muted: #5a6573;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --on-accent: #ffffff;
+      --ok: #047857;
+      --warn: #b45309;
+      --mono: "JetBrains Mono", "Consolas", "Monaco", monospace;
+      --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      padding: 12px 20px;
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    header .meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+      grid-template-rows: auto auto 1fr;
+      gap: 0;
+      min-height: 0;
+    }
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto 1fr;
+      }
+    }
+    .toolbar {
+      grid-column: 1 / -1;
+      padding: 10px 16px;
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
+    .toolbar-main {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: flex-end;
+      flex: 1;
+      min-width: 0;
+    }
+    .toolbar-end {
+      flex: 0 0 auto;
+      margin-left: auto;
+      padding-left: 8px;
+    }
+    .toolbar-end button {
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.85rem;
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: none;
+      background: var(--accent);
+      color: var(--on-accent);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .toolbar-end button:hover {
+      background: var(--accent-hover);
+    }
+    .toolbar label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .toolbar input, .toolbar select, .toolbar button {
+      font-family: inherit;
+      font-size: 0.85rem;
+      padding: 6px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+    }
+    .toolbar button {
+      cursor: pointer;
+      background: var(--accent);
+      color: var(--on-accent);
+      border-color: transparent;
+      font-weight: 600;
+    }
+    .toolbar button:hover:not(:disabled) {
+      background: var(--accent-hover);
+    }
+    .toolbar button.secondary {
+      background: var(--panel);
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .toolbar button.secondary:hover:not(:disabled) {
+      background: rgba(37, 99, 235, 0.08);
+    }
+    .toolbar-presets {
+      grid-column: 1 / -1;
+      align-items: center;
+    }
+    .presets-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-right: 4px;
+      white-space: nowrap;
+    }
+    .preset-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+    .preset-btns button {
+      cursor: pointer;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      font-weight: 500;
+    }
+    .preset-btns button:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(37, 99, 235, 0.06);
+    }
+    aside {
+      border-right: 1px solid var(--border);
+      overflow: auto;
+      background: var(--sidebar);
+      padding: 8px 0;
+    }
+    .bucket {
+      margin-bottom: 4px;
+    }
+    .bucket-name {
+      padding: 6px 14px;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+    .file-row {
+      padding: 8px 14px 8px 18px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-family: var(--mono);
+      border-left: 3px solid transparent;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .file-row:hover { background: rgba(37, 99, 235, 0.07); }
+    .file-row.active {
+      background: rgba(37, 99, 235, 0.12);
+      border-left-color: var(--accent);
+    }
+    .file-meta { color: var(--muted); font-size: 0.72rem; white-space: nowrap; }
+    section.content {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      background: var(--bg);
+    }
+    .content-head {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .content-head strong { color: var(--text); }
+    .viewer {
+      flex: 1;
+      overflow: auto;
+      padding: 12px 16px 24px;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      line-height: 1.45;
+    }
+    pre.json {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .jsonl-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+      align-items: center;
+    }
+    .jsonl-nav button {
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    .jsonl-nav button:hover:not(:disabled) {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .jsonl-nav button:disabled { opacity: 0.4; cursor: not-allowed; }
+    table.lines {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table.lines th, table.lines td {
+      border: 1px solid var(--border);
+      padding: 6px 8px;
+      vertical-align: top;
+      text-align: left;
+    }
+    table.lines th {
+      background: var(--panel);
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .ts { color: var(--ok); white-space: nowrap; }
+    .err-banner {
+      margin: 12px 16px;
+      padding: 10px 14px;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: 8px;
+      color: #b91c1c;
+      font-size: 0.85rem;
+    }
+    .empty { color: var(--muted); padding: 24px; text-align: center; }
+    kbd {
+      background: #e2e8f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      border: 1px solid var(--border);
+    }
+    .viewer code { background: #e8ecf2; padding: 1px 4px; border-radius: 3px; font-size: 0.9em; }
+    .muted-inline { color: var(--muted); font-size: 0.8rem; }
+    .file-nick {
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .content-head .file-nick { font-weight: 600; }
+    .file-row.search-hit {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .search-hit-sub {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-family: var(--mono);
+      margin-top: 4px;
+    }
+    .search-banner {
+      padding: 8px 14px;
+      font-size: 0.75rem;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      background: #e8ecf2;
+    }
+    .unified-chat-toolbar {
+      margin-bottom: 12px;
+    }
+    .unified-chat-toolbar button {
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-family: inherit;
+    }
+    .unified-chat-toolbar button:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .unified-chat-meta {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+    .unified-chat-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+    }
+    .unified-chat-bubble {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      background: var(--panel);
+      max-width: 92%;
+    }
+    .unified-chat-bubble.from-me {
+      align-self: flex-end;
+      background: rgba(37, 99, 235, 0.08);
+      border-color: rgba(37, 99, 235, 0.35);
+    }
+    .unified-chat-bubble.from-other {
+      align-self: flex-start;
+    }
+    .unified-chat-bubble-head {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .unified-chat-bubble-head .who {
+      color: var(--text);
+      font-weight: 500;
+    }
+    .badge-me {
+      display: inline-block;
+      margin-left: 4px;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: var(--accent);
+      color: var(--on-accent);
+      font-size: 0.65rem;
+      font-weight: 600;
+    }
+    .unified-chat-bubble-body {
+      white-space: pre-wrap;
+      word-break: break-word;
+      line-height: 1.5;
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>存储浏览 · customer_service2/outputs</h1>
+    <span class="meta" id="healthLine">检查服务中…</span>
+  </header>
+  <main>
+    <div class="toolbar">
+      <div class="toolbar-main">
+        <label>IMEI（选择后自动聚合全库相关片段）
+          <select id="imeiSelect"><option value="">— 全部文件（不选 IMEI）—</option></select>
+        </label>
+        <label>时间从 (本地)
+          <input type="datetime-local" id="timeFrom" />
+        </label>
+        <label>时间到 (本地)
+          <input type="datetime-local" id="timeTo" />
+        </label>
+        <button type="button" id="btnFilterTime">按时间筛选当前 jsonl</button>
+        <button type="button" class="secondary" id="btnReloadTree">刷新文件列表</button>
+      </div>
+      <div class="toolbar-end">
+        <button type="button" id="btnRecentTerminalLogs" title="读取 python app.py 写入的 outputs/server_logs/app_terminal.log，展示近 1 小时控制台日志（新→旧）">
+          近1小时控制台日志
+        </button>
+      </div>
+    </div>
+    <div class="toolbar toolbar-presets">
+      <span class="presets-label">快捷时间范围（相对当前本地时间，填入起止并筛选）</span>
+      <div class="preset-btns" id="presetBtns"></div>
+    </div>
+    <aside id="tree"></aside>
+    <section class="content">
+      <div class="content-head" id="contentHead">请选择左侧文件</div>
+      <div id="errBox" style="display:none;"></div>
+      <div class="viewer" id="viewer">
+        <p class="empty">左侧点击 <kbd>.json</kbd> 查看结构化数据；点击 <kbd>.jsonl</kbd> 分页浏览对话行。<br />在上方 <strong>IMEI</strong> 下拉里选择用户后，左侧会列出资料、好友关系及 <strong>各会话聊天记录</strong>（好友 / 群 / 小助手等各占一行）；点会话条目右侧为气泡视图，可切换「查看原始 JSON」。<br />时间筛选基于字段 <code>timestamp</code>（毫秒）。</p>
+      </div>
+    </section>
+  </main>
+  <script>
+    const $ = (id) => document.getElementById(id);
+
+    let bucketsData = [];
+    let current = { bucket: null, file: null, kind: null, searchHitId: null };
+    let jsonlStart = 0;
+    let nicknameByImei = {};
+    /** null = 显示完整文件树；数组 = 仅显示 IMEI 聚合片段 */
+    let imeiSearchHits = null;
+    /** 当前聚合所用的 IMEI（与下拉框一致，供横幅展示） */
+    let imeiAggregateQuery = "";
+    /** 为 true 时忽略 change，避免左侧打开 jsonl 时同步下拉触发再次聚合 */
+    let suppressImeiSelectChange = false;
+
+    /** 页面挂在 /v6 或 /v6/ 下时，API 必须请求 /v6/api/...，否则会打到网关根路径 /api（常 404 或进错服务） */
+    function apiPrefix() {
+      const p = window.location.pathname || "/";
+      if (p === "/v6" || p.startsWith("/v6/")) return "/v6";
+      return "";
+    }
+
+    async function api(path) {
+      const url = apiPrefix() + path;
+      const r = await fetch(url);
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(j.error || r.statusText || "请求失败");
+      return j;
+    }
+
+    function fmtBytes(n) {
+      if (n < 1024) return n + " B";
+      if (n < 1024 * 1024) return (n / 1024).toFixed(1) + " KB";
+      return (n / (1024 * 1024)).toFixed(2) + " MB";
+    }
+
+    /** 本地时间：YYYY-MM-DD HH:mm:ss */
+    function fmtTimeHuman(ms) {
+      if (ms == null || ms === "") return "—";
+      const n = Number(ms);
+      if (!Number.isFinite(n)) return String(ms);
+      const d = new Date(n);
+      if (isNaN(d.getTime())) return String(ms);
+      const pad = (x) => String(x).padStart(2, "0");
+      return (
+        d.getFullYear() +
+        "-" +
+        pad(d.getMonth() + 1) +
+        "-" +
+        pad(d.getDate()) +
+        " " +
+        pad(d.getHours()) +
+        ":" +
+        pad(d.getMinutes()) +
+        ":" +
+        pad(d.getSeconds())
+      );
+    }
+
+    function localInputToMs(inputEl) {
+      const v = inputEl.value;
+      if (!v) return null;
+      const d = new Date(v);
+      return isNaN(d.getTime()) ? null : d.getTime();
+    }
+
+    function toDatetimeLocalValue(ms) {
+      const d = new Date(ms);
+      const pad = (n) => String(n).padStart(2, "0");
+      return (
+        d.getFullYear() +
+        "-" +
+        pad(d.getMonth() + 1) +
+        "-" +
+        pad(d.getDate()) +
+        "T" +
+        pad(d.getHours()) +
+        ":" +
+        pad(d.getMinutes())
+      );
+    }
+
+    const TIME_RANGE_PRESETS = [
+      { label: "5分钟内", ms: 5 * 60 * 1000 },
+      { label: "15分钟内", ms: 15 * 60 * 1000 },
+      { label: "30分钟内", ms: 30 * 60 * 1000 },
+      { label: "1小时内", ms: 60 * 60 * 1000 },
+      { label: "6小时内", ms: 6 * 60 * 60 * 1000 },
+      { label: "12小时内", ms: 12 * 60 * 60 * 1000 },
+      { label: "1天内", ms: 24 * 60 * 60 * 1000 },
+      { label: "3天内", ms: 3 * 24 * 60 * 60 * 1000 },
+      { label: "7天内", ms: 7 * 24 * 60 * 60 * 1000 },
+      { label: "15天内", ms: 15 * 24 * 60 * 60 * 1000 },
+      { label: "30天内", ms: 30 * 24 * 60 * 60 * 1000 },
+    ];
+
+    function mountPresetButtons() {
+      const wrap = $("presetBtns");
+      wrap.innerHTML = "";
+      for (const p of TIME_RANGE_PRESETS) {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.textContent = p.label;
+        b.addEventListener("click", () => applyPresetRange(p.ms));
+        wrap.appendChild(b);
+      }
+    }
+
+    function applyPresetRange(durationMs) {
+      const now = Date.now();
+      $("timeFrom").value = toDatetimeLocalValue(now - durationMs);
+      $("timeTo").value = toDatetimeLocalValue(now);
+      filterByTime();
+    }
+
+    function setErr(msg) {
+      const box = $("errBox");
+      if (!msg) {
+        box.style.display = "none";
+        box.textContent = "";
+        return;
+      }
+      box.style.display = "block";
+      box.className = "err-banner";
+      box.textContent = msg;
+    }
+
+    async function loadHealth() {
+      try {
+        const h = await api("/api/health");
+        $("healthLine").textContent = h.exists
+          ? "数据目录: " + h.outputs
+          : "警告: outputs 不存在 — " + h.outputs;
+      } catch (e) {
+        $("healthLine").textContent =
+          "无法连接 API：请用 http(s) 打开本页（勿用 file://）；确认 storage_browser_server 已启动；若挂在 /v6 域名下，请确认网关将 /v6/api 转发到同一后端。";
+      }
+    }
+
+    async function loadImeis() {
+      const res = await api("/api/jsonl-imeis");
+      const imeis = res.imeis || [];
+      nicknameByImei = res.nicknames && typeof res.nicknames === "object" ? res.nicknames : {};
+      const sel = $("imeiSelect");
+      const keep = sel.value;
+      sel.innerHTML = '<option value="">— 全部文件（不选 IMEI）—</option>';
+      for (const im of imeis) {
+        const o = document.createElement("option");
+        o.value = im;
+        const nick = nicknameByImei[im];
+        o.textContent = nick ? im + " · " + nick : im;
+        sel.appendChild(o);
+      }
+      if (keep && imeis.includes(keep)) sel.value = keep;
+    }
+
+    function renderSearchHits() {
+      const root = $("tree");
+      root.innerHTML = "";
+      const banner = document.createElement("div");
+      banner.className = "search-banner";
+      const q = bannerImeiWithNick(imeiAggregateQuery);
+      const n = imeiSearchHits ? imeiSearchHits.length : 0;
+      banner.textContent =
+        "IMEI 聚合视图 · " +
+        q +
+        " · 共 " +
+        n +
+        " 条相关片段（好友/群/小助手等会话为独立一行；右侧默认气泡视图，可切换原始 JSON）";
+      root.appendChild(banner);
+      if (!imeiSearchHits || !imeiSearchHits.length) {
+        const p = document.createElement("p");
+        p.className = "empty";
+        p.textContent = "未找到相关片段（该 IMEI 在各文件中无记录，或格式无效）。";
+        root.appendChild(p);
+        return;
+      }
+      const wrap = document.createElement("div");
+      wrap.className = "bucket";
+      for (const hit of imeiSearchHits) {
+        const row = document.createElement("div");
+        row.className = "file-row search-hit";
+        row.dataset.hitId = hit.id;
+        const title = document.createElement("div");
+        title.textContent = hit.section;
+        row.appendChild(title);
+        const sub = document.createElement("div");
+        sub.className = "search-hit-sub";
+        if (hit.kind === "unified_chat" && hit.fragment && hit.fragment.conversation_id != null) {
+          sub.textContent =
+            String(hit.fragment.conversation_id) + " · " + hit.bucket + " / " + hit.file;
+        } else {
+          sub.textContent = hit.bucket + " / " + hit.file;
+        }
+        row.appendChild(sub);
+        row.addEventListener("click", () => showSearchHitFragment(hit));
+        wrap.appendChild(row);
+      }
+      root.appendChild(wrap);
+    }
+
+    function renderTree() {
+      const root = $("tree");
+      root.innerHTML = "";
+      if (imeiSearchHits !== null) {
+        renderSearchHits();
+        return;
+      }
+      if (!bucketsData.length) {
+        root.innerHTML = '<p class="empty">无桶数据</p>';
+        return;
+      }
+      for (const b of bucketsData) {
+        const wrap = document.createElement("div");
+        wrap.className = "bucket";
+        const title = document.createElement("div");
+        title.className = "bucket-name";
+        title.textContent = b.name;
+        wrap.appendChild(title);
+        const filesSorted = [...b.files].sort((a, b) => (b.mtime || 0) - (a.mtime || 0));
+        for (const f of filesSorted) {
+          const row = document.createElement("div");
+          row.className = "file-row";
+          row.dataset.bucket = b.name;
+          row.dataset.file = f.name;
+          const isJsonl = f.name.endsWith(".jsonl");
+          row.dataset.kind = isJsonl ? "jsonl" : "json";
+          const left = document.createElement("span");
+          if (b.name === "customer_service" && isJsonl) {
+            const stem = f.name.replace(/\.jsonl$/i, "");
+            left.appendChild(document.createTextNode(stem + ".jsonl"));
+            const nick = nicknameByImei[stem];
+            if (nick) {
+              const nickEl = document.createElement("span");
+              nickEl.className = "file-nick";
+              nickEl.textContent = " · " + nick;
+              left.appendChild(nickEl);
+            }
+          } else {
+            left.textContent = f.name;
+          }
+          const right = document.createElement("span");
+          right.className = "file-meta";
+          let meta = fmtBytes(f.size);
+          if (f.mtime) meta += " · 修改 " + fmtTimeHuman(f.mtime);
+          right.textContent = meta;
+          row.appendChild(left);
+          row.appendChild(right);
+          row.addEventListener("click", () => openFile(b.name, f.name, row.dataset.kind));
+          wrap.appendChild(row);
+        }
+        root.appendChild(wrap);
+      }
+    }
+
+    function formatUnifiedMsgTime(m) {
+      const ca = m.created_at;
+      if (ca && typeof ca === "string") {
+        const s = ca.trim();
+        return s.length > 22 ? s.slice(0, 22) + "…" : s;
+      }
+      const ts = m.timestamp;
+      if (typeof ts === "number" && Number.isFinite(ts)) {
+        return fmtTimeHuman(ts);
+      }
+      return "—";
+    }
+
+    function unifiedSenderLabel(m) {
+      const sim = m.sender_imei;
+      if (sim) {
+        const n = nicknameByImei[sim];
+        return n ? sim + " · " + n : String(sim);
+      }
+      if (m.sender != null && String(m.sender).trim()) return String(m.sender);
+      const fd = m.from_device;
+      if (fd === "pc" || fd === "mobile") return fd === "pc" ? "电脑端" : "手机端";
+      return "—";
+    }
+
+    function unifiedMsgBodyText(m) {
+      const parts = [];
+      const c = m.content;
+      if (c != null && String(c).trim()) {
+        const cs = String(c);
+        parts.push(summarizePayloadForChat(cs, "正文"));
+      }
+      const mt = m.message_type || m.type;
+      if (mt && String(mt) !== "text") parts.push("[" + mt + "]");
+      const imgFields = [
+        "imageBase64",
+        "ImageBase64",
+        "file_base64",
+        "fileBase64",
+        "file_base64_data",
+        "avatarBase64",
+      ];
+      const seen = new Set();
+      for (const k of imgFields) {
+        const v = m[k];
+        if (v == null || v === "") continue;
+        if (seen.has(String(v).slice(0, 64))) continue;
+        seen.add(String(v).slice(0, 64));
+        parts.push(summarizePayloadForChat(String(v), k));
+      }
+      return parts.join("\n") || "（无文本）";
+    }
+
+    function renderUnifiedChatView(hit) {
+      const viewer = $("viewer");
+      viewer.innerHTML = "";
+      const frag = hit.fragment || {};
+      const imei = imeiAggregateQuery || "";
+
+      const toolbar = document.createElement("div");
+      toolbar.className = "unified-chat-toolbar";
+      const btnJson = document.createElement("button");
+      btnJson.type = "button";
+      btnJson.textContent = "查看原始 JSON";
+      btnJson.addEventListener("click", () => {
+        viewer.innerHTML = htmlJsonBlock(frag);
+      });
+      toolbar.appendChild(btnJson);
+      viewer.appendChild(toolbar);
+
+      const meta = document.createElement("div");
+      meta.className = "unified-chat-meta";
+      const cid = frag.conversation_id != null ? String(frag.conversation_id) : "—";
+      const cnt =
+        frag.message_count != null ? frag.message_count : (Array.isArray(frag.messages) ? frag.messages.length : 0);
+      let metaTxt = "会话 ID：" + cid + " · 消息数：" + cnt;
+      if (frag._truncated) {
+        metaTxt += " · 节选展示（条数过多时保留首尾段），完整内容请点「查看原始 JSON」";
+      }
+      meta.textContent = metaTxt;
+      viewer.appendChild(meta);
+
+      const list = document.createElement("div");
+      list.className = "unified-chat-list";
+      const msgs = Array.isArray(frag.messages) ? frag.messages : [];
+      for (const m of msgs) {
+        if (!m || typeof m !== "object") continue;
+        const sim = m.sender_imei || "";
+        const isMe = imei && (sim === imei || m.sender === "我");
+        const row = document.createElement("div");
+        row.className = "unified-chat-bubble" + (isMe ? " from-me" : " from-other");
+        const head = document.createElement("div");
+        head.className = "unified-chat-bubble-head";
+        const whoHtml =
+          '<span class="ts">' +
+          escapeHtml(formatUnifiedMsgTime(m)) +
+          '</span> · <span class="who">' +
+          escapeHtml(unifiedSenderLabel(m)) +
+          (isMe ? ' <span class="badge-me">我</span>' : "") +
+          "</span>";
+        head.innerHTML = whoHtml;
+        const body = document.createElement("div");
+        body.className = "unified-chat-bubble-body";
+        body.textContent = unifiedMsgBodyText(m);
+        row.appendChild(head);
+        row.appendChild(body);
+        list.appendChild(row);
+      }
+      if (!msgs.length) {
+        const empty = document.createElement("p");
+        empty.className = "empty";
+        empty.style.padding = "16px 0";
+        empty.textContent = "该会话无消息条目";
+        list.appendChild(empty);
+      }
+      viewer.appendChild(list);
+    }
+
+    function markActive() {
+      document.querySelectorAll(".file-row:not(.search-hit)").forEach((el) => {
+        el.classList.toggle(
+          "active",
+          current.searchHitId == null &&
+            el.dataset.bucket === current.bucket &&
+            el.dataset.file === current.file
+        );
+      });
+      document.querySelectorAll(".search-hit").forEach((el) => {
+        el.classList.toggle("active", el.dataset.hitId === current.searchHitId);
+      });
+    }
+
+    function showSearchHitFragment(hit) {
+      current = {
+        bucket: hit.bucket,
+        file: hit.file,
+        kind: hit.kind,
+        searchHitId: hit.id,
+      };
+      jsonlStart = 0;
+      markActive();
+      setErr("");
+      $("contentHead").innerHTML =
+        "<strong>" +
+        escapeHtml(hit.section) +
+        "</strong> · " +
+        escapeHtml(hit.bucket) +
+        " / " +
+        escapeHtml(hit.file);
+
+      const viewer = $("viewer");
+      viewer.innerHTML = "";
+
+      if (hit.kind === "jsonl_meta") {
+        const pre = document.createElement("pre");
+        pre.className = "json";
+        pre.textContent = prettifyJsonForDisplay(hit.fragment);
+        viewer.appendChild(pre);
+        if (hit.openBucket && hit.openFile) {
+          const nav = document.createElement("div");
+          nav.className = "jsonl-nav";
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.textContent = "打开完整分页浏览（原 jsonl）";
+          btn.addEventListener("click", () => openFile(hit.openBucket, hit.openFile, "jsonl"));
+          nav.appendChild(btn);
+          viewer.insertBefore(nav, pre);
+        }
+        return;
+      }
+
+      if (hit.kind === "unified_chat") {
+        renderUnifiedChatView(hit);
+        return;
+      }
+
+      viewer.innerHTML = htmlJsonBlock(hit.fragment);
+    }
+
+    async function openFile(bucket, file, kind) {
+      current = { bucket, file, kind, searchHitId: null };
+      jsonlStart = 0;
+      markActive();
+      setErr("");
+      if (bucket === "customer_service" && kind === "jsonl") {
+        const stem = file.replace(/\.jsonl$/i, "");
+        $("contentHead").innerHTML =
+          "<strong>" +
+          escapeHtml(bucket) +
+          "</strong> / " +
+          escapeHtml(stem) +
+          ".jsonl" +
+          nickHtmlForStem(stem);
+      } else {
+        $("contentHead").innerHTML = "<strong>" + escapeHtml(bucket) + "</strong> / " + escapeHtml(file);
+      }
+
+      if (kind === "json") {
+        try {
+          const res = await api(
+            "/api/read-json?bucket=" + encodeURIComponent(bucket) + "&file=" + encodeURIComponent(file)
+          );
+          $("viewer").innerHTML = htmlJsonBlock(res.data);
+        } catch (e) {
+          $("viewer").innerHTML = "";
+          setErr(String(e.message || e));
+        }
+        return;
+      }
+
+      if (kind === "jsonl") {
+        if ($("imeiSelect") && file.endsWith(".jsonl")) {
+          const stem = file.replace(/\.jsonl$/i, "");
+          if ([...$("imeiSelect").options].some((o) => o.value === stem)) {
+            suppressImeiSelectChange = true;
+            try {
+              $("imeiSelect").value = stem;
+            } finally {
+              suppressImeiSelectChange = false;
+            }
+          }
+        }
+        await loadJsonlPage();
+      }
+    }
+
+    function escapeHtml(s) {
+      return s
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function escapeRe(s) {
+      return String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    /** 判断是否为常见图片 Base64（去空白后） */
+    function detectImageBase64Kind(compact) {
+      if (compact.startsWith("/9j/")) return "JPEG";
+      if (compact.startsWith("iVBORw0KGgo")) return "PNG";
+      if (compact.startsWith("R0lGOD")) return "GIF";
+      if (compact.startsWith("UklGR")) return "WebP";
+      return "图片";
+    }
+
+    /**
+     * 长 Base64 图片串压缩为说明（fieldHint 标明字段路径含义，如 avatar、某 JSON 键名）
+     */
+    function summarizeImageBase64(str, fieldHint) {
+      if (typeof str !== "string") return str;
+      const compact = str.replace(/\s/g, "");
+      if (compact.length < 200) return str;
+      if (!/^[A-Za-z0-9+/=]+$/.test(compact)) return str;
+      const hint = String(fieldHint || "图片");
+      const kind = detectImageBase64Kind(compact);
+      const nameHints = /avatar|image|photo|picture|thumb|icon|cover|base64|pic|data|screenshot|bitmap/i.test(
+        hint
+      );
+      if (kind === "图片" && !nameHints) return str;
+      const label = kind === "图片" ? "Base64 数据" : kind + " 图片";
+      const head = compact.slice(0, 32);
+      return (
+        "[「" + hint + "」" + label + "，约 " + compact.length + " 字符；节选 «" + head + "…»，正文已省略]"
+      );
+    }
+
+    /** 消息同步气泡：长 Base64 / dataURL 一律压成一行说明，避免刷屏 */
+    function summarizePayloadForChat(str, fieldHint) {
+      if (typeof str !== "string") return str;
+      let raw = str.trim();
+      if (!raw) return str;
+      const m = raw.match(/^data:image\/[-a-z0-9+.]+;base64,/i);
+      if (m) raw = raw.slice(m[0].length);
+      const compact = raw.replace(/\s/g, "");
+      const hint = String(fieldHint || "附件");
+      if (compact.length >= 80 && /^[A-Za-z0-9+/=]+$/.test(compact)) {
+        const kind = detectImageBase64Kind(compact);
+        const label = kind === "图片" ? "Base64 图片" : kind + " 图片";
+        return "[「" + hint + "」" + label + "，约 " + compact.length + " 字符，已省略]";
+      }
+      if (str.length > 400) {
+        return str.slice(0, 280) + "…（文本共 " + str.length + " 字符，已截断）";
+      }
+      return str;
+    }
+
+    function maybeFormatTimestampField(key, value) {
+      if (typeof value !== "number" || !Number.isFinite(value)) return null;
+      if (value < 1e11 || value > 1e14) return null;
+      const kl = String(key || "").toLowerCase();
+      const ok =
+        kl === "timestamp" ||
+        kl.includes("timestamp") ||
+        /^(created|updated|expires)at$/.test(kl) ||
+        kl.endsWith("_at") ||
+        /_(time|at)$/.test(kl);
+      if (!ok) return null;
+      return fmtTimeHuman(value) + "（" + value + " ms）";
+    }
+
+    function createJsonDisplayReplacer() {
+      return function (key, value) {
+        if (typeof value === "number" && Number.isFinite(value)) {
+          const tsf = maybeFormatTimestampField(key, value);
+          if (tsf !== null) return tsf;
+        }
+        if (typeof value === "string") {
+          const k = String(key || "");
+          let hint = "根字符串";
+          if (k && !/^\d+$/.test(k)) hint = "字段 " + k;
+          else if (/^\d+$/.test(k)) hint = "数组/列表项";
+          const summarized = summarizeImageBase64(value, hint);
+          if (summarized !== value) return summarized;
+          if (nicknameByImei[value]) return value + " · " + nicknameByImei[value];
+        }
+        return value;
+      };
+    }
+
+    /** 将对象格式化为可读 JSON 文本：长图片 Base64 省略、IMEI 值带昵称、对象键为 IMEI 时带昵称 */
+    function prettifyJsonForDisplay(obj) {
+      let s = JSON.stringify(obj, createJsonDisplayReplacer(), 2);
+      const pairs = Object.entries(nicknameByImei)
+        .filter(([, v]) => v)
+        .sort((a, b) => b[0].length - a[0].length);
+      for (const [im, nick] of pairs) {
+        const safeNick = String(nick).replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+        s = s.replace(
+          new RegExp('"' + escapeRe(im) + '"(\\s*:)', "g"),
+          '"' + im + " · " + safeNick + '"$1'
+        );
+      }
+      return s;
+    }
+
+    /** 用于 <pre> 内嵌 HTML 时的 JSON 展示 */
+    function htmlJsonBlock(obj) {
+      return '<pre class="json">' + escapeHtml(prettifyJsonForDisplay(obj)) + "</pre>";
+    }
+
+    /** 表格/纯文本：整段为 IMEI 时附昵称；长图片省略 */
+    function formatTableStringCell(raw, fieldHint) {
+      if (raw == null) return "";
+      const s = String(raw);
+      const summarized = summarizeImageBase64(s, fieldHint || "内容");
+      if (summarized !== s) return escapeHtml(summarized);
+      const n = nicknameByImei[s];
+      return n
+        ? escapeHtml(s) + ' <span class="file-nick">· ' + escapeHtml(n) + "</span>"
+        : escapeHtml(s);
+    }
+
+    function nickHtmlForStem(stem) {
+      const n = nicknameByImei[stem];
+      return n ? ' <span class="file-nick">· ' + escapeHtml(n) + "</span>" : "";
+    }
+
+    function bannerImeiWithNick(im) {
+      if (!im) return "—";
+      const n = nicknameByImei[im];
+      return n ? im + " · " + n : im;
+    }
+
+    async function loadJsonlPage() {
+      const { bucket, file } = current;
+      if (!bucket || !file) return;
+      const limit = 100;
+      const url =
+        "/api/read-jsonl?bucket=" +
+        encodeURIComponent(bucket) +
+        "&file=" +
+        encodeURIComponent(file) +
+        "&start=" +
+        jsonlStart +
+        "&limit=" +
+        limit;
+      try {
+        const res = await api(url);
+        const nav = document.createElement("div");
+        nav.className = "jsonl-nav";
+        const prev = document.createElement("button");
+        prev.textContent = "上一页";
+        prev.disabled = jsonlStart <= 0;
+        prev.onclick = () => {
+          jsonlStart = Math.max(0, jsonlStart - limit);
+          loadJsonlPage();
+        };
+        const next = document.createElement("button");
+        next.textContent = "下一页";
+        next.disabled = res.returned < limit;
+        next.onclick = () => {
+          jsonlStart += res.returned;
+          loadJsonlPage();
+        };
+        const info = document.createElement("span");
+        info.className = "muted-inline";
+        info.textContent =
+          "行起始 " +
+          (jsonlStart + 1) +
+          " · 本页 " +
+          res.returned +
+          " 条 · 已扫描 " +
+          res.scannedLines +
+          " 行" +
+          (res.truncatedScan ? "（达到扫描上限）" : "");
+
+        nav.appendChild(prev);
+        nav.appendChild(next);
+        nav.appendChild(info);
+
+        const table = document.createElement("table");
+        table.className = "lines";
+        const thead = document.createElement("thead");
+        thead.innerHTML =
+          "<tr><th>#</th><th>时间</th><th>类型</th><th>发送者</th><th>内容 / 数据</th></tr>";
+        table.appendChild(thead);
+        const tbody = document.createElement("tbody");
+        for (const row of res.lines) {
+          const d = row.data || {};
+          const tr = document.createElement("tr");
+          const ts = d.timestamp;
+          const tsCell =
+            typeof ts === "number"
+              ? '<span class="ts">' +
+                fmtTimeHuman(ts) +
+                '</span><br/><small class="muted-inline">毫秒时间戳: ' +
+                ts +
+                "</small>"
+              : "—";
+          let content;
+          if (d.content != null) {
+            content = formatTableStringCell(d.content, "content");
+          } else {
+            const pj = prettifyJsonForDisplay(d);
+            content = escapeHtml(pj.length > 2000 ? pj.slice(0, 2000) + "…" : pj);
+          }
+          tr.innerHTML =
+            "<td>" +
+            row.lineNo +
+            "</td><td>" +
+            tsCell +
+            "</td><td>" +
+            formatTableStringCell(d.type, "type") +
+            "</td><td>" +
+            formatTableStringCell(d.sender, "sender") +
+            "</td><td>" +
+            content +
+            "</td>";
+          tbody.appendChild(tr);
+        }
+        table.appendChild(tbody);
+
+        const wrap = document.createElement("div");
+        wrap.appendChild(nav);
+        wrap.appendChild(table);
+        $("viewer").innerHTML = "";
+        $("viewer").appendChild(wrap);
+      } catch (e) {
+        $("viewer").innerHTML = "";
+        setErr(String(e.message || e));
+      }
+    }
+
+    async function filterByTime() {
+      const { bucket, file, kind } = current;
+      if (kind !== "jsonl" || !bucket || !file) {
+        setErr("请先在左侧打开一个 jsonl 文件");
+        return;
+      }
+      let fromMs = localInputToMs($("timeFrom"));
+      let toMs = localInputToMs($("timeTo"));
+      if (fromMs == null) fromMs = 0;
+      if (toMs == null) toMs = Date.now();
+      if (fromMs > toMs) {
+        setErr("开始时间不能晚于结束时间");
+        return;
+      }
+      setErr("");
+      try {
+        const res = await api(
+          "/api/jsonl-filter-time?bucket=" +
+            encodeURIComponent(bucket) +
+            "&file=" +
+            encodeURIComponent(file) +
+            "&from=" +
+            fromMs +
+            "&to=" +
+            toMs +
+            "&max=200"
+        );
+        const stemF = file.replace(/\.jsonl$/i, "");
+        $("contentHead").innerHTML =
+          "<strong>" +
+          escapeHtml(bucket) +
+          "</strong> / " +
+          escapeHtml(stemF) +
+          ".jsonl" +
+          nickHtmlForStem(stemF) +
+          " · 时间筛选命中 " +
+          res.hits.length +
+          " 条（最多 200，扫描 " +
+          res.scannedLines +
+          " 行）";
+
+        const table = document.createElement("table");
+        table.className = "lines";
+        const thead = document.createElement("thead");
+        thead.innerHTML =
+          "<tr><th>#</th><th>时间</th><th>类型</th><th>发送者</th><th>内容</th></tr>";
+        table.appendChild(thead);
+        const tbody = document.createElement("tbody");
+        for (const row of res.hits) {
+          const d = row.data || {};
+          const ts = d.timestamp;
+          const tsCell =
+            typeof ts === "number"
+              ? '<span class="ts">' +
+                fmtTimeHuman(ts) +
+                '</span><br/><small class="muted-inline">ms: ' +
+                ts +
+                "</small>"
+              : "—";
+          const content = d.content != null ? formatTableStringCell(d.content, "content") : "";
+          const tr = document.createElement("tr");
+          tr.innerHTML =
+            "<td>" +
+            row.lineNo +
+            "</td><td>" +
+            tsCell +
+            "</td><td>" +
+            formatTableStringCell(d.type, "type") +
+            "</td><td>" +
+            formatTableStringCell(d.sender, "sender") +
+            "</td><td>" +
+            content +
+            "</td>";
+          tbody.appendChild(tr);
+        }
+        table.appendChild(tbody);
+        $("viewer").innerHTML = "";
+        $("viewer").appendChild(table);
+        markActive();
+      } catch (e) {
+        setErr(String(e.message || e));
+      }
+    }
+
+    function viewerHelpHtml() {
+      return (
+        '<p class="empty">左侧点击 <kbd>.json</kbd> 查看结构化数据；点击 <kbd>.jsonl</kbd> 分页浏览对话行。<br />在上方 <strong>IMEI</strong> 下拉里选择用户后，左侧会自动切换为「该 IMEI 在全库中的相关片段」列表；选「全部文件」恢复完整目录。<br />时间筛选基于字段 <code>timestamp</code>（毫秒）。<br />右上角 <strong>近1小时控制台日志</strong> 读取本机 <code>outputs/server_logs/app_terminal.log</code>（由 <code>python app.py</code> 写入，与终端输出一致）。</p>'
+      );
+    }
+
+    async function loadRecentTerminalLogs() {
+      setErr("");
+      try {
+        const res = await api("/api/recent-terminal-logs?hours=1");
+        current = { bucket: null, file: null, kind: "recent_terminal", searchHitId: null };
+        markActive();
+        const entries = res.entries || [];
+        const trunc = res.truncated ? "（已达条数上限或单文件只读了尾部，可能未扫全）" : "";
+        const logPath = res.logRelPath || "outputs/server_logs/app_terminal.log";
+        $("contentHead").textContent =
+          "近1小时控制台日志 · " +
+          (res.entryCount ?? entries.length) +
+          " 条 · " +
+          (res.logFilesScanned || 0) +
+          " 个日志文件 · " +
+          logPath +
+          trunc;
+        const wrap = document.createElement("div");
+        if (!entries.length) {
+          wrap.innerHTML =
+            '<p class="empty">近1小时内没有解析到的日志行。请确认已在 <code>customer_service2</code> 下运行 <code>python app.py</code>，且存储浏览器读的是<strong>同一</strong> <code>outputs/</code>（会生成 <code>outputs/server_logs/app_terminal.log</code>）。若服务由 <code>uvicorn app:app</code> 直接拉起且未使用本包日志配置，该文件可能不存在或不含近1小时内容。</p>';
+          $("viewer").innerHTML = "";
+          $("viewer").appendChild(wrap);
+          return;
+        }
+        const table = document.createElement("table");
+        table.className = "lines";
+        const thead = document.createElement("thead");
+        thead.innerHTML =
+          "<tr><th>时间</th><th>级别</th><th>Logger</th><th>内容</th><th>文件:行</th></tr>";
+        table.appendChild(thead);
+        const tbody = document.createElement("tbody");
+        for (const e of entries) {
+          const ts = e.timestamp;
+          const tsCell =
+            typeof ts === "number"
+              ? '<span class="ts">' +
+                fmtTimeHuman(ts) +
+                '</span><br/><small class="muted-inline">ms: ' +
+                ts +
+                "</small>"
+              : "—";
+          const levelHtml = formatTableStringCell(e.level, "level");
+          const loggerHtml = formatTableStringCell(e.logger, "logger");
+          const msgHtml =
+            e.message != null ? formatTableStringCell(e.message, "content") : "";
+          const loc =
+            (e.sourceFile ? String(e.sourceFile) : "") +
+            (e.lineNo != null ? ":" + e.lineNo : "");
+          const tr = document.createElement("tr");
+          tr.innerHTML =
+            "<td>" +
+            tsCell +
+            "</td><td>" +
+            levelHtml +
+            "</td><td>" +
+            loggerHtml +
+            "</td><td>" +
+            msgHtml +
+            "</td><td>" +
+            escapeHtml(loc) +
+            "</td>";
+          tbody.appendChild(tr);
+        }
+        table.appendChild(tbody);
+        wrap.appendChild(table);
+        $("viewer").innerHTML = "";
+        $("viewer").appendChild(wrap);
+      } catch (e) {
+        setErr(String(e.message || e));
+      }
+    }
+
+    $("btnRecentTerminalLogs").addEventListener("click", loadRecentTerminalLogs);
+
+    $("imeiSelect").addEventListener("change", (e) => {
+      if (suppressImeiSelectChange) return;
+      const im = e.target.value;
+      if (!im) {
+        const hadAggregate = imeiSearchHits !== null;
+        imeiSearchHits = null;
+        imeiAggregateQuery = "";
+        renderTree();
+        markActive();
+        if (hadAggregate) {
+          $("contentHead").textContent = "请选择左侧文件";
+          $("viewer").innerHTML = viewerHelpHtml();
+        }
+        return;
+      }
+      runImeiAggregate(im);
+    });
+
+    $("btnFilterTime").addEventListener("click", filterByTime);
+
+    async function runImeiAggregate(imei) {
+      setErr("");
+      const q = (imei || "").trim();
+      if (!q) {
+        imeiSearchHits = null;
+        imeiAggregateQuery = "";
+        renderTree();
+        markActive();
+        return;
+      }
+      imeiAggregateQuery = q;
+      try {
+        const res = await api("/api/search-imei?imei=" + encodeURIComponent(q));
+        imeiSearchHits = res.hits || [];
+        renderTree();
+        markActive();
+        $("viewer").innerHTML =
+          '<p class="empty">已在左侧列出 ' +
+          imeiSearchHits.length +
+          " 条相关片段。<strong>好友 / 群 / 小助手</strong> 等聊天在标题含「好友 ·」「群聊 ·」「小助手 ·」的条目中（右侧气泡）；「<strong>多 Session 元数据</strong>」是 session 同步列表、<strong>不是</strong>聊天气泡。若完全没有前者，说明 <code>outputs/unified_messages/unified_messages.json</code> 里尚无该用户的会话数据。人工客服 jsonl 摘要可点对应条目内的「打开完整分页浏览」。</p>";
+        $("contentHead").textContent = "IMEI 聚合 · " + bannerImeiWithNick(res.imei || q);
+      } catch (e) {
+        imeiSearchHits = null;
+        imeiAggregateQuery = "";
+        suppressImeiSelectChange = true;
+        try {
+          $("imeiSelect").value = "";
+        } finally {
+          suppressImeiSelectChange = false;
+        }
+        renderTree();
+        markActive();
+        setErr(String(e.message || e));
+      }
+    }
+
+    $("btnReloadTree").addEventListener("click", async () => {
+      setErr("");
+      try {
+        imeiSearchHits = null;
+        imeiAggregateQuery = "";
+        suppressImeiSelectChange = true;
+        try {
+          $("imeiSelect").value = "";
+        } finally {
+          suppressImeiSelectChange = false;
+        }
+        await loadImeis();
+        const data = await api("/api/buckets");
+        bucketsData = data.buckets || [];
+        renderTree();
+        markActive();
+      } catch (e) {
+        setErr(String(e.message || e));
+      }
+    });
+
+    mountPresetButtons();
+
+    (async function init() {
+      await loadHealth();
+      try {
+        await loadImeis();
+        const data = await api("/api/buckets");
+        bucketsData = data.buckets || [];
+        if (data.error) setErr(data.error);
+        renderTree();
+      } catch (e) {
+        $("tree").innerHTML = '<p class="empty">无法加载列表</p>';
+        setErr(String(e.message || e));
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <!-- 标题栏 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical"
+        android:background="#FFF5F5F5">
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_arrow_back"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/cd_back"
+            android:tint="@android:color/black"
+            android:padding="12dp"
+            android:layout_marginStart="-8dp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+        <!-- 编辑按钮（用于UserProfileFragment） -->
+        <TextView
+            android:id="@+id/btnEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/edit"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone" />
+        <!-- 设置按钮（用于ConversationProfileFragment） -->
+        <ImageButton
+            android:id="@+id/btnSettings"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_settings"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/settings"
+            android:tint="@android:color/black"
+            android:padding="12dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- 内容区域 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="24dp">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            
+            <!-- 头像 -->
+            <ImageView
+                android:id="@+id/ivAvatar"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginBottom="24dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/circle_background"
+                android:clipToOutline="true" />
+            
+            <!-- 名字和在线状态 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp">
+                
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:gravity="center" />
+                
+                <!-- 在线状态灯泡图标（仅好友显示） -->
+                <ImageView
+                    android:id="@+id/ivOnlineStatus"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="4dp"
+                    android:src="@drawable/ic_lightbulb"
+                    android:contentDescription="@string/cd_online_status"
+                    android:visibility="gone" />
+            </LinearLayout>
+            
+            <!-- 简介 -->
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#666666"
+                android:gravity="center"
+                android:lineSpacingExtra="4dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginBottom="24dp" />
+            
+            <!-- 好友详细信息（仅好友显示） -->
+            <LinearLayout
+                android:id="@+id/llFriendInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@android:color/white"
+                android:padding="16dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="24dp"
+                android:visibility="gone">
+                
+                <!-- IMEI -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/imei"
+                        android:textSize="14sp"
+                        android:textColor="#999999"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tvFriendImei"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#333333"
+                        android:fontFamily="monospace"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?android:attr/selectableItemBackground" />
+                </LinearLayout>
+                
+                <!-- 性别 -->
+                <LinearLayout
+                    android:id="@+id/llFriendGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/gender"
+                        android:textSize="14sp"
+                        android:textColor="#999999"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tvFriendGender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#333333" />
+                </LinearLayout>
+                
+                <!-- 地址 -->
+                <LinearLayout
+                    android:id="@+id/llFriendAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/address"
+                        android:textSize="14sp"
+                        android:textColor="#999999"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tvFriendAddress"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:textSize="14sp"
+                        android:textColor="#333333"
+                        android:gravity="end" />
+                </LinearLayout>
+                
+                <!-- 电话 -->
+                <LinearLayout
+                    android:id="@+id/llFriendPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/phone"
+                        android:textSize="14sp"
+                        android:textColor="#999999"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tvFriendPhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#333333" />
+                </LinearLayout>
+                
+                <!-- 生日 -->
+                <LinearLayout
+                    android:id="@+id/llFriendBirthday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/birthday"
+                        android:textSize="14sp"
+                        android:textColor="#999999"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tvFriendBirthday"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#333333" />
+                </LinearLayout>
+                
+                <!-- 喜好 -->
+                <LinearLayout
+                    android:id="@+id/llFriendPreferences"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/hobbies"
+                        android:textSize="14sp"
+                        android:textColor="#999999"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tvFriendPreferences"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:textSize="14sp"
+                        android:textColor="#333333"
+                        android:gravity="end" />
+                </LinearLayout>
+            </LinearLayout>
+            
+            <!-- 发消息按钮 -->
+            <Button
+                android:id="@+id/btnSendMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/send_message"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:backgroundTint="#E0E0E0"
+                android:padding="12dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="16dp" />
+            
+            <!-- 查看历史记录按钮（仅对支持上下文记录的聊天对象显示） -->
+            <Button
+                android:id="@+id/btnViewHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/view_history"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:backgroundTint="#E0E0E0"
+                android:padding="12dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone" />
+
+            <!-- 内置默认自定义小助手：切换 Chat/GUI 模型 -->
+            <Button
+                android:id="@+id/btnSwitchTopoclawModel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="切换 Chat/GUI 模型"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:backgroundTint="#E0E0E0"
+                android:padding="12dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone" />
+            
+            <!-- 设置聊天背景按钮（仅对小助手显示） -->
+            <Button
+                android:id="@+id/btnChatBackground"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/chat_background_title"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:backgroundTint="#E0E0E0"
+                android:padding="12dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone" />
+            
+            <!-- 添加好友按钮（仅对非好友显示） -->
+            <Button
+                android:id="@+id/btnAddFriend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_friend"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"
+                android:backgroundTint="@color/wechat_green"
+                android:padding="12dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone" />
+            
+            <!-- 删除好友按钮（仅对好友显示） -->
+            <Button
+                android:id="@+id/btnDeleteFriend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/delete_friend"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#FF5252"
+                android:padding="12dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone" />
+
+            <!-- 删除小助手按钮（仅对自定义小助手显示） -->
+            <Button
+                android:id="@+id/btnDeleteAssistant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/delete_assistant"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#FF5252"
+                android:padding="12dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="24dp"
+                android:visibility="gone" />
+            
+            <!-- 群成员列表（仅群聊显示） -->
+            <LinearLayout
+                android:id="@+id/llGroupMembers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="16dp">
+                    
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/group_members"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:gravity="start" />
+                    
+                    <!-- 管理按钮 -->
+                    <Button
+                        android:id="@+id/btnManageMembers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/manage"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/white"
+                        android:backgroundTint="@color/wechat_green_light"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:visibility="gone" />
+                </LinearLayout>
+                
+                <!-- 群成员列表容器（动态添加成员项） -->
+                <LinearLayout
+                    android:id="@+id/llMembersList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    
+                    <!-- 成员项将动态添加到这里 -->
+                    
+                </LinearLayout>
+                
+                <!-- 邀请成员按钮（加号图标，位于成员列表最下方） -->
+                <ImageButton
+                    android:id="@+id/btnInviteMember"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_gravity="start"
+                    android:src="@drawable/ic_add"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/invite_member"
+                    android:tint="@color/wechat_green"
+                    android:padding="16dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+

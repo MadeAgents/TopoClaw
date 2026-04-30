@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#F57C00" />
+            <corners android:radius="@dimen/button_takeover_corner_radius" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FF9800" />
+            <corners android:radius="@dimen/button_takeover_corner_radius" />
+        </shape>
+    </item>
+</selector>
+

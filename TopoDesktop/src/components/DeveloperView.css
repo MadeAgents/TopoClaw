@@ -1,0 +1,399 @@
+.developer-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--color-bg);
+}
+
+.developer-header {
+  padding: var(--space-8) var(--space-10);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.developer-header h2 {
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.developer-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-12);
+}
+
+.developer-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-8) var(--space-8);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.developer-entry:hover {
+  background: var(--color-bg-tertiary);
+  border-color: #ccc;
+}
+
+.developer-entry-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+.developer-entry-arrow {
+  width: 18px;
+  height: 18px;
+  color: var(--color-text-muted);
+}
+
+.developer-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* PC 端模拟点击 - 悬浮于右下角 */
+.developer-pc-click-float {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1000;
+}
+
+.developer-trajectory-float {
+  bottom: 16px;
+}
+
+.developer-modal {
+  background: var(--color-bg);
+  border-radius: var(--radius-xl);
+  min-width: 380px;
+  max-width: 90vw;
+  box-shadow: var(--shadow-modal);
+}
+
+.developer-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-8) var(--space-10);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.developer-modal-pc-click-float .developer-modal-header {
+  padding: var(--space-6) var(--space-8);
+}
+
+.developer-modal-header h3 {
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.developer-modal-close {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.developer-modal-close:hover {
+  background: var(--color-bg-tertiary);
+  color: var(--color-text);
+}
+
+.pc-click-hint-trajectory {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+}
+
+.developer-modal-body {
+  padding: var(--space-12);
+}
+
+.developer-modal-body .coming-soon-text {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+/* PC 端模拟点击测试 */
+.developer-modal-pc-click {
+  min-width: 400px;
+  max-width: 95vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.developer-modal-pc-click-float {
+  width: 420px;
+  max-height: 85vh;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  border: 1px solid #e0e0e0;
+}
+
+.developer-modal-body-pc-click {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 14px;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+}
+
+.pc-click-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 10px;
+}
+
+.pc-click-btn {
+  padding: 8px 14px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+}
+
+.pc-click-btn:hover {
+  background: #f5f5f5;
+  border-color: #999;
+}
+
+.pc-click-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.pc-click-btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.pc-click-btn-primary:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+.pc-click-btn-active {
+  background: var(--color-primary-bg);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.pc-click-coord-display code {
+  font-family: monospace;
+  font-size: 12px;
+  padding: 4px 8px;
+  background: #f5f5f5;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pc-click-coord-display code:hover {
+  background: var(--color-primary-bg);
+}
+
+.pc-click-recorded {
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+  background: var(--color-primary-bg);
+  border: 1px solid rgba(91, 33, 182, 0.2);
+  border-radius: var(--radius-md);
+}
+
+.pc-click-recorded-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+}
+
+.pc-click-recorded-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.pc-click-recorded-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-height: 140px;
+  overflow-y: auto;
+  padding: var(--space-4);
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(91, 33, 182, 0.2);
+}
+
+.pc-click-recorded-item {
+  font-size: 12px;
+  font-family: monospace;
+  padding: 4px 8px;
+  background: #f5f5f5;
+  border-radius: 4px;
+  line-height: 1.4;
+}
+
+.pc-click-recorded-more {
+  font-size: 12px;
+  color: #999;
+  padding: 4px 0;
+}
+
+.pc-click-recorded-placeholder {
+  font-size: 12px;
+  color: #999;
+  padding: 12px;
+  text-align: center;
+}
+
+.pc-click-btn-sm {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.pc-click-mode-label {
+  font-size: 13px;
+  color: #666;
+}
+
+.pc-click-mode-group {
+  display: flex;
+  gap: 12px;
+}
+
+.pc-click-radio {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.pc-click-type-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.pc-click-type-input {
+  flex: 1;
+  min-width: 120px;
+  padding: 8px 12px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.pc-click-scroll-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pc-click-scroll-label {
+  font-size: 13px;
+  color: #666;
+}
+
+.pc-click-command-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.pc-click-command-input {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-family: monospace;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+  min-height: 80px;
+  box-sizing: border-box;
+}
+
+.pc-click-command-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.pc-click-screenshot-wrap {
+  flex: 1;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.pc-click-error {
+  color: var(--color-danger);
+  font-size: var(--font-size-xs);
+  margin-bottom: var(--space-4);
+}
+
+.pc-click-screenshot {
+  flex: 1;
+  min-height: 200px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: crosshair;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.pc-click-screenshot:hover {
+  border-color: var(--color-primary);
+}
+
+.pc-click-screenshot-placeholder {
+  flex: 1;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  color: #999;
+  font-size: 14px;
+}
+
+.pc-click-hint {
+  font-size: 12px;
+  color: #999;
+  margin-top: 8px;
+}

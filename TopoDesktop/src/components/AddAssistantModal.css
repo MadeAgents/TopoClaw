@@ -1,0 +1,95 @@
+.add-assistant-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.add-assistant-modal {
+  background: var(--color-bg);
+  border-radius: var(--radius-xl);
+  width: 380px;
+  max-width: 90vw;
+  box-shadow: var(--shadow-modal);
+}
+
+.add-assistant-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-8) var(--space-10);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.add-assistant-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+}
+
+.add-assistant-close {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.add-assistant-hint {
+  margin: var(--space-8) var(--space-10) var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.add-assistant-input {
+  display: block;
+  width: calc(100% - 40px);
+  margin: 0 var(--space-10);
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  resize: vertical;
+  min-height: 64px;
+}
+
+.add-assistant-error {
+  margin: var(--space-4) var(--space-10) 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-danger);
+}
+
+.add-assistant-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-6);
+  padding: var(--space-10);
+}
+
+.add-assistant-cancel {
+  padding: var(--space-4) var(--space-8);
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+}
+
+.add-assistant-add {
+  padding: var(--space-4) var(--space-10);
+  border: none;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+}
+
+.add-assistant-add:hover {
+  background: var(--color-primary-hover);
+}

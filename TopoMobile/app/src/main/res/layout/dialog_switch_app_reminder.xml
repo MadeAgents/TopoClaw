@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <!-- 标题栏（可点击收起/展开） -->
+    <LinearLayout
+        android:id="@+id/llTitleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="12dp"
+        android:background="#FFFFFF"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="切换应用提醒"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/ivArrow"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@android:drawable/arrow_down_float"
+            android:contentDescription="收起/展开" />
+
+    </LinearLayout>
+
+    <!-- 内容区域（可展开/收起） -->
+    <LinearLayout
+        android:id="@+id/llContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="由于权限限制，无法获取原应用截图。\n\n• 需要识别屏幕：切换回原应用，点击&quot;已切换&quot;\n• 不需要识别：点击&quot;直接执行&quot;从当前页开始"
+            android:textSize="13.5sp"
+            android:textColor="#000000"
+            android:lineSpacingMultiplier="1.2" />
+
+        <!-- 按钮区域 -->
+        <LinearLayout
+            android:id="@+id/llButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="16dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="取消"
+                android:textSize="16sp"
+                android:textAllCaps="false"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/btnDirect"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="直接执行"
+                android:textSize="16sp"
+                android:textAllCaps="false"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/btnSwitched"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="已切换"
+                android:textSize="16sp"
+                android:textAllCaps="false"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:layout_marginStart="4dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+

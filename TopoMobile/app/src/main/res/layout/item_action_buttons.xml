@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp">
+
+    <!-- 复制按钮 -->
+    <ImageButton
+        android:id="@+id/btnCopy"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_copy"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="复制"
+        android:padding="6dp"
+        android:layout_marginEnd="6dp"
+        android:scaleType="fitCenter"
+        android:tint="#FF2196F3" />
+
+    <!-- 播报按钮 -->
+    <ImageButton
+        android:id="@+id/btnSpeak"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_volume"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="播报"
+        android:padding="6dp"
+        android:layout_marginEnd="6dp"
+        android:scaleType="fitCenter"
+        android:tint="#FF2196F3" />
+
+    <!-- 收藏按钮 -->
+    <ImageButton
+        android:id="@+id/btnFavorite"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@android:drawable/btn_star_big_off"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="收藏"
+        android:padding="6dp"
+        android:layout_marginEnd="6dp"
+        android:scaleType="fitCenter"
+        android:tint="#FF2196F3" />
+
+    <!-- 分享按钮 -->
+    <ImageButton
+        android:id="@+id/btnShare"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@android:drawable/ic_menu_share"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="分享"
+        android:padding="6dp"
+        android:layout_marginEnd="6dp"
+        android:scaleType="fitCenter"
+        android:tint="#FF2196F3" />
+
+    <!-- 重新执行按钮 -->
+    <ImageButton
+        android:id="@+id/btnRerun"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_refresh"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:contentDescription="重新执行"
+        android:padding="6dp"
+        android:scaleType="fitCenter"
+        android:tint="#FF2196F3" />
+
+</LinearLayout>
+

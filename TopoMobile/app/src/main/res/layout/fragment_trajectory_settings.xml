@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <!-- 标题栏 -->
+    <LinearLayout
+        android:id="@+id/llTitleBar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical"
+        android:background="#FFF5F5F5"
+        android:elevation="4dp"
+        android:fitsSystemWindows="false">
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_arrow_back"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/cd_back"
+            android:tint="@android:color/black"
+            android:padding="12dp"
+            android:layout_marginStart="-8dp" />
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/trajectory_collection"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:gravity="center" />
+        <View
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
+    </LinearLayout>
+
+    <!-- 内容区域 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:padding="16dp"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- 轨迹采集开关 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginBottom="2dp">
+                
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/trajectory_collection"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical" />
+                
+                <Switch
+                    android:id="@+id/switchTrajectoryRecording"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:thumbTint="@color/switch_thumb_tint_blue"
+                    android:trackTint="@color/switch_track_tint_blue" />
+            </LinearLayout>
+
+            <!-- 轨迹采集依赖权限 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="2dp">
+
+                <Button
+                    android:id="@+id/btnOpenAccessibility"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/enable_accessibility"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/btnRequestTrajectoryScreenshotPermission"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/grant_screenshot" />
+            </LinearLayout>
+
+            <!-- 是否显示覆盖层 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_marginBottom="2dp">
+                
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/show_overlay"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical" />
+                
+                <Switch
+                    android:id="@+id/switchShowOverlay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:thumbTint="@color/switch_thumb_tint_blue"
+                    android:trackTint="@color/switch_track_tint_blue" />
+            </LinearLayout>
+
+            <!-- 采集 Activity -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_marginBottom="2dp">
+                
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/collect_activity"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical" />
+                
+                <Switch
+                    android:id="@+id/switchCollectActivity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:thumbTint="@color/switch_thumb_tint_blue"
+                    android:trackTint="@color/switch_track_tint_blue" />
+            </LinearLayout>
+
+            <!-- 轨迹采集时监视剪切板 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_marginBottom="2dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/trajectory_clipboard_monitor"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical" />
+
+                <Switch
+                    android:id="@+id/switchTrajectoryClipboardMonitor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:thumbTint="@color/switch_thumb_tint_blue"
+                    android:trackTint="@color/switch_track_tint_blue" />
+            </LinearLayout>
+
+            <!-- 查看轨迹记录入口 -->
+            <LinearLayout
+                android:id="@+id/llTrajectoryRecords"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginBottom="2dp">
+                
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/view_trajectory_records"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical" />
+                
+                <TextView
+                    android:id="@+id/tvTrajectoryRecordCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/records_count_0"
+                    android:textSize="14sp"
+                    android:textColor="#666666"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center_vertical" />
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=">"
+                    android:textSize="18sp"
+                    android:textColor="#999999"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+
+            <!-- 设置键盘高度 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="2dp">
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                    
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/set_keyboard_height"
+                        android:textSize="16sp"
+                        android:gravity="center_vertical" />
+                    
+                    <EditText
+                        android:id="@+id/etKeyboardHeight"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/black"
+                        android:background="@android:drawable/edit_text"
+                        android:padding="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:hint="1480" />
+                    
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/px"
+                        android:textSize="14sp"
+                        android:textColor="#666666"
+                        android:gravity="center_vertical"
+                        android:layout_marginEnd="8dp" />
+                    
+                    <Button
+                        android:id="@+id/btnSaveKeyboardHeight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/save"
+                        android:textSize="14sp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="6dp" />
+                </LinearLayout>
+                
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/keyboard_touch_hint"
+                    android:textSize="12sp"
+                    android:textColor="#999999"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+            <!-- 设置状态栏高度 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="2dp">
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                    
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/set_status_bar_height"
+                        android:textSize="16sp"
+                        android:gravity="center_vertical" />
+                    
+                    <EditText
+                        android:id="@+id/etStatusBarHeight"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/black"
+                        android:background="@android:drawable/edit_text"
+                        android:padding="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:hint="117" />
+                    
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/px"
+                        android:textSize="14sp"
+                        android:textColor="#666666"
+                        android:gravity="center_vertical"
+                        android:layout_marginEnd="8dp" />
+                    
+                    <Button
+                        android:id="@+id/btnSaveStatusBarHeight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/save"
+                        android:textSize="14sp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingTop="6dp"
+                        android:paddingBottom="6dp" />
+                </LinearLayout>
+                
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/overlay_height_formula"
+                    android:textSize="12sp"
+                    android:textColor="#999999"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+            <!-- 云侧服务配置 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="2dp">
+                
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cloud_service"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp" />
+                
+                <!-- 启用云侧上传开关 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="8dp"
+                    android:gravity="center_vertical">
+                    
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/enable_cloud_upload"
+                        android:textSize="16sp"
+                        android:gravity="center_vertical" />
+                    
+                    <Switch
+                        android:id="@+id/switchCloudUpload"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:thumbTint="@color/switch_thumb_tint_blue"
+                        android:trackTint="@color/switch_track_tint_blue" />
+                </LinearLayout>
+                
+                <!-- 服务器地址 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="12dp">
+                    
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/server_address"
+                        android:textSize="14sp"
+                        android:textColor="#666666"
+                        android:layout_marginBottom="4dp" />
+                    
+                    <EditText
+                        android:id="@+id/etCloudServerUrl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textUri"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/black"
+                        android:background="@android:drawable/edit_text"
+                        android:padding="12dp"
+                        android:hint="http://192.168.1.100:8080" />
+                </LinearLayout>
+                
+                <!-- 上传截图开关 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="8dp"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical">
+                    
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/upload_screenshot"
+                        android:textSize="16sp"
+                        android:gravity="center_vertical" />
+                    
+                    <Switch
+                        android:id="@+id/switchUploadScreenshot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:thumbTint="@color/switch_thumb_tint_blue"
+                        android:trackTint="@color/switch_track_tint_blue" />
+                </LinearLayout>
+                
+                <!-- 上传 XML 开关 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingVertical="8dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical">
+                    
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/upload_xml"
+                        android:textSize="16sp"
+                        android:gravity="center_vertical" />
+                    
+                    <Switch
+                        android:id="@+id/switchUploadXml"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:thumbTint="@color/switch_thumb_tint_blue"
+                        android:trackTint="@color/switch_track_tint_blue" />
+                </LinearLayout>
+                
+                <!-- 采集前等待 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingVertical="8dp"
+                    android:layout_marginTop="12dp">
+                    
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/capture_delay"
+                            android:textSize="16sp"
+                            android:gravity="center_vertical" />
+                        
+                        <EditText
+                            android:id="@+id/etCaptureDelay"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:textSize="14sp"
+                            android:textColor="@android:color/black"
+                            android:background="@android:drawable/edit_text"
+                            android:padding="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:hint="0" />
+                        
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ms"
+                            android:textSize="14sp"
+                            android:textColor="#666666"
+                            android:gravity="center_vertical"
+                            android:layout_marginEnd="8dp" />
+                        
+                        <Button
+                            android:id="@+id/btnSaveCaptureDelay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/save"
+                            android:textSize="14sp"
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:paddingTop="6dp"
+                            android:paddingBottom="6dp" />
+                    </LinearLayout>
+                    
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/capture_delay_hint"
+                        android:textSize="12sp"
+                        android:textColor="#999999"
+                        android:layout_marginTop="6dp" />
+                </LinearLayout>
+                
+                <!-- 测试连接按钮 -->
+                <Button
+                    android:id="@+id/btnTestConnection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/test_connection"
+                    android:textSize="14sp"
+                    android:layout_marginTop="12dp"
+                    android:padding="12dp" />
+                
+                <!-- 连接状态显示 -->
+                <TextView
+                    android:id="@+id/tvConnectionStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="12sp"
+                    android:textColor="#999999"
+                    android:layout_marginTop="8dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+

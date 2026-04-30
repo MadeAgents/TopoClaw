@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 反馈卡片按钮文字大小（小三号，English模式） -->
+    <dimen name="feedback_button_text_size">11sp</dimen>
+    <!-- 主动交互弹窗按钮文字大小（English模式，更小以适应一行） -->
+    <dimen name="dialog_companion_button_text_size">11sp</dimen>
+    <!-- 主动交互弹窗根布局内边距（English模式更紧凑） -->
+    <dimen name="dialog_companion_root_padding">20dp</dimen>
+    <!-- 主动交互弹窗按钮间距（English模式更紧凑） -->
+    <dimen name="dialog_companion_button_spacing">4dp</dimen>
+    <!-- 主动交互弹窗按钮高度（English模式更紧凑） -->
+    <dimen name="dialog_companion_button_height">44dp</dimen>
+    <dimen name="button_takeover_corner_radius">10dp</dimen>
+    <dimen name="button_send_corner_radius">6dp</dimen>
+</resources>

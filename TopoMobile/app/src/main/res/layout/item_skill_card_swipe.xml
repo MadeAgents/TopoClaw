@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <!-- 垃圾桶图标（背景透明） -->
+    <LinearLayout
+        android:id="@+id/llDeleteBackground"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@android:color/transparent"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivDelete"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@android:drawable/ic_menu_delete"
+            android:tint="#FF5252"
+            android:contentDescription="@string/cd_delete" />
+    </LinearLayout>
+
+    <!-- 卡片内容（可滑动） -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="#FFF9E6">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <!-- 复选框（默认隐藏，多选模式时显示） -->
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginEnd="12dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+            <!-- 点击查看提示和热门标识 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+                
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/tap_to_view_skill_card"
+                    android:textSize="12sp"
+                    android:textColor="#999999" />
+                
+                <!-- 热门标识 -->
+                <TextView
+                    android:id="@+id/tvHotTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hot_tag"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:textColor="#FF5252"
+                    android:background="@drawable/hot_tag_background"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- 技能标题 -->
+            <TextView
+                android:id="@+id/tvSkillTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:layout_marginBottom="12dp" />
+
+            <!-- 按钮容器 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- 执行按钮（左侧，只显示三角形图标，黑色边框） -->
+                <ImageButton
+                    android:id="@+id/btnExecute"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_play_outline"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/cd_execute"
+                    android:padding="1dp"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true" />
+
+                <!-- 右侧按钮容器 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="end">
+
+                    <!-- 编辑按钮 -->
+                    <ImageButton
+                        android:id="@+id/btnEdit"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@android:drawable/ic_menu_edit"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/cd_edit"
+                        android:padding="1dp"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true"
+                        android:layout_marginEnd="8dp" />
+
+                    <!-- 分享按钮 -->
+                    <ImageButton
+                        android:id="@+id/btnShare"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@android:drawable/ic_menu_share"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/cd_share"
+                        android:padding="1dp"
+                        android:scaleType="fitCenter"
+                        android:adjustViewBounds="true" />
+                </LinearLayout>
+            </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>
+

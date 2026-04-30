@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <!-- 标题栏 -->
+    <LinearLayout
+        android:id="@+id/llTitleBar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical"
+        android:background="#FFF5F5F5"
+        android:elevation="4dp"
+        android:fitsSystemWindows="false">
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/app_name"
+            android:textAppearance="@style/WhiteActionBarTitle"
+            android:gravity="start|center_vertical" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+        
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- 云侧服务地址输入和下拉箭头 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/server_url_label">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etServerUrl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textUri"
+                android:hint="@string/server_url_hint" />
+        </com.google.android.material.textfield.TextInputLayout>
+        
+        <ImageButton
+            android:id="@+id/btnServerUrlDropdown"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_arrow_drop_down"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/cd_history_address"
+            android:padding="12dp"
+            android:layout_gravity="center_vertical" />
+    </LinearLayout>
+
+    <!-- 按钮区域：两行两列布局 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="16dp">
+        
+        <!-- 第一行：切换云侧服务地址 和 开启无障碍服务 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            
+            <Button
+                android:id="@+id/btnApplyServerUrl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/switch_cloud_address"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btnOpenAccessibility"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="开启无障碍服务" />
+        </LinearLayout>
+        
+        <!-- 第二行：授权截图权限 和 授权悬浮窗权限 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+            
+            <Button
+                android:id="@+id/btnRequestChatPermission"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/grant_screenshot"
+                android:layout_marginEnd="8dp" />
+            
+            <Button
+                android:id="@+id/btnRequestOverlayPermission"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/grant_overlay" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 测试入口 -->
+    <Button
+        android:id="@+id/btnTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/test"
+        android:layout_marginBottom="16dp" />
+
+    <!-- 默认允许好友控制手机开关 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginBottom="2dp">
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/allow_friend_control_by_default"
+            android:textSize="16sp"
+            android:gravity="center_vertical" />
+        
+        <Switch
+            android:id="@+id/switchAllowFriendControlByDefault"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:thumbTint="@color/switch_thumb_tint_blue"
+            android:trackTint="@color/switch_track_tint_blue" />
+    </LinearLayout>
+
+    <!-- 打开应用时回到主页开关 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginBottom="2dp">
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/back_to_home"
+            android:textSize="16sp"
+            android:gravity="center_vertical" />
+        
+        <Switch
+            android:id="@+id/switchOpenActionClearTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:thumbTint="@color/switch_thumb_tint_blue"
+            android:trackTint="@color/switch_track_tint_blue" />
+    </LinearLayout>
+
+    <!-- 新任务开始前清除后台应用开关 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginBottom="2dp">
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/clear_before_task"
+            android:textSize="16sp"
+            android:gravity="center_vertical" />
+        
+        <Switch
+            android:id="@+id/switchClearBackgroundBeforeTask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:thumbTint="@color/switch_thumb_tint_blue"
+            android:trackTint="@color/switch_track_tint_blue" />
+    </LinearLayout>
+
+    <!-- 录制前清除后台应用开关 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginBottom="2dp">
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/clear_before_record"
+            android:textSize="16sp"
+            android:gravity="center_vertical" />
+        
+        <Switch
+            android:id="@+id/switchClearBackgroundBeforeRecording"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:thumbTint="@color/switch_thumb_tint_blue"
+            android:trackTint="@color/switch_track_tint_blue" />
+    </LinearLayout>
+
+    <!-- 任务运行悬浮窗开关 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginBottom="2dp">
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/task_floating_window"
+            android:textSize="16sp"
+            android:gravity="center_vertical" />
+        
+        <Switch
+            android:id="@+id/switchTaskIndicatorOverlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:thumbTint="@color/switch_thumb_tint_blue"
+            android:trackTint="@color/switch_track_tint_blue" />
+    </LinearLayout>
+
+    <!-- 开启伴随模式开关 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginBottom="2dp">
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/enable_companion_mode"
+            android:textSize="16sp"
+            android:gravity="center_vertical" />
+        
+        <Switch
+            android:id="@+id/switchCompanionMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:thumbTint="@color/switch_thumb_tint_blue"
+            android:trackTint="@color/switch_track_tint_blue" />
+    </LinearLayout>
+
+    <!-- 端侧模型开关 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginBottom="2dp">
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/anomaly_detection_model"
+            android:textSize="16sp"
+            android:gravity="center_vertical" />
+        
+        <Switch
+            android:id="@+id/switchEdgeModel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:thumbTint="@color/switch_thumb_tint_blue"
+            android:trackTint="@color/switch_track_tint_blue" />
+    </LinearLayout>
+
+    <!-- 端侧变化检测开关 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginBottom="2dp">
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/change_detection"
+            android:textSize="16sp"
+            android:gravity="center_vertical" />
+        
+        <Switch
+            android:id="@+id/switchSendBeforeActionImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:thumbTint="@color/switch_thumb_tint_blue"
+            android:trackTint="@color/switch_track_tint_blue" />
+    </LinearLayout>
+
+    <!-- 边框特效开关 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginBottom="2dp">
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/border_effect"
+            android:textSize="16sp"
+            android:gravity="center_vertical" />
+        
+        <Switch
+            android:id="@+id/switchBorderEffect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:thumbTint="@color/switch_thumb_tint_blue"
+            android:trackTint="@color/switch_track_tint_blue" />
+    </LinearLayout>
+
+    <!-- 网格激活特效开关 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginBottom="2dp">
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/grid_activation_effect"
+            android:textSize="16sp"
+            android:gravity="center_vertical" />
+        
+        <Switch
+            android:id="@+id/switchGridActivationEffect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:thumbTint="@color/switch_thumb_tint_blue"
+            android:trackTint="@color/switch_track_tint_blue" />
+    </LinearLayout>
+
+    <!-- 展示推理过程开关 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginBottom="2dp">
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/show_reasoning"
+            android:textSize="16sp"
+            android:gravity="center_vertical" />
+        
+        <Switch
+            android:id="@+id/switchReasoningOverlay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:thumbTint="@color/switch_thumb_tint_blue"
+            android:trackTint="@color/switch_track_tint_blue" />
+    </LinearLayout>
+
+</LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
+

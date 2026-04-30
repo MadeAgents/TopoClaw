@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 应用外部文件目录 -->
+    <external-files-path name="external_files" path="." />
+    <!-- 录制文件目录 -->
+    <external-files-path name="recordings" path="recordings/" />
+    <!-- 缓存目录（用于分享文件） -->
+    <cache-path name="cache" path="." />
+</paths>
+

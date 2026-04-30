@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- 复制图标：两个重叠的文档 -->
+    <!-- 底层文档（稍微偏移） -->
+    <path
+        android:fillColor="#666666"
+        android:pathData="M16,1 L4,1c-1.1,0 -2,0.9 -2,2v14h2L4,3h12L16,1z"/>
+    <!-- 顶层文档 -->
+    <path
+        android:fillColor="#666666"
+        android:pathData="M19,3h-8c-1.1,0 -2,0.9 -2,2v14c0,1.1 0.9,2 2,2h8c1.1,0 2,-0.9 2,-2L21,5c0,-1.1 -0.9,-2 -2,-2zM19,19h-8L11,5h8v14z"/>
+</vector>
+

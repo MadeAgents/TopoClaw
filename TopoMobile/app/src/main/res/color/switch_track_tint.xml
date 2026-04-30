@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 选中状态：浅灰色背景 -->
+    <item android:state_checked="true" android:color="#FFE0E0E0" />
+    <!-- 未选中状态：更浅的灰色背景 -->
+    <item android:color="#FFF5F5F5" />
+</selector>
+

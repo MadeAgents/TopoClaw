@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- 聊天气泡图标：单色填充版本，支持 tint 颜色变化 -->
+    <!-- 主体（圆角矩形） -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M4,3.5 C3.2,3.5 2.5,4.2 2.5,5 L2.5,13.5 C2.5,14.3 3.2,15 4,15 L11,15 L14.5,18.5 L14.5,15 L18,15 C18.8,15 19.5,14.3 19.5,13.5 L19.5,5 C19.5,4.2 18.8,3.5 18,3.5 L4,3.5 Z"/>
+    
+    <!-- 三角形尾巴（从底部左侧延伸，指向左下方） -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M4,15 L1.5,17.5 L1.5,15 L4,15 Z"/>
+</vector>
+

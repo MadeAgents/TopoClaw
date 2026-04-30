@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <!-- 标题栏 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical"
+        android:background="#F5F5F5"
+        android:elevation="4dp">
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_arrow_back"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="返回"
+            android:tint="@android:color/black"
+            android:padding="12dp"
+            android:layout_marginStart="-8dp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/my_qrcode"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:gravity="center" />
+        <View
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
+    </LinearLayout>
+
+    <!-- 内容区域 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="8dp"
+            android:gravity="center">
+            
+            <!-- 用户信息卡片 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#FFFFFF">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp"
+                    android:gravity="center">
+                    
+                    <!-- 头像 -->
+                    <ImageView
+                        android:id="@+id/ivAvatar"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_person"
+                        android:background="@drawable/circle_background"
+                        android:contentDescription="头像"
+                        android:clipToOutline="true"
+                        android:layout_marginBottom="16dp" />
+                    
+                    <!-- 姓名 -->
+                    <TextView
+                        android:id="@+id/tvName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/not_filled"
+                        android:textSize="20sp"
+                        android:textColor="#212121"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp" />
+                    
+                    <!-- IMEI -->
+                    <TextView
+                        android:id="@+id/tvImei"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/imei_not_filled"
+                        android:textSize="14sp"
+                        android:textColor="#757575"
+                        android:layout_marginBottom="24dp" />
+                    
+                    <!-- 二维码 -->
+                    <ImageView
+                        android:id="@+id/ivQRCode"
+                        android:layout_width="280dp"
+                        android:layout_height="280dp"
+                        android:scaleType="fitCenter"
+                        android:background="#FFFFFF"
+                        android:padding="16dp"
+                        android:contentDescription="二维码" />
+                    
+                    <!-- 提示文字 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/scan_qr_tip_my"
+                        android:textSize="14sp"
+                        android:textColor="#757575"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center" />
+                    
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            
+            <!-- 操作按钮区域 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="8dp">
+                
+                <!-- 下载按钮 -->
+                <LinearLayout
+                    android:id="@+id/llDownload"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:layout_marginEnd="12dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_download"
+                        android:tint="#2196F3"
+                        android:layout_marginBottom="8dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/download_to_local"
+                        android:textSize="14sp"
+                        android:textColor="#2196F3"
+                        android:textStyle="normal" />
+                </LinearLayout>
+                
+                <!-- 分享按钮 -->
+                <LinearLayout
+                    android:id="@+id/llShare"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:layout_marginStart="12dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/ic_share"
+                        android:tint="#4CAF50"
+                        android:layout_marginBottom="8dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/share_to_friend"
+                        android:textSize="14sp"
+                        android:textColor="#4CAF50"
+                        android:textStyle="normal" />
+                </LinearLayout>
+                
+            </LinearLayout>
+            
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+

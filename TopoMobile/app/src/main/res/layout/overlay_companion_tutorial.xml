@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80000000"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- 提示卡片 -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardTutorial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_centerInParent="true"
+        android:elevation="24dp"
+        app:cardCornerRadius="24dp"
+        app:cardBackgroundColor="#E6FFFFFF"
+        app:cardElevation="24dp"
+        android:maxWidth="400dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="28dp">
+
+            <!-- 标题和悬浮球预览（一行） -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="24dp">
+
+                <!-- 悬浮球图标容器 -->
+                <FrameLayout
+                    android:id="@+id/floatingBallPreview"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/floating_ball_preview_background"
+                    android:gravity="center"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginTop="4dp">
+
+                    <ImageView
+                        android:id="@+id/ivFloatingBallIcon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:scaleType="fitCenter"
+                        android:contentDescription="悬浮球图标" />
+                </FrameLayout>
+
+                <!-- 标题 -->
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="伴随悬浮球使用指南"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#FF333333"
+                    android:gravity="center_vertical"
+                    android:letterSpacing="0.02" />
+            </LinearLayout>
+
+            <!-- 顶部功能提示 -->
+            <LinearLayout
+                android:id="@+id/layoutTopTip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/tip_item_background"
+                android:alpha="0">
+
+                <!-- 向上箭头图标 -->
+                <ImageView
+                    android:id="@+id/ivTopArrow"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@android:drawable/arrow_up_float"
+                    android:tint="#FF2196F3"
+                    android:layout_marginEnd="16dp" />
+
+                <!-- 文字说明 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTopTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="滑动到顶部"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#FF333333"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/tvTopDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="返回TopoClaw"
+                        android:textSize="14sp"
+                        android:textColor="#FF666666" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 底部功能提示 -->
+            <LinearLayout
+                android:id="@+id/layoutBottomTip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/tip_item_background"
+                android:alpha="0">
+
+                <!-- 向下箭头图标 -->
+                <ImageView
+                    android:id="@+id/ivBottomArrow"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@android:drawable/arrow_down_float"
+                    android:tint="#FF2196F3"
+                    android:layout_marginEnd="16dp" />
+
+                <!-- 文字说明 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvBottomTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="滑动到底部"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#FF333333"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/tvBottomDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="关闭TopoClaw"
+                        android:textSize="14sp"
+                        android:textColor="#FF666666" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 双击功能提示 -->
+            <LinearLayout
+                android:id="@+id/layoutDoubleClickTip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/tip_item_background"
+                android:alpha="0">
+
+                <!-- 双击图标 -->
+                <ImageView
+                    android:id="@+id/ivDoubleClick"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@android:drawable/ic_menu_zoom"
+                    android:tint="#FF2196F3"
+                    android:layout_marginEnd="16dp" />
+
+                <!-- 文字说明 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvDoubleClickTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="双击"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#FF333333"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/tvDoubleClickDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="放缩悬浮球"
+                        android:textSize="14sp"
+                        android:textColor="#FF666666" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 点击功能提示 -->
+            <LinearLayout
+                android:id="@+id/layoutClickTip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/tip_item_background"
+                android:alpha="0">
+
+                <!-- 点击图标 -->
+                <ImageView
+                    android:id="@+id/ivClick"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@android:drawable/ic_menu_send"
+                    android:tint="#FF2196F3"
+                    android:layout_marginEnd="16dp" />
+
+                <!-- 文字说明 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvClickTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="点击"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#FF333333"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/tvClickDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="发起任务\n初次使用需要在TopoClaw内点击悬浮球激活"
+                        android:textSize="14sp"
+                        android:textColor="#FF666666" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 长按功能提示 -->
+            <LinearLayout
+                android:id="@+id/layoutLongPressTip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/tip_item_background"
+                android:alpha="0">
+
+                <!-- 长按图标 -->
+                <ImageView
+                    android:id="@+id/ivLongPress"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_video"
+                    android:tint="#FF2196F3"
+                    android:layout_marginEnd="16dp" />
+
+                <!-- 文字说明 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvLongPressTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="长按"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#FF333333"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:id="@+id/tvLongPressDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="返回TopoClaw"
+                        android:textSize="14sp"
+                        android:textColor="#FF666666" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 我知道了按钮 -->
+            <Button
+                android:id="@+id/btnGotIt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="我知道了"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:background="@drawable/button_primary_background"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:minHeight="56dp"
+                android:alpha="0" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
+

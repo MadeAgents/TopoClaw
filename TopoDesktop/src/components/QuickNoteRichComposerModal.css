@@ -1,0 +1,239 @@
+.quick-note-rich-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 11000;
+  background: rgba(15, 23, 42, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.quick-note-rich-dialog {
+  width: min(960px, calc(100vw - 32px));
+  max-height: min(92vh, 900px);
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg, #fff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 12px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.quick-note-rich-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--color-border-light, #e8ecf1);
+  flex-shrink: 0;
+}
+
+.quick-note-rich-head h2 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-text, #0f172a);
+}
+
+.quick-note-rich-close {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-text-secondary, #64748b);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.quick-note-rich-close:hover {
+  background: var(--color-bg-tertiary, #f1f5f9);
+  color: var(--color-text, #0f172a);
+}
+
+.quick-note-rich-hint {
+  margin: 0;
+  padding: 8px 18px 10px;
+  font-size: 12px;
+  color: var(--color-text-secondary, #64748b);
+  flex-shrink: 0;
+}
+
+.quick-note-rich-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 0;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-border-light, #e8ecf1);
+  background: #f8fafc;
+  flex-shrink: 0;
+}
+
+.quick-note-rich-toolbar .ql-formats {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin-right: 6px;
+}
+
+.quick-note-toolbar-sep {
+  width: 1px;
+  align-self: stretch;
+  min-height: 26px;
+  margin: 0 6px;
+  background: #cbd5e1;
+  flex-shrink: 0;
+}
+
+.quick-note-toolbar-insert-label {
+  font-size: 12px;
+  color: #64748b;
+  padding: 0 6px 0 2px;
+  user-select: none;
+}
+
+.quick-note-rich-toolbar .ql-picker-label {
+  font-size: 12px;
+}
+
+.quick-note-rich-toolbar .ql-picker-options {
+  max-height: 220px;
+}
+
+.quick-note-rich-editor-shell {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0 12px 12px;
+  overflow: hidden;
+}
+
+.quick-note-rich-quill {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 280px;
+}
+
+.quick-note-rich-quill .ql-toolbar {
+  display: none;
+}
+
+.quick-note-rich-quill .ql-container {
+  flex: 1;
+  min-height: 260px;
+  font-size: 14px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-top: none;
+  background: #fff;
+}
+
+.quick-note-rich-quill .ql-editor {
+  min-height: 240px;
+  max-height: min(48vh, 420px);
+  overflow-y: auto;
+  line-height: 1.6;
+}
+
+.quick-note-rich-quill .ql-editor.ql-blank::before {
+  color: #94a3b8;
+  font-style: normal;
+}
+
+.ql-font-yahei {
+  font-family: 'Microsoft YaHei', '微软雅黑', sans-serif;
+}
+
+.ql-font-song {
+  font-family: SimSun, '宋体', serif;
+}
+
+.ql-font-heiti {
+  font-family: SimHei, '黑体', sans-serif;
+}
+
+.ql-font-kaiti {
+  font-family: KaiTi, '楷体', serif;
+}
+
+.ql-font-arial {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.quick-note-rich-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 12px 18px;
+  border-top: 1px solid var(--color-border-light, #e8ecf1);
+  flex-shrink: 0;
+  background: var(--color-bg-secondary, #fafbfc);
+}
+
+.quick-note-rich-btn {
+  height: 36px;
+  padding: 0 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid var(--color-border, #e2e8f0);
+  background: var(--color-bg, #fff);
+  color: var(--color-text, #0f172a);
+}
+
+.quick-note-rich-btn.ghost:hover {
+  background: var(--color-bg-tertiary, #f1f5f9);
+}
+
+.quick-note-rich-btn.primary {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+
+.quick-note-rich-btn.primary:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+/* 工具栏下拉：不加粗、文字偏浅 */
+.quick-note-rich-dialog .ql-toolbar .ql-picker-label {
+  font-weight: 400 !important;
+  color: #64748b !important;
+}
+
+.quick-note-rich-dialog .ql-toolbar .ql-picker-label:hover {
+  color: #475569 !important;
+}
+
+.quick-note-rich-dialog .ql-toolbar .ql-picker-options {
+  font-weight: 400;
+}
+
+.quick-note-rich-dialog .ql-toolbar .ql-picker-item {
+  font-weight: 400 !important;
+  color: #94a3b8 !important;
+}
+
+.quick-note-rich-dialog .ql-toolbar .ql-picker-item:hover,
+.quick-note-rich-dialog .ql-toolbar .ql-picker-item:focus {
+  color: #334155 !important;
+}
+
+.quick-note-rich-dialog .ql-toolbar .ql-picker-item.ql-selected {
+  font-weight: 400 !important;
+  color: #475569 !important;
+}
+
+.quick-note-rich-quill .ql-editor img {
+  max-width: 100%;
+  cursor: pointer;
+}

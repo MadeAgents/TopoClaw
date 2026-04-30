@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="12dp"
+    android:layout_marginBottom="8dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+    
+    <!-- 头像 -->
+    <ImageView
+        android:id="@+id/ivFriendAvatar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_person"
+        android:background="@drawable/circle_background"
+        android:clipToOutline="true" />
+    
+    <!-- 信息区域 -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="12dp">
+        
+        <!-- 名字和在线状态 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+            
+            <TextView
+                android:id="@+id/tvFriendName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="好友名字"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
+            
+            <!-- 在线状态灯泡图标 -->
+            <ImageView
+                android:id="@+id/ivOnlineStatus"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="2dp"
+                android:src="@drawable/ic_lightbulb"
+                android:contentDescription="在线状态"
+                android:visibility="gone" />
+        </LinearLayout>
+        
+        <!-- IMEI -->
+        <TextView
+            android:id="@+id/tvFriendImei"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="IMEI: 12345678..."
+            android:textSize="12sp"
+            android:textColor="#999999"
+            android:layout_marginBottom="2dp" />
+        
+        <!-- 时间 -->
+        <TextView
+            android:id="@+id/tvFriendTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2024-01-01 12:00"
+            android:textSize="12sp"
+            android:textColor="#999999" />
+    </LinearLayout>
+    
+</LinearLayout>
+

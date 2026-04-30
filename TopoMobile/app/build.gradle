@@ -1,0 +1,197 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+def getSecret = { String key ->
+    def localProps = new Properties()
+    def localPropsFile = rootProject.file("local.properties")
+    if (localPropsFile.exists()) {
+        localPropsFile.withInputStream { stream ->
+            localProps.load(stream)
+        }
+    }
+    def value = project.findProperty(key)
+    if (value == null || value.toString().trim().isEmpty()) {
+        value = localProps.getProperty(key)
+    }
+    if (value == null || value.toString().trim().isEmpty()) {
+        value = System.getenv(key)
+    }
+    value = value ?: ""
+    return value.toString().replace("\\", "\\\\").replace("\"", "\\\"")
+}
+
+def locationChangeApiKey = getSecret("LOCATION_CHANGE_API_KEY")
+if (locationChangeApiKey == null || locationChangeApiKey.trim().isEmpty()) {
+    // Backward compatibility: allow reusing a generic API_KEY if present.
+    locationChangeApiKey = getSecret("API_KEY")
+}
+
+def sparkChainAarFile = file('libs/SparkChain.aar')
+def sparkChainEnabled = sparkChainAarFile.exists()
+
+android {
+    namespace 'com.cloudcontrol.demo'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.cloudcontrol.demo"
+        minSdk 21
+        targetSdk 34
+        versionCode 21101
+        versionName "2.1.2"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        
+        // 生成构建时间
+        def buildTime = new Date().format("yyyy-MM-dd HH:mm:ss", TimeZone.getTimeZone("Asia/Shanghai"))
+        buildConfigField "String", "BUILD_TIME", "\"${buildTime}\""
+
+        // 敏感配置统一从 Gradle 属性或环境变量读取，避免明文写死在源码中
+        buildConfigField "String", "ADMIN_PASSWORD", "\"${getSecret('ADMIN_PASSWORD')}\""
+        buildConfigField "String", "MOBILE_AGENT_BASE_URL", "\"${getSecret('MOBILE_AGENT_BASE_URL')}\""
+        buildConfigField "String", "MOBILE_AGENT_SKILL_LEARNING_URL", "\"${getSecret('MOBILE_AGENT_SKILL_LEARNING_URL')}\""
+        buildConfigField "String", "MOBILE_AGENT_CUSTOMER_SERVICE_URL", "\"${getSecret('MOBILE_AGENT_CUSTOMER_SERVICE_URL')}\""
+        buildConfigField "String", "MOBILE_AGENT_CHAT_ASSISTANT_URL", "\"${getSecret('MOBILE_AGENT_CHAT_ASSISTANT_URL')}\""
+        buildConfigField "String", "MOBILE_AGENT_SKILL_COMMUNITY_URL", "\"${getSecret('MOBILE_AGENT_SKILL_COMMUNITY_URL')}\""
+        buildConfigField "String", "MOBILE_AGENT_TRAJECTORY_CLOUD_URL", "\"${getSecret('MOBILE_AGENT_TRAJECTORY_CLOUD_URL')}\""
+        buildConfigField "String", "LOCATION_CHANGE_API_KEY", "\"${locationChangeApiKey}\""
+        buildConfigField "String", "SPARKCHAIN_APP_ID", "\"${getSecret('SPARKCHAIN_APP_ID')}\""
+        buildConfigField "String", "SPARKCHAIN_API_KEY", "\"${getSecret('SPARKCHAIN_API_KEY')}\""
+        buildConfigField "String", "SPARKCHAIN_API_SECRET", "\"${getSecret('SPARKCHAIN_API_SECRET')}\""
+        buildConfigField "boolean", "SPARKCHAIN_ENABLED", sparkChainEnabled ? "true" : "false"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    applicationVariants.configureEach { variant ->
+        variant.outputs.configureEach { output ->
+            output.outputFileName = "TopoClaw-${variant.name}-${variant.versionName}.apk"
+        }
+    }
+    
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    
+    buildFeatures {
+        viewBinding true
+        buildConfig true
+    }
+
+    sourceSets {
+        main {
+            if (!sparkChainEnabled) {
+                java.srcDir 'src/voice_input_compat/java'
+            }
+        }
+    }
+}
+
+def npmCmd = org.gradle.internal.os.OperatingSystem.current().isWindows() ? "npm.cmd" : "npm"
+
+tasks.register("installLicenseTools", Exec) {
+    workingDir rootDir
+    commandLine npmCmd, "install", "--no-audit", "--no-fund"
+    inputs.file(new File(rootDir, "package.json"))
+    outputs.dir(new File(rootDir, "node_modules"))
+}
+
+tasks.register("generateThirdPartyNotices", Exec) {
+    workingDir rootDir
+    commandLine npmCmd, "run", "licenses:generate"
+    dependsOn(tasks.named("installLicenseTools"))
+}
+
+tasks.register("prepareSplashImage", Copy) {
+    def sourceFile = file("${projectDir}/../TopoClaw2.png")
+    from(sourceFile)
+    into(layout.buildDirectory.dir("generated/res/splash/drawable-nodpi"))
+    rename { "topoclaw_splash.png" }
+    doFirst {
+        if (!sourceFile.exists()) {
+            throw new GradleException("Missing splash source image: ${sourceFile}")
+        }
+    }
+}
+
+tasks.register("prepareLauncherIcon", Copy) {
+    def sourceFile = file("${projectDir}/../TopoClaw1.png")
+    from(sourceFile)
+    into(layout.buildDirectory.dir("generated/res/launcher/drawable"))
+    rename { "topoclaw_app_icon.png" }
+    doFirst {
+        if (!sourceFile.exists()) {
+            throw new GradleException("Missing launcher icon source image: ${sourceFile}")
+        }
+    }
+}
+
+android.sourceSets.main.res.srcDirs += layout.buildDirectory.dir("generated/res/splash").get().asFile
+android.sourceSets.main.res.srcDirs += layout.buildDirectory.dir("generated/res/launcher").get().asFile
+preBuild.dependsOn(tasks.named("generateThirdPartyNotices"))
+preBuild.dependsOn(tasks.named("prepareSplashImage"))
+preBuild.dependsOn(tasks.named("prepareLauncherIcon"))
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.10.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.core:core-splashscreen:1.0.1'
+    implementation 'androidx.viewpager2:viewpager2:1.1.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.2'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
+    implementation 'androidx.fragment:fragment-ktx:1.6.2'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    
+    // 网络请求
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.11.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.11.0'
+    
+    // 协程
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3'
+    
+    // 服务
+    implementation 'androidx.lifecycle:lifecycle-service:2.6.2'
+    
+    // Markdown支持
+    implementation 'io.noties.markwon:core:4.6.2'
+    implementation 'io.noties.markwon:ext-strikethrough:4.6.2'
+    implementation 'io.noties.markwon:ext-tables:4.6.2'
+    implementation 'io.noties.markwon:linkify:4.6.2'
+    
+    // Glide图片加载库
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    
+    // 科大讯飞SparkChain SDK（临时下线时不引入 AAR，改用兼容桩）
+    if (sparkChainEnabled) {
+        implementation files('libs/SparkChain.aar')
+    }
+    
+    // TensorFlow Lite (使用最新版本以支持16KB页面大小)
+    implementation 'org.tensorflow:tensorflow-lite:2.16.1'
+    // 注意：如果不需要GPU加速，可以移除tensorflow-lite-gpu依赖
+    // implementation 'org.tensorflow:tensorflow-lite-gpu:2.16.1'
+    
+    // ZXing 二维码库
+    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
+    implementation 'com.google.zxing:core:3.5.2'
+}
+

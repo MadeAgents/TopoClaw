@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <!-- 标题栏 -->
+    <LinearLayout
+        android:id="@+id/llTitleBar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical"
+        android:background="#FFF5F5F5"
+        android:elevation="4dp"
+        android:fitsSystemWindows="false">
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/test"
+            android:textAppearance="@style/WhiteActionBarTitle"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/test_page_subtitle"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <!-- 测试指令输入 -->
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/etTestInstructions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:hint="@string/test_page_instructions_hint"
+        android:minLines="2"
+        android:maxLines="4"
+        android:layout_marginBottom="8dp"
+        android:padding="16dp"
+        android:background="@android:drawable/edit_text"
+        android:textSize="14sp" />
+
+    <!-- 动作间隔输入 -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/test_delay_label"
+        android:layout_marginBottom="8dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etTestDelay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="1000" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- 执行测试按钮 -->
+    <Button
+        android:id="@+id/btnExecuteTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/execute_test"
+        android:layout_marginBottom="16dp" />
+
+    <!-- 分隔线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#CCCCCC"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- 批测按钮 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+        
+        <Button
+            android:id="@+id/btnStartBatchTest"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/batch_test"
+            android:layout_marginEnd="8dp" />
+        
+        <Button
+            android:id="@+id/btnStopBatchTest"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/stop_batch_test"
+            android:enabled="false"
+            android:backgroundTint="#FF5722" />
+    </LinearLayout>
+
+    <!-- 动态批测按钮 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:visibility="gone">
+        
+        <Button
+            android:id="@+id/btnStartDynamicBatchTest"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/dynamic_batch_test"
+            android:layout_marginEnd="8dp" />
+        
+        <Button
+            android:id="@+id/btnStopDynamicBatchTest"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/stop_dynamic_batch_test"
+            android:enabled="false"
+            android:backgroundTint="#FF5722" />
+    </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+

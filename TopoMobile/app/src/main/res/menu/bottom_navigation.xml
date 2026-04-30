@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_chat"
+        android:icon="@drawable/ic_chat_bubble"
+        android:title="@string/nav_chat" />
+    <item
+        android:id="@+id/nav_friend"
+        android:icon="@drawable/ic_contacts"
+        android:title="@string/nav_friend" />
+    <item
+        android:id="@+id/nav_skill"
+        android:icon="@drawable/ic_skill"
+        android:title="@string/nav_skill" />
+    <item
+        android:id="@+id/nav_assistant_plaza"
+        android:icon="@drawable/ic_assistant_plaza"
+        android:title="@string/nav_assistant_plaza" />
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_person"
+        android:title="@string/nav_profile" />
+</menu>
+

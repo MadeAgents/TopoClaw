@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:padding="16dp">
+
+    <!-- 标题栏 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp">
+
+        <!-- 返回按钮 -->
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@android:drawable/ic_menu_revert"
+            android:contentDescription="@string/cd_back"
+            android:padding="4dp"
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
+        <View
+            android:layout_width="16dp"
+            android:layout_height="1dp" />
+
+        <!-- 页面标题 -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/skill_detail"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#000000" />
+        
+        <!-- 编辑按钮（移到标题栏右侧） -->
+        <TextView
+            android:id="@+id/btnEditSteps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/edit"
+            android:textSize="14sp"
+            android:textColor="#2196F3"
+            android:padding="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true" />
+    </LinearLayout>
+
+    <!-- 技能标题 -->
+    <TextView
+        android:id="@+id/tvSkillTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_marginBottom="16dp" />
+
+    <!-- 分隔线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0"
+        android:layout_marginBottom="16dp" />
+
+    <!-- 步骤标题行 -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/action_steps"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#666666"
+        android:layout_marginBottom="12dp" />
+
+    <!-- 步骤列表容器（使用ScrollView支持滚动） -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:id="@+id/llSkillSteps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+    
+    <!-- 技能ID -->
+    <TextView
+        android:id="@+id/tvSkillId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:textColor="#999999"
+        android:fontFamily="monospace"
+        android:textIsSelectable="true"
+        android:gravity="center"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp" />
+    
+    <!-- 底部按钮区域 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="@android:color/white"
+        android:elevation="4dp">
+        
+        <!-- 执行按钮（左侧） -->
+        <ImageButton
+            android:id="@+id/btnExecute"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_play_outline"
+            android:background="@drawable/btn_light_background"
+            android:contentDescription="@string/cd_execute"
+            android:padding="12dp"
+            android:layout_marginEnd="8dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true" />
+        
+        <!-- 分享按钮（中间） -->
+        <ImageButton
+            android:id="@+id/btnShare"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_menu_share"
+            android:background="@drawable/btn_light_background"
+            android:contentDescription="@string/cd_share"
+            android:padding="12dp"
+            android:layout_marginEnd="8dp"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true" />
+        
+        <!-- 上热门按钮（右侧，仅在管理者模式且是技能社区时显示） -->
+        <Button
+            android:id="@+id/btnSetHot"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="@string/set_hot"
+            android:textSize="14sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/btn_light_background"
+            android:visibility="gone"
+            android:padding="12dp" />
+    </LinearLayout>
+
+</LinearLayout>
+

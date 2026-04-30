@@ -1,0 +1,157 @@
+{
+  "name": "topoclaw-desktop",
+  "version": "2.1.2",
+  "description": "TopoClaw - 与手机端打通的聊天客户端",
+  "main": "dist-electron/main.js",
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "licenses:generate": "node scripts/generate-third-party-licenses.cjs",
+    "setup:python": "powershell -ExecutionPolicy Bypass -File scripts/setup-python-embed.ps1",
+    "setup:assistant": "powershell -ExecutionPolicy Bypass -File scripts/sync-TopoClaw.ps1",
+    "setup:customer-service": "powershell -ExecutionPolicy Bypass -File scripts/sync-customer-service.ps1",
+    "setup:group-manager": "powershell -ExecutionPolicy Bypass -File scripts/sync-group-manager.ps1",
+    "setup:builtin": "npm run setup:assistant && npm run setup:customer-service && npm run setup:python",
+    "round-icon": "node scripts/round-icon.js",
+    "build": "npm run setup:assistant && npm run setup:customer-service && npm run setup:python && npm run round-icon && npm run licenses:generate && tsc -p tsconfig.electron.json && vite build && electron-builder --config electron-builder.config.cjs",
+    "build:win:nsis": "npm run setup:assistant && npm run setup:customer-service && npm run setup:python && npm run round-icon && npm run licenses:generate && tsc -p tsconfig.electron.json && vite build && electron-builder --config electron-builder.config.cjs --win --x64 -c.win.target=nsis",
+    "build:win:zip": "npm run setup:assistant && npm run setup:customer-service && npm run setup:python && npm run round-icon && npm run licenses:generate && tsc -p tsconfig.electron.json && vite build && electron-builder --config electron-builder.config.cjs --win --x64 -c.win.target=zip",
+    "build:win:all": "npm run setup:assistant && npm run setup:customer-service && npm run setup:python && npm run round-icon && npm run licenses:generate && tsc -p tsconfig.electron.json && vite build && electron-builder --config electron-builder.config.cjs --win --x64 -c.win.target=nsis -c.win.target=zip",
+    "build:portable": "npm run setup:assistant && npm run setup:customer-service && npm run setup:python && npm run round-icon && npm run licenses:generate && tsc -p tsconfig.electron.json && vite build && electron-builder --config electron-builder.config.cjs --win --x64 -c.win.target=portable",
+    "preview": "vite preview",
+    "electron:dev": "npm run round-icon && tsc -p tsconfig.electron.json && concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "electron:build": "npm run setup:assistant && npm run setup:customer-service && npm run setup:python && npm run round-icon && npm run licenses:generate && tsc -p tsconfig.electron.json && vite build && electron-builder --config electron-builder.config.cjs",
+    "postinstall": "electron-rebuild -f -w @nut-tree-fork/nut-js node-pty 2>nul || echo node-pty rebuild skipped (install VS Build Tools if terminal needed)"
+  },
+  "dependencies": {
+    "@nut-tree-fork/nut-js": "^4.2.6",
+    "@xterm/addon-fit": "^0.11.0",
+    "@xterm/addon-search": "^0.16.0",
+    "axios": "^1.6.2",
+    "cron-parser": "^5.5.0",
+    "dompurify": "^3.3.3",
+    "html2canvas": "^1.4.1",
+    "jszip": "^3.10.1",
+    "mermaid": "^11.14.0",
+    "node-pty": "^1.0.0",
+    "qrcode": "^1.5.3",
+    "quill": "^1.3.7",
+    "quill-image-resize-module": "^3.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-markdown": "^10.1.0",
+    "react-quill": "^2.0.0",
+    "recharts": "^3.8.1",
+    "remark-gfm": "^4.0.1",
+    "sharp": "^0.33.5",
+    "uuid": "^9.0.1",
+    "xterm": "^5.3.0"
+  },
+  "devDependencies": {
+    "@types/dompurify": "^3.0.5",
+    "@types/node": "^20.10.0",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@types/uuid": "^9.0.7",
+    "@vitejs/plugin-react": "^4.2.1",
+    "concurrently": "^8.2.2",
+    "electron": "^38.0.0",
+    "electron-builder": "^26.8.1",
+    "electron-rebuild": "^3.2.9",
+    "esbuild": "^0.25.1",
+    "license-checker": "^25.0.1",
+    "png-to-ico": "^3.0.1",
+    "terser": "^5.14.3",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.8",
+    "wait-on": "^7.2.0"
+  },
+  "build": {
+    "appId": "com.cloudcontrol.demo.pc",
+    "productName": "TopoClaw",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*"
+    ],
+    "asarUnpack": [
+      "dist/**/*",
+      "dist-electron/**/*"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "icon.ico",
+      "compression": "store"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "TopoClaw7.png",
+      "category": "public.app-category.utilities"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "include": "build/installer-details.nsh",
+      "installerIcon": "icon.ico",
+      "uninstallerIcon": "icon.ico"
+    },
+    "extraFiles": [
+      {
+        "from": "resources/start-assistant.bat",
+        "to": "start-assistant.bat"
+      }
+    ],
+    "extraResources": [
+      {
+        "from": "Image_PC_rounded.png",
+        "to": "icon.png"
+      },
+      {
+        "from": "Image_PC_tray.png",
+        "to": "tray-icon.png"
+      },
+      {
+        "from": "resources/THIRD_PARTY_LICENSES.json",
+        "to": "THIRD_PARTY_LICENSES.json"
+      },
+      {
+        "from": "resources/THIRD_PARTY_LICENSES.md",
+        "to": "THIRD_PARTY_LICENSES.md"
+      },
+      {
+        "from": "resources/python-embed",
+        "to": "python-embed",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "resources/TopoClaw",
+        "to": "TopoClaw",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "resources/customer-service",
+        "to": "customer-service",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  },
+  "overrides": {
+    "esbuild": "^0.25.1",
+    "https-proxy-agent": "^7.0.6",
+    "lightningcss": "^1.31.1",
+    "terser": "^5.14.3",
+    "tar": "^7.5.4"
+  }
+}

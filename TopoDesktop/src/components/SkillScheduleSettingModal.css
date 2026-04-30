@@ -1,0 +1,146 @@
+.skill-schedule-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+}
+
+.skill-schedule-modal {
+  background: var(--color-bg);
+  border-radius: var(--radius-xl);
+  width: 360px;
+  max-width: 90vw;
+  box-shadow: var(--shadow-modal);
+}
+
+.skill-schedule-header {
+  display: flex;
+  align-items: center;
+  padding: var(--space-10) var(--space-10) var(--space-8);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.skill-schedule-title {
+  flex: 1;
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.skill-schedule-close {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.skill-schedule-close:hover {
+  color: var(--color-text);
+}
+
+.skill-schedule-body {
+  padding: var(--space-10);
+}
+
+.skill-schedule-field {
+  margin-bottom: var(--space-8);
+}
+
+.skill-schedule-field:last-child {
+  margin-bottom: 0;
+}
+
+.skill-schedule-field label {
+  display: block;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+  font-weight: var(--font-weight-medium);
+}
+
+.skill-schedule-select,
+.skill-schedule-input {
+  width: 100%;
+  padding: 8px var(--space-6);
+  font-size: var(--font-size-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+}
+
+.skill-schedule-select:focus,
+.skill-schedule-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.skill-schedule-week {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.skill-schedule-week-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  cursor: pointer;
+  padding: var(--space-3) var(--space-6);
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+}
+
+.skill-schedule-week-item:hover {
+  background: #eee;
+}
+
+.skill-schedule-week-item input {
+  margin: 0;
+}
+
+.skill-schedule-actions {
+  padding: var(--space-8) var(--space-10);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  gap: var(--space-6);
+  justify-content: flex-end;
+}
+
+.skill-schedule-btn {
+  padding: 8px var(--space-10);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s;
+}
+
+.skill-schedule-btn-secondary {
+  background: var(--color-bg);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.skill-schedule-btn-secondary:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.skill-schedule-btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.skill-schedule-btn-primary:hover {
+  background: var(--color-primary-hover);
+}

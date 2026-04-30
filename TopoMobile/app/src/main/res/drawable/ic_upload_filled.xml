@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- 上传图标：黑色填充，横线在下，箭头在上 -->
+    <!-- 向下箭头在上方（已翻转，整体向下移动1dp） -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M19,9h-4v6H9v-6H5l7,-7 7,7z"/>
+    <!-- 横线在底部 -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M5,18v2h14v-2H5z"/>
+</vector>
+

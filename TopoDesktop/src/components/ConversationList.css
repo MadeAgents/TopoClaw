@@ -1,0 +1,267 @@
+.conversation-list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--color-bg-tertiary);
+  border-right: 1px solid var(--color-border);
+}
+
+.list-header {
+  padding: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  background: var(--color-bg);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.list-tabs-wrap {
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.list-tabs {
+  display: flex;
+  gap: 0;
+  background: #e5e5e5;
+  border-radius: 10px;
+  padding: 3px;
+}
+
+.list-tabs button {
+  flex: 1;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 7px;
+  font-size: var(--font-size-sm);
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.list-tabs button:first-child {
+  border-radius: 7px 0 0 7px;
+}
+
+.list-tabs button:last-child {
+  border-radius: 0 7px 7px 0;
+}
+
+.list-tabs button:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--color-text);
+}
+
+.list-tabs button.active {
+  background: #fff;
+  color: var(--color-text);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.list-tabs button:first-child.active {
+  border-radius: 7px;
+}
+
+.list-tabs button:last-child.active {
+  border-radius: 7px;
+}
+
+.list-items {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-2) var(--space-2) var(--space-2) 0;
+}
+
+.list-loading {
+  padding: var(--space-12);
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  padding: var(--space-6) var(--space-8);
+  margin-bottom: var(--space-2);
+  cursor: pointer;
+  transition: background 0.15s;
+  border-radius: var(--radius-lg);
+}
+
+.list-item:hover {
+  background: #eee;
+}
+
+.list-item.selected {
+  background: var(--color-primary-bg);
+}
+
+.item-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  flex-shrink: 0;
+}
+
+.item-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+}
+
+.list-item-me .item-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-primary-bg);
+}
+
+.list-item-me .item-avatar img {
+  border-radius: 50%;
+}
+
+.item-avatar .item-avatar-group {
+  width: 100%;
+  height: 100%;
+}
+
+.item-avatar:has(.item-avatar-group) {
+  background: transparent;
+  padding: 0;
+}
+
+.item-content {
+  flex: 1;
+  min-width: 0;
+  margin-left: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.item-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+/* 与 APK item_conversation.xml 一致：名称 + 右侧「置顶」描边小标签（pin_label_background） */
+.item-title-row {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 1;
+  gap: 2px; /* 对齐 APK tvPin layout_marginStart 2dp */
+}
+
+.item-name-text {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  /* 短昵称保持自然宽度，长昵称时收缩并省略，避免把在线灯泡挤没 */
+  flex: 0 1 auto;
+  max-width: 100%;
+}
+
+.item-pin-badge {
+  flex-shrink: 0;
+  padding: 2px 4px;
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: var(--font-weight-normal, 400);
+  color: #999999;
+  background: transparent;
+  border: 1px solid #999999;
+  border-radius: 2px;
+}
+
+.item-online-lamp {
+  flex-shrink: 0;
+  font-size: 12px;
+  line-height: 1;
+  margin-left: 2px;
+  filter: saturate(1.05);
+}
+
+.item-time {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-placeholder);
+  flex-shrink: 0;
+}
+
+.item-preview {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item-badge {
+  background: var(--color-danger);
+  color: #fff;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  min-width: 16px;
+  height: 16px;
+  padding: 0 5px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.conversation-list-context-menu {
+  position: fixed;
+  z-index: 10000;
+  min-width: 120px;
+  padding: 4px 0;
+  background: var(--color-bg, #fff);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md, 8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.conversation-list-context-menu-item {
+  display: block;
+  width: 100%;
+  padding: 8px 14px;
+  border: none;
+  background: none;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.conversation-list-context-menu-item:hover {
+  background: var(--color-bg-tertiary, #f0f0f0);
+}

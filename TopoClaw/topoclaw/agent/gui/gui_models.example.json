@@ -1,0 +1,28 @@
+{
+  "rules": [
+    {
+      "match_substring": "gpt",
+      "backend": "chat_multimodal_custom",
+      "coordinate_policy": "absolute",
+      "fallback_to_chat": true
+    },
+    {
+      "match_substring": "claude",
+      "backend": "chat_multimodal_custom",
+      "coordinate_policy": "relative",
+      "fallback_to_chat": true
+    },
+    {
+      "match_substring": "gemini",
+      "backend": "chat_multimodal_custom",
+      "coordinate_policy": "relative",
+      "fallback_to_chat": true
+    },
+    {
+      "match_substring": "kimi",
+      "backend": "chat_multimodal_custom",
+      "coordinate_policy": "relative",
+      "fallback_to_chat": true
+    }
+  ]
+}

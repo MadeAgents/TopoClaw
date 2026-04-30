@@ -1,0 +1,10 @@
+fastapi>=0.115.12
+uvicorn[standard]>=0.31.1
+websockets>=16.0,<17.0
+starlette>=0.40.1
+python-multipart>=0.0.20
+pydantic==2.12.5
+pydantic-settings==2.13.1
+python-dotenv==1.0.0
+httpx>=0.24.0
+

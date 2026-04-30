@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- 音量键/小喇叭图标（更清晰的样式） -->
+    <!-- 喇叭主体（三角形，填充） -->
+    <path
+        android:fillColor="#666666"
+        android:pathData="M3,9 L3,15 L7,15 L12,19 L12,5 L7,9 L3,9 Z"/>
+    <!-- 音量波纹1（右侧的小弧形） -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#666666"
+        android:strokeWidth="2"
+        android:pathData="M15,9 Q16.5,12 15,15"/>
+    <!-- 音量波纹2（右侧的中弧形） -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#666666"
+        android:strokeWidth="2"
+        android:pathData="M17,7 Q20,12 17,17"/>
+    <!-- 音量波纹3（右侧的大弧形） -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#666666"
+        android:strokeWidth="2"
+        android:pathData="M19,5 Q23,12 19,19"/>
+</vector>
+

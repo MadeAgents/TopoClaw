@@ -1,0 +1,205 @@
+.contacts-view {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  background: var(--color-bg);
+}
+
+.contacts-main {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* 右侧：未选联系人时的默认主页，或与 ContactProfilePanel 各占一半 */
+.contacts-detail-pane {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.contacts-detail-pane > .contact-profile-panel {
+  flex: 1;
+  min-height: 0;
+}
+
+.contacts-home-empty {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-12) var(--space-10);
+  border-left: 1px solid var(--color-border);
+  background: var(--color-bg);
+  box-sizing: border-box;
+}
+
+.contacts-home-empty--muted {
+  color: var(--color-text-muted);
+}
+
+.contacts-home-empty-art {
+  margin-bottom: var(--space-10);
+}
+
+.contacts-home-empty-svg {
+  width: min(200px, 42vw);
+  height: auto;
+  display: block;
+}
+
+.contacts-home-empty-text {
+  margin: 0;
+  max-width: min(340px, 90%);
+  text-align: center;
+  font-size: var(--font-size-sm);
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+}
+
+.contacts-header {
+  padding: var(--space-8) var(--space-10);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.contacts-header h2 {
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.contacts-header-title-clickable {
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.contacts-header-title-clickable:hover {
+  color: var(--color-primary);
+}
+
+.contacts-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-6);
+}
+
+/* 通讯录滚动条：仅鼠标进入可滑动区域时显示 */
+.contacts-content::-webkit-scrollbar {
+  width: 0;
+}
+
+.contacts-content:hover::-webkit-scrollbar {
+  width: 8px;
+}
+
+.contacts-content::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 4px;
+}
+
+.contacts-content::-webkit-scrollbar-thumb {
+  background: #c4c4c4;
+  border-radius: 4px;
+}
+
+.contacts-content::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.contacts-loading {
+  padding: var(--space-12);
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.contacts-section {
+  margin-bottom: var(--space-4);
+}
+
+.contacts-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px var(--space-6);
+  cursor: pointer;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  border-radius: var(--radius-md);
+}
+
+.contacts-section-header:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.contacts-arrow {
+  font-size: 9px;
+}
+
+.contacts-section-body {
+  padding-left: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+.contacts-item {
+  display: flex;
+  align-items: center;
+  padding: 8px var(--space-6);
+  cursor: pointer;
+  border-radius: var(--radius-lg);
+}
+
+.contacts-item:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.contacts-item-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-base);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.contacts-item-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contacts-item-avatar-group {
+  background: transparent;
+  padding: 0;
+}
+
+.contacts-item > span {
+  margin-left: var(--space-6);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+.contacts-item-name-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.contacts-online-lamp {
+  flex-shrink: 0;
+  font-size: 12px;
+  line-height: 1;
+  filter: saturate(1.05);
+}

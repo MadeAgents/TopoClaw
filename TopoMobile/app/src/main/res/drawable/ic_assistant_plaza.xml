@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- 助手广场图标 - 参考 PC 端 LeftNav storefront/plaza 造型 -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M21.9,8.89l-1.05,-4.37c-0.26,-1.09 -1.25,-1.89 -2.39,-1.89H5.54c-1.14,0 -2.13,0.8 -2.39,1.89l-1.05,4.37c-0.14,0.59 0.22,1.17 0.82,1.17 1,0 1.5,-0.68 2.25,-0.68 0.59,0 1.24,0.57 1.82,1.31 0.59,0.73 1.32,1.23 2.18,1.23 0.6,0 1.07,-0.58 0.93,-1.17zM20.25,10h-1.5v9h1.5v-9zM12.75,10h-1.5v9h1.5v-9zM5.25,10h-1.5v9h1.5v-9zM3.75,6h16.5l1.05,4H2.7l1.05,-4zM2,20h20v2H2v-2z" />
+</vector>

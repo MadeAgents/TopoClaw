@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/transparent"
+    android:padding="8dp">
+
+    <!-- 返回按钮 -->
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:text="←"
+        android:textSize="24sp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_primary_background"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="返回" />
+
+    <!-- 主页按钮 -->
+    <Button
+        android:id="@+id/btnHome"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:text="⌂"
+        android:textSize="24sp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_primary_background"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="主页" />
+
+    <!-- 结束轨迹采集按钮 -->
+    <Button
+        android:id="@+id/btnStop"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:text="■"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_primary_background"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="结束轨迹采集" />
+
+    <!-- 控制按钮（切换左右位置） -->
+    <Button
+        android:id="@+id/btnControl"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:text="⇄"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_primary_background"
+        android:contentDescription="切换悬浮窗位置" />
+
+</LinearLayout>
+

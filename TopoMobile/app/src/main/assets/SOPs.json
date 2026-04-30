@@ -1,0 +1,282 @@
+[
+  {
+    "query": "我想听QQ音乐热歌榜第一的音乐",
+    "timestamp": "2026-02-14T15:09:22.265584",
+    "status": "success",
+    "plans": [
+      {
+        "plan_index": 1,
+        "plan_type": "primary",
+        "rewritten_query": "我想听QQ音乐热歌榜第一的音乐",
+        "query_difficulty": "易",
+        "needs_screen_operation": true,
+        "direct_answer": "",
+        "task_breakdown": [
+          "打开QQ音乐应用并进入音乐排行榜页面",
+          "定位并选择热歌榜排名第一的歌曲",
+          "播放所选歌曲"
+        ],
+        "initial_task_breakdown": [
+          "打开QQ音乐应用并进入音乐排行榜页面",
+          "定位并选择热歌榜排名第一的歌曲",
+          "播放所选歌曲"
+        ],
+        "tips": "该任务分解基于轨迹文件生成（来源: 10_7bbm61），包含 3 个步骤。",
+        "selected_intent_keyword": "",
+        "current_position": "",
+        "path_status_info": {},
+        "similar_trajectory": ""
+      }
+    ],
+    "error": null,
+    "duration_seconds": 0,
+    "task_plan": {
+      "plan_index": 1,
+      "plan_type": "primary",
+      "rewritten_query": "我想听QQ音乐热歌榜第一的音乐",
+      "query_difficulty": "易",
+      "needs_screen_operation": true,
+      "direct_answer": "",
+      "task_breakdown": [
+        "打开QQ音乐应用并进入音乐排行榜页面",
+        "定位并选择热歌榜排名第一的歌曲",
+        "播放所选歌曲"
+      ],
+      "initial_task_breakdown": [
+        "打开QQ音乐应用并进入音乐排行榜页面",
+        "定位并选择热歌榜排名第一的歌曲",
+        "播放所选歌曲"
+      ],
+      "tips": "该任务分解基于轨迹文件生成（来源: 10_7bbm61），包含 3 个步骤。",
+      "selected_intent_keyword": "",
+      "current_position": "",
+      "path_status_info": {},
+      "similar_trajectory": ""
+    },
+    "label": null
+  },
+  {
+    "query": "开通美柚会员（执行到挑战支付宝后的页面）",
+    "timestamp": "2026-02-14T15:09:22.668296",
+    "status": "success",
+    "plans": [
+      {
+        "plan_index": 1,
+        "plan_type": "primary",
+        "rewritten_query": "开通美柚会员（执行到挑战支付宝后的页面）",
+        "query_difficulty": "中",
+        "needs_screen_operation": true,
+        "direct_answer": "",
+        "task_breakdown": [
+          "打开美柚应用并进入会员开通入口",
+          "选择会员开通选项并确认开通意向",
+          "启动外部支付工具完成支付验证（当需要跳转至第三方支付平台时，自动触发跳转流程）"
+        ],
+        "initial_task_breakdown": [
+          "打开美柚应用并进入会员开通入口",
+          "选择会员开通选项并确认开通意向",
+          "启动外部支付工具完成支付验证（当需要跳转至第三方支付平台时，自动触发跳转流程）"
+        ],
+        "tips": "该任务分解基于轨迹文件生成（来源: 11_a31p47），包含 3 个步骤。",
+        "selected_intent_keyword": "",
+        "current_position": "",
+        "path_status_info": {},
+        "similar_trajectory": ""
+      }
+    ],
+    "error": null,
+    "duration_seconds": 0,
+    "task_plan": {
+      "plan_index": 1,
+      "plan_type": "primary",
+      "rewritten_query": "开通美柚会员（执行到挑战支付宝后的页面）",
+      "query_difficulty": "中",
+      "needs_screen_operation": true,
+      "direct_answer": "",
+      "task_breakdown": [
+        "打开美柚应用并进入会员开通入口",
+        "选择会员开通选项并确认开通意向",
+        "启动外部支付工具完成支付验证（当需要跳转至第三方支付平台时，自动触发跳转流程）"
+      ],
+      "initial_task_breakdown": [
+        "打开美柚应用并进入会员开通入口",
+        "选择会员开通选项并确认开通意向",
+        "启动外部支付工具完成支付验证（当需要跳转至第三方支付平台时，自动触发跳转流程）"
+      ],
+      "tips": "该任务分解基于轨迹文件生成（来源: 11_a31p47），包含 3 个步骤。",
+      "selected_intent_keyword": "",
+      "current_position": "",
+      "path_status_info": {},
+      "similar_trajectory": ""
+    },
+    "label": null
+  },
+  {
+    "query": "在携程首页找到演出/展览，选择演唱会，目的地切换为重庆，然后找到第一个演唱会查看详情。",
+    "timestamp": "2026-02-14T15:09:22.868632",
+    "status": "success",
+    "plans": [
+      {
+        "plan_index": 1,
+        "plan_type": "primary",
+        "rewritten_query": "在携程首页找到演出/展览，选择演唱会，目的地切换为重庆，然后找到第一个演唱会查看详情。",
+        "query_difficulty": "中",
+        "needs_screen_operation": true,
+        "direct_answer": "",
+        "task_breakdown": [
+          "打开携程应用并进入演出/展览板块",
+          "选择演唱会类别并切换目的地为重庆",
+          "查看重庆地区第一个演唱会的详情信息"
+        ],
+        "initial_task_breakdown": [
+          "打开携程应用并进入演出/展览板块",
+          "选择演唱会类别并切换目的地为重庆",
+          "查看重庆地区第一个演唱会的详情信息"
+        ],
+        "tips": "该任务分解基于轨迹文件生成（来源: 11_dhj5ee），包含 3 个步骤。",
+        "selected_intent_keyword": "",
+        "current_position": "",
+        "path_status_info": {},
+        "similar_trajectory": ""
+      }
+    ],
+    "error": null,
+    "duration_seconds": 0,
+    "task_plan": {
+      "plan_index": 1,
+      "plan_type": "primary",
+      "rewritten_query": "在携程首页找到演出/展览，选择演唱会，目的地切换为重庆，然后找到第一个演唱会查看详情。",
+      "query_difficulty": "中",
+      "needs_screen_operation": true,
+      "direct_answer": "",
+      "task_breakdown": [
+        "打开携程应用并进入演出/展览板块",
+        "选择演唱会类别并切换目的地为重庆",
+        "查看重庆地区第一个演唱会的详情信息"
+      ],
+      "initial_task_breakdown": [
+        "打开携程应用并进入演出/展览板块",
+        "选择演唱会类别并切换目的地为重庆",
+        "查看重庆地区第一个演唱会的详情信息"
+      ],
+      "tips": "该任务分解基于轨迹文件生成（来源: 11_dhj5ee），包含 3 个步骤。",
+      "selected_intent_keyword": "",
+      "current_position": "",
+      "path_status_info": {},
+      "similar_trajectory": ""
+    },
+    "label": null
+  },
+  {
+    "query": "在bilibili直播页面找到王者荣耀相关视频，并关注第一条视频博主",
+    "timestamp": "2026-02-14T15:09:23.066581",
+    "status": "success",
+    "plans": [
+      {
+        "plan_index": 1,
+        "plan_type": "primary",
+        "rewritten_query": "在bilibili直播页面找到王者荣耀相关视频，并关注第一条视频博主",
+        "query_difficulty": "易",
+        "needs_screen_operation": true,
+        "direct_answer": "",
+        "task_breakdown": [
+          "打开Bilibili应用并进入直播内容区域",
+          "定位王者荣耀相关视频内容并选择第一条视频",
+          "关注该视频的发布者"
+        ],
+        "initial_task_breakdown": [
+          "打开Bilibili应用并进入直播内容区域",
+          "定位王者荣耀相关视频内容并选择第一条视频",
+          "关注该视频的发布者"
+        ],
+        "tips": "该任务分解基于轨迹文件生成（来源: 12_63z8yo），包含 3 个步骤。",
+        "selected_intent_keyword": "",
+        "current_position": "",
+        "path_status_info": {},
+        "similar_trajectory": ""
+      }
+    ],
+    "error": null,
+    "duration_seconds": 0,
+    "task_plan": {
+      "plan_index": 1,
+      "plan_type": "primary",
+      "rewritten_query": "在bilibili直播页面找到王者荣耀相关视频，并关注第一条视频博主",
+      "query_difficulty": "易",
+      "needs_screen_operation": true,
+      "direct_answer": "",
+      "task_breakdown": [
+        "打开Bilibili应用并进入直播内容区域",
+        "定位王者荣耀相关视频内容并选择第一条视频",
+        "关注该视频的发布者"
+      ],
+      "initial_task_breakdown": [
+        "打开Bilibili应用并进入直播内容区域",
+        "定位王者荣耀相关视频内容并选择第一条视频",
+        "关注该视频的发布者"
+      ],
+      "tips": "该任务分解基于轨迹文件生成（来源: 12_63z8yo），包含 3 个步骤。",
+      "selected_intent_keyword": "",
+      "current_position": "",
+      "path_status_info": {},
+      "similar_trajectory": ""
+    },
+    "label": null
+  },
+  {
+    "query": "在汽车之家-我的-找到热门活动，更多，查看任务中心，并查看历史明细。",
+    "timestamp": "2026-02-14T15:09:23.226683",
+    "status": "success",
+    "plans": [
+      {
+        "plan_index": 1,
+        "plan_type": "primary",
+        "rewritten_query": "在汽车之家-我的-找到热门活动，更多，查看任务中心，并查看历史明细。",
+        "query_difficulty": "中",
+        "needs_screen_operation": true,
+        "direct_answer": "",
+        "task_breakdown": [
+          "打开汽车之家应用并进入个人中心页面",
+          "查看热门活动相关选项并进入任务中心",
+          "查看任务中心内的签到及历史明细信息"
+        ],
+        "initial_task_breakdown": [
+          "打开汽车之家应用并进入个人中心页面",
+          "查看热门活动相关选项并进入任务中心",
+          "查看任务中心内的签到及历史明细信息"
+        ],
+        "tips": "该任务分解基于轨迹文件生成（来源: 12_cfygph），包含 3 个步骤。",
+        "selected_intent_keyword": "",
+        "current_position": "",
+        "path_status_info": {},
+        "similar_trajectory": ""
+      }
+    ],
+    "error": null,
+    "duration_seconds": 0,
+    "task_plan": {
+      "plan_index": 1,
+      "plan_type": "primary",
+      "rewritten_query": "在汽车之家-我的-找到热门活动，更多，查看任务中心，并查看历史明细。",
+      "query_difficulty": "中",
+      "needs_screen_operation": true,
+      "direct_answer": "",
+      "task_breakdown": [
+        "打开汽车之家应用并进入个人中心页面",
+        "查看热门活动相关选项并进入任务中心",
+        "查看任务中心内的签到及历史明细信息"
+      ],
+      "initial_task_breakdown": [
+        "打开汽车之家应用并进入个人中心页面",
+        "查看热门活动相关选项并进入任务中心",
+        "查看任务中心内的签到及历史明细信息"
+      ],
+      "tips": "该任务分解基于轨迹文件生成（来源: 12_cfygph），包含 3 个步骤。",
+      "selected_intent_keyword": "",
+      "current_position": "",
+      "path_status_info": {},
+      "similar_trajectory": ""
+    },
+    "label": null
+  }
+]

@@ -1,0 +1,371 @@
+# =============================================================================
+# TopoClaw monorepo — 根目录 .gitignore
+# （原 TopoMobile/.gitignore 已合并至下方「TopoMobile」节）
+# =============================================================================
+
+# 仓库根目录演示视频等（体积大，勿随文档误提交）
+/*.mp4
+GroupManager/
+
+# -----------------------------------------------------------------------------
+# TopoMobile（Android / Gradle / 编译中间产物 / Android Studio）
+# 与 clean-intermediates.ps1 中 TopoMobile 段一致：.gradle、captures、build、.cxx、.externalNativeBuild
+# -----------------------------------------------------------------------------
+
+TopoMobile/.gradle/
+TopoMobile/node_modules/
+TopoMobile/**/build/
+TopoMobile/**/.externalNativeBuild/
+TopoMobile/**/.cxx/
+TopoMobile/.kotlin/
+TopoMobile/captures/
+TopoMobile/local.properties
+
+TopoMobile/.idea/caches/
+TopoMobile/.idea/libraries/
+TopoMobile/.idea/modules.xml
+TopoMobile/.idea/workspace.xml
+TopoMobile/.idea/navEditor.xml
+TopoMobile/.idea/assetWizardSettings.xml
+TopoMobile/.idea/tasks.xml
+TopoMobile/.idea/gradle.xml
+TopoMobile/.idea/dictionaries/
+TopoMobile/.idea/jarRepositories.xml
+TopoMobile/.idea/shelf/
+
+TopoMobile/**/*.iml
+
+TopoMobile/**/bin/
+TopoMobile/**/gen/
+TopoMobile/out/
+TopoMobile/release/
+TopoMobile/app/release/
+
+TopoMobile/**/*.apk
+TopoMobile/**/*.aab
+TopoMobile/**/*.ap_
+
+TopoMobile/**/*.dex
+TopoMobile/**/*.class
+
+TopoMobile/**/proguard/
+
+TopoMobile/.navigation/
+
+TopoMobile/**/lint/intermediates/
+TopoMobile/**/lint/generated/
+TopoMobile/**/lint/outputs/
+TopoMobile/**/lint/tmp/
+
+TopoMobile/freeline.py
+TopoMobile/freeline/
+TopoMobile/freeline_project_description.json
+
+TopoMobile/fastlane/report.xml
+TopoMobile/fastlane/Preview.html
+TopoMobile/fastlane/screenshots/
+TopoMobile/fastlane/test_output/
+TopoMobile/fastlane/readme.md
+
+TopoMobile/vcs.xml
+
+TopoMobile/hs_err_pid*.log
+TopoMobile/replay_pid*.log
+
+# 本地抓取的 logcat 导出、堆转储等调试临时文件
+TopoMobile/**/*.logcat
+TopoMobile/**/*.hprof
+
+TopoMobile/**/.DS_Store
+
+# Google Services（若需提交 Firebase 配置请保持注释）
+# TopoMobile/**/google-services.json
+
+# =============================================================================
+# TopoDesktop（Electron / Vite / Node；原 TopoDesktop/.gitignore 已合并至此）
+# 与 clean-intermediates.ps1 中 TopoDesktop 段一致
+# =============================================================================
+
+TopoDesktop/node_modules/
+TopoDesktop/dist/
+TopoDesktop/dist-electron/
+TopoDesktop/release/
+TopoDesktop/.idea/
+
+TopoDesktop/*.log
+TopoDesktop/**/*.log
+
+TopoDesktop/.DS_Store
+TopoDesktop/**/.DS_Store
+
+# 内置运行资源（setup:* 同步/下载生成，建议不入库）
+TopoDesktop/resources/python-embed/*
+!TopoDesktop/resources/python-embed/README.md
+TopoDesktop/resources/group-manager/**
+TopoDesktop/resources/customer-service/**
+TopoDesktop/resources/example-assistant/**
+TopoDesktop/resources/openclaw-main2/**
+TopoDesktop/resources/TopoClaw/**
+
+# 本地环境（可选）
+TopoDesktop/.env
+TopoDesktop/.env.local
+TopoDesktop/.env.*.local
+TopoDesktop/config.txt
+TopoDesktop/builtin-assistant-log-*.txt
+
+# 仓库根目录内置助手日志（与 TopoDesktop 命名一致）
+builtin-assistant-log-*.txt
+
+# =============================================================================
+# TopoClaw（仓库内 Python 主工程子目录；编译与缓存，与 clean-intermediates.ps1 一致）
+# =============================================================================
+
+TopoClaw/.venv/
+TopoClaw/venv/
+TopoClaw/build/
+TopoClaw/dist/
+TopoClaw/temp/
+TopoClaw/.pytest_cache/
+TopoClaw/.mypy_cache/
+TopoClaw/.worktrees/
+TopoClaw/.assets/
+TopoClaw/bridge/node_modules/
+
+TopoClaw/**/__pycache__/
+TopoClaw/**/*.py[cod]
+TopoClaw/**/*.egg-info/
+TopoClaw/**/.ruff_cache/
+TopoClaw/case/
+
+TopoClaw/examples/
+TopoClaw/tests/
+TopoClaw/docs/
+TopoClaw/.env
+TopoClaw/topoclaw/.env
+# TopoClaw/topoclaw/orchestrator
+# =============================================================================
+# TopoMobileAgent（原 TopoMobileAgent/.gitignore，统一在仓库根目录）
+# =============================================================================
+
+# Python
+TopoMobileAgent/**/__pycache__/
+TopoMobileAgent/**/*.py[cod]
+TopoMobileAgent/*.py[cod]
+TopoMobileAgent/**/*$py.class
+TopoMobileAgent/*$py.class
+TopoMobileAgent/**/*.so
+TopoMobileAgent/*.so
+TopoMobileAgent/.Python
+TopoMobileAgent/build/
+TopoMobileAgent/develop-eggs/
+TopoMobileAgent/dist/
+TopoMobileAgent/downloads/
+TopoMobileAgent/eggs/
+TopoMobileAgent/.eggs/
+TopoMobileAgent/lib/
+TopoMobileAgent/lib64/
+TopoMobileAgent/parts/
+TopoMobileAgent/sdist/
+TopoMobileAgent/var/
+TopoMobileAgent/wheels/
+TopoMobileAgent/share/python-wheels/
+TopoMobileAgent/**/*.egg-info/
+TopoMobileAgent/*.egg-info/
+TopoMobileAgent/.installed.cfg
+TopoMobileAgent/**/*.egg
+TopoMobileAgent/*.egg
+TopoMobileAgent/MANIFEST
+
+# 虚拟环境
+TopoMobileAgent/venv/
+TopoMobileAgent/env/
+TopoMobileAgent/ENV/
+TopoMobileAgent/env.bak/
+TopoMobileAgent/venv.bak/
+TopoMobileAgent/.venv/
+
+# PyCharm
+TopoMobileAgent/.idea/
+
+# VS Code
+TopoMobileAgent/.vscode/
+TopoMobileAgent/*.code-workspace
+
+# Jupyter Notebook
+TopoMobileAgent/.ipynb_checkpoints
+
+# pyenv
+TopoMobileAgent/.python-version
+
+# pipenv
+TopoMobileAgent/Pipfile.lock
+
+# poetry
+TopoMobileAgent/poetry.lock
+
+# uv
+TopoMobileAgent/.uv/
+TopoMobileAgent/uv.lock
+
+# pytest
+TopoMobileAgent/.pytest_cache/
+TopoMobileAgent/.coverage
+TopoMobileAgent/htmlcov/
+TopoMobileAgent/.tox/
+TopoMobileAgent/.nox/
+
+# mypy
+TopoMobileAgent/.mypy_cache/
+TopoMobileAgent/.dmypy.json
+TopoMobileAgent/dmypy.json
+
+# Pyre
+TopoMobileAgent/.pyre/
+
+# pytype
+TopoMobileAgent/.pytype/
+
+# Cython
+TopoMobileAgent/cython_debug/
+
+# 环境变量
+TopoMobileAgent/.env
+TopoMobileAgent/.env.local
+TopoMobileAgent/.env.*.local
+TopoMobileAgent/**/*.env
+customer_service/.env
+customer_service/version_info.json
+customer_service/CHANGELOG.md
+
+# 日志文件
+TopoMobileAgent/**/*.log
+TopoMobileAgent/*.log
+TopoMobileAgent/logs/
+TopoMobileAgent/**/*.log.*
+
+# 操作系统
+TopoMobileAgent/.DS_Store
+TopoMobileAgent/.DS_Store?
+TopoMobileAgent/._*
+TopoMobileAgent/.Spotlight-V100
+TopoMobileAgent/.Trashes
+TopoMobileAgent/ehthumbs.db
+TopoMobileAgent/Thumbs.db
+TopoMobileAgent/Desktop.ini
+
+# 临时文件
+TopoMobileAgent/**/*.tmp
+TopoMobileAgent/*.tmp
+TopoMobileAgent/**/*.temp
+TopoMobileAgent/*.temp
+TopoMobileAgent/**/*.swp
+TopoMobileAgent/*.swp
+TopoMobileAgent/**/*.swo
+TopoMobileAgent/*.swo
+TopoMobileAgent/**/*~
+TopoMobileAgent/*~
+TopoMobileAgent/.cache/
+
+# 项目特定（运行输出、大文件；可与 clean-intermediates 一并清理）
+TopoMobileAgent/task_records/
+TopoMobileAgent/uploads/
+TopoMobileAgent/data/
+TopoMobileAgent/feedback_records/
+TopoMobileAgent/knowledge/templates/
+TopoMobileAgent/priori_explorer/trajectories/
+TopoMobileAgent/priori_explorer/examples/trajectories/
+TopoMobileAgent/priori_explorer/examples/records/
+TopoMobileAgent/flask_temp/
+TopoMobileAgent/flask_uploads/
+TopoMobileAgent/outputs/
+TopoMobileAgent/output/
+TopoMobileAgent/docs/
+TopoMobileAgent/tmp/
+TopoMobileAgent/task_records_info.csv
+
+# 大体积导出与批查询本地历史（按需不提交）
+TopoMobileAgent/steps_export_*.json
+TopoMobileAgent/batch_queries_history.json
+
+# skill_service 运行时技能与索引（启动后生成）
+TopoMobileAgent/skill_service/skills/
+
+# 备份脚本/副本与常见临时后缀（如 *beifen*、.bak）
+TopoMobileAgent/**/*beifen*
+TopoMobileAgent/**/*.bak
+
+# 误生成于根目录的异常文件名（可按需增删）
+TopoMobileAgent/2.2.0
+
+# customer_service2 产出（若存在）
+TopoMobileAgent/customer_service2/outputs/
+
+# customer_service 产出
+customer_service/outputs/
+
+# customer_service 的 _pycache_
+customer_service/**/__pycache__/
+
+# 文档 / 数据 / 模板 / 测试（按仓库策略不提交；克隆后需自行补齐或从别处获取）
+TopoMobileAgent/QUICK_START.md
+TopoMobileAgent/skill_service/README.md
+TopoMobileAgent/skill_service/DIAGNOSIS.md
+TopoMobileAgent/benchmark/data/*.json
+TopoMobileAgent/annotation/mongodb_document_example.json
+TopoMobileAgent/templates/
+TopoMobileAgent/storage_browser/index.html
+TopoMobileAgent/test_agent.py
+TopoMobileAgent/test_guidance_from_current.py
+TopoMobileAgent/examples/test_health_check.py
+TopoMobileAgent/skill_service/test_service.py
+
+# 测试数据
+TopoMobileAgent/test_data/output/
+TopoMobileAgent/test_data/images/*.png
+TopoMobileAgent/test_data/images/*.jpg
+TopoMobileAgent/test_data/images/*.jpeg
+
+# 模型和权重文件（如果很大）
+TopoMobileAgent/**/*.pth
+TopoMobileAgent/*.pth
+TopoMobileAgent/**/*.pt
+TopoMobileAgent/*.pt
+TopoMobileAgent/**/*.h5
+TopoMobileAgent/*.h5
+TopoMobileAgent/**/*.ckpt
+TopoMobileAgent/*.ckpt
+TopoMobileAgent/**/*.safetensors
+TopoMobileAgent/*.safetensors
+
+# 数据库文件
+TopoMobileAgent/**/*.db
+TopoMobileAgent/*.db
+TopoMobileAgent/**/*.sqlite
+TopoMobileAgent/*.sqlite
+TopoMobileAgent/**/*.sqlite3
+TopoMobileAgent/*.sqlite3
+
+# 压缩文件（可选，根据需要取消注释）
+# TopoMobileAgent/**/*.zip
+# TopoMobileAgent/**/*.tar.gz
+# TopoMobileAgent/**/*.rar
+
+# 安全扫描排除的文件（包含敏感信息或安全问题）
+TopoMobileAgent/benchmark/run_batch.py
+TopoMobileAgent/client/evaluate.py
+TopoMobileAgent/coloragent/config/set_secrets.ps1
+
+TopoMobileAgent/sentence-transformers/
+
+# =============================================================================
+# Global Python cache artifacts (all subprojects)
+# =============================================================================
+**/__pycache__/
+*.pyc
+*.pyo
+
+# Repository-local temporary/work directories
+tmp/
+service_tmp/
+TopoMobileAgent/

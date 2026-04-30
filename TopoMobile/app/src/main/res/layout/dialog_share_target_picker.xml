@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_rounded_background"
+    android:clipToOutline="true"
+    android:minWidth="280dp"
+    android:maxWidth="420dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/chat_share_target_title"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#212121" />
+
+        <ImageButton
+            android:id="@+id/btnSearch"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_search"
+            android:tint="#000000"
+            android:contentDescription="@string/chat_share_target_search" />
+
+        <ImageButton
+            android:id="@+id/btnClose"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:tint="#000000"
+            android:contentDescription="@string/chat_share_target_close" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:background="@drawable/share_option_item_background"
+        android:hint="@string/chat_share_target_search_hint"
+        android:textColor="#212121"
+        android:textColorHint="#9E9E9E"
+        android:singleLine="true"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/lvTargets"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:divider="#EAEAEA"
+        android:dividerHeight="1dp"
+        android:paddingBottom="6dp" />
+
+</LinearLayout>

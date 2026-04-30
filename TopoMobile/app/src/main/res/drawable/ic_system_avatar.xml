@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="40dp"
+    android:height="40dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- 机器人头部（圆角矩形，浅蓝色） -->
+    <path
+        android:fillColor="#FF87CEEB"
+        android:pathData="M4,4 L20,4 Q22,4 22,6 L22,18 Q22,20 20,20 L4,20 Q2,20 2,18 L2,6 Q2,4 4,4 Z"/>
+    <!-- 左侧耳机/耳朵（深蓝色圆形） -->
+    <path
+        android:fillColor="#FF4682B4"
+        android:pathData="M-2,10 Q-2,6 2,6 Q6,6 6,10 Q6,14 2,14 Q-2,14 -2,10 Z"/>
+    <!-- 右侧耳机/耳朵（深蓝色圆形） -->
+    <path
+        android:fillColor="#FF4682B4"
+        android:pathData="M18,10 Q18,6 22,6 Q26,6 26,10 Q26,14 22,14 Q18,14 18,10 Z"/>
+    <!-- 左眼（深蓝色圆形） -->
+    <path
+        android:fillColor="#FF4682B4"
+        android:pathData="M8,10m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"/>
+    <!-- 右眼（深蓝色圆形） -->
+    <path
+        android:fillColor="#FF4682B4"
+        android:pathData="M16,10m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"/>
+    <!-- 嘴巴（微笑弧线，深蓝色，使用stroke） -->
+    <path
+        android:strokeColor="#FF4682B4"
+        android:strokeWidth="1.5"
+        android:pathData="M8,15 Q12,18 16,15"/>
+</vector>
+

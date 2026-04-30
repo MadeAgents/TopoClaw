@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <!-- 标题栏 -->
+    <FrameLayout
+        android:id="@+id/llTitleBar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#FFF5F5F5"
+        android:elevation="4dp"
+        android:fitsSystemWindows="false">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/assistant_square"
+            android:textSize="18sp"
+            android:textColor="@android:color/black" />
+    </FrameLayout>
+
+    <!-- Tab 导航栏 -->
+    <LinearLayout
+        android:id="@+id/llTabBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFF5F5F5"
+        android:elevation="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <!-- 我创建的小助手（左侧首位） -->
+            <Button
+                android:id="@+id/btnTabMy"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/assistant_plaza_tab_my"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#FF000000"
+                android:background="@android:color/transparent"
+                android:stateListAnimator="@null" />
+
+            <!-- 小助手广场（右侧） -->
+            <Button
+                android:id="@+id/btnTabPlaza"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/assistant_plaza_tab_plaza"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#FF999999"
+                android:background="@android:color/transparent"
+                android:stateListAnimator="@null" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/viewIndicator"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            android:background="#FF10AEFF"
+            android:layout_marginStart="0dp" />
+    </LinearLayout>
+
+    <!-- 仅「小助手广场」Tab：最新 / 最热（背景与下方列表白底一致，行高紧凑） -->
+    <LinearLayout
+        android:id="@+id/llPlazaSort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end|center_vertical"
+        android:visibility="gone"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:background="@android:color/white">
+
+        <TextView
+            android:id="@+id/btnPlazaSortLatest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp"
+            android:text="@string/plaza_sort_latest"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btnPlazaSortHot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp"
+            android:text="@string/plaza_sort_hot"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Toolbar（我创建的小助手 Tab 时显示） -->
+    <LinearLayout
+        android:id="@+id/llToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:background="#FFFAFAFA">
+
+        <Button
+            android:id="@+id/btnNewAssistant"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:minHeight="42dp"
+            android:text="@string/new_assistant"
+            android:textSize="14sp"
+            android:textColor="#FF333333"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:layout_marginEnd="8dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:backgroundTint="@android:color/white"
+            app:strokeColor="#FFE0E0E0"
+            app:strokeWidth="1dp"
+            app:cornerRadius="8dp" />
+
+        <Button
+            android:id="@+id/btnAddAssistant"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:minHeight="42dp"
+            android:text="@string/add_assistant"
+            android:textSize="14sp"
+            android:textColor="#FF333333"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:backgroundTint="@android:color/white"
+            app:strokeColor="#FFE0E0E0"
+            app:strokeWidth="1dp"
+            app:cornerRadius="8dp" />
+    </LinearLayout>
+
+    <!-- 我创建的小助手 页面 -->
+    <LinearLayout
+        android:id="@+id/llMyPage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <ScrollView
+            android:id="@+id/scrollViewMy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:padding="20dp"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- 我创建的小助手 空状态 -->
+                <LinearLayout
+                    android:id="@+id/llMyEmpty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:paddingTop="32dp"
+                    android:paddingBottom="32dp"
+                    android:paddingStart="32dp"
+                    android:paddingEnd="32dp">
+
+                    <TextView
+                        android:id="@+id/tvMyEmptyDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/no_assistant"
+                        android:textSize="14sp"
+                        android:textColor="#999999"
+                        android:layout_marginBottom="6dp" />
+
+                    <TextView
+                        android:id="@+id/tvMyEmptyHint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/assistant_plaza_empty_hint"
+                        android:textSize="13sp"
+                        android:textColor="#AAAAAA"
+                        android:gravity="center"
+                        android:layout_marginBottom="10dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <Button
+                            android:id="@+id/btnAddAssistantInline"
+                            android:layout_width="wrap_content"
+android:layout_height="42dp"
+            android:minHeight="42dp"
+            android:text="@string/add_assistant"
+            android:textSize="14sp"
+            android:textColor="#FF333333"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:layout_marginEnd="8dp"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            app:backgroundTint="@android:color/white"
+                            app:strokeColor="#FFE0E0E0"
+                            app:strokeWidth="1dp"
+                            app:cornerRadius="8dp" />
+
+                        <Button
+                            android:id="@+id/btnNewAssistantInline"
+                            android:layout_width="wrap_content"
+android:layout_height="42dp"
+            android:minHeight="42dp"
+            android:text="@string/new_assistant"
+            android:textSize="14sp"
+            android:textColor="#FF333333"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            app:backgroundTint="@android:color/white"
+                            app:strokeColor="#FFE0E0E0"
+                            app:strokeWidth="1dp"
+                            app:cornerRadius="8dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- 我创建的小助手 列表 -->
+                <LinearLayout
+                    android:id="@+id/llMyList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <!-- 小助手广场 页面 -->
+    <LinearLayout
+        android:id="@+id/llPlazaPage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ScrollView
+            android:id="@+id/scrollViewPlaza"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:padding="20dp"
+            android:background="@android:color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- 广场空状态/加载中 -->
+                <LinearLayout
+                    android:id="@+id/llPlazaEmpty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="48dp">
+
+                    <TextView
+                        android:id="@+id/tvPlazaEmptyTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/assistant_plaza_empty_title"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#666666"
+                        android:layout_marginBottom="12dp" />
+
+                    <TextView
+                        android:id="@+id/tvPlazaEmptyDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/assistant_plaza_empty_desc"
+                        android:textSize="14sp"
+                        android:textColor="#999999" />
+                </LinearLayout>
+
+                <!-- 广场列表 -->
+                <LinearLayout
+                    android:id="@+id/llPlazaList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <!-- Fragment 层级的底部导航栏 -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_navigation"
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/bottom_nav_icon_tint"
+        app:itemTextColor="@color/bottom_nav_text_color" />
+
+</LinearLayout>

@@ -1,0 +1,1339 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat Space - 用户A手机</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      height: calc(100vh - 40px);
+    }
+    
+    /* Header */
+    .header {
+      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .header h1 {
+      font-size: 24px;
+      font-weight: 600;
+    }
+    
+    .header .user-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .status-badge {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      background: rgba(255,255,255,0.2);
+    }
+    
+    .status-badge.online {
+      background: #10b981;
+    }
+    
+    .status-badge.offline {
+      background: #ef4444;
+    }
+    
+    /* Main Layout */
+    .main {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      overflow: hidden;
+    }
+    
+    /* Sidebar */
+    .sidebar {
+      background: #f8fafc;
+      border-right: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .sidebar-tabs {
+      display: flex;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .sidebar-tab {
+      flex: 1;
+      padding: 15px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      color: #64748b;
+      transition: all 0.2s;
+    }
+    
+    .sidebar-tab:hover {
+      background: #f1f5f9;
+      color: #475569;
+    }
+    
+    .sidebar-tab.active {
+      background: white;
+      color: #667eea;
+      border-bottom: 2px solid #667eea;
+    }
+    
+    .contact-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 4px;
+    }
+    
+    .contact-item:hover {
+      background: #f1f5f9;
+    }
+    
+    .contact-item.active {
+      background: #ede9fe;
+      border-left: 3px solid #667eea;
+    }
+    
+    .contact-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+    
+    .contact-avatar.agent {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+    
+    .contact-avatar.group {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+    
+    .contact-info {
+      flex: 1;
+      min-width: 0;
+    }
+    
+    .contact-name {
+      font-weight: 600;
+      font-size: 14px;
+      color: #1e293b;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .contact-type {
+      font-size: 12px;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+    
+    .contact-badge {
+      background: #ef4444;
+      color: white;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      min-width: 20px;
+      text-align: center;
+    }
+    
+    /* Chat Area */
+    .chat-area {
+      display: flex;
+      flex-direction: column;
+      background: white;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    .chat-header {
+      padding: 16px 24px;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .chat-header-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .chat-header-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+    }
+    
+    .chat-header-title {
+      font-weight: 600;
+      font-size: 16px;
+      color: #1e293b;
+    }
+    
+    .chat-header-subtitle {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+    
+    .chat-actions {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .btn-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: #f1f5f9;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    
+    .btn-icon:hover {
+      background: #e2e8f0;
+    }
+    
+    /* Messages */
+    .messages-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      background: #fafafa;
+      scroll-behavior: smooth;
+    }
+    
+    .message {
+      display: flex;
+      margin-bottom: 16px;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .message.own {
+      flex-direction: row-reverse;
+    }
+    
+    .message-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      flex-shrink: 0;
+      margin: 0 12px;
+    }
+    
+    .message.own .message-avatar {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    }
+    
+    .message-content {
+      max-width: 60%;
+    }
+    
+    .message-bubble {
+      padding: 12px 16px;
+      border-radius: 18px;
+      font-size: 14px;
+      line-height: 1.5;
+      word-wrap: break-word;
+    }
+    
+    .message:not(.own) .message-bubble {
+      background: white;
+      border: 1px solid #e2e8f0;
+      color: #1e293b;
+      border-top-left-radius: 4px;
+    }
+    
+    .message.own .message-bubble {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-top-right-radius: 4px;
+    }
+    
+    .message-time {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-top: 4px;
+      padding: 0 4px;
+    }
+    
+    .message.own .message-time {
+      text-align: right;
+    }
+    
+    .message-sender {
+      font-size: 12px;
+      color: #64748b;
+      margin-bottom: 4px;
+      padding: 0 4px;
+    }
+    
+    /* Input Area */
+    .input-area {
+      padding: 16px 24px;
+      border-top: 1px solid #e2e8f0;
+      background: white;
+    }
+    
+    .input-toolbar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .input-box {
+      display: flex;
+      gap: 12px;
+      align-items: flex-end;
+    }
+    
+    .input-field {
+      flex: 1;
+      border: 1px solid #e2e8f0;
+      border-radius: 24px;
+      padding: 12px 20px;
+      font-size: 14px;
+      resize: none;
+      outline: none;
+      transition: all 0.2s;
+      min-height: 48px;
+      max-height: 120px;
+    }
+    
+    .input-field:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    
+    .btn-send {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    
+    .btn-send:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+    
+    .btn-send:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    /* Settings Panel */
+    .settings-panel {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 400px;
+      height: 100vh;
+      background: white;
+      box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+      transition: right 0.3s ease;
+      z-index: 1000;
+      padding: 24px;
+      overflow-y: auto;
+    }
+    
+    .settings-panel.open {
+      right: 0;
+    }
+    
+    .settings-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      z-index: 999;
+    }
+    
+    .settings-overlay.open {
+      display: block;
+    }
+    
+    .settings-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .settings-title {
+      font-size: 20px;
+      font-weight: 600;
+    }
+    
+    .settings-close {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: #f1f5f9;
+      cursor: pointer;
+      font-size: 20px;
+    }
+    
+    .setting-item {
+      margin-bottom: 20px;
+      padding: 16px;
+      background: #f8fafc;
+      border-radius: 12px;
+    }
+    
+    .setting-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    
+    .setting-desc {
+      font-size: 13px;
+      color: #64748b;
+    }
+    
+    .toggle-switch {
+      position: relative;
+      width: 48px;
+      height: 26px;
+    }
+    
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #cbd5e1;
+      border-radius: 26px;
+      transition: 0.3s;
+    }
+    
+    .toggle-slider:before {
+      content: "";
+      position: absolute;
+      height: 20px;
+      width: 20px;
+      left: 3px;
+      bottom: 3px;
+      background: white;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+    
+    input:checked + .toggle-slider {
+      background: #667eea;
+    }
+    
+    input:checked + .toggle-slider:before {
+      transform: translateX(22px);
+    }
+    
+    /* System Message */
+    .system-message {
+      text-align: center;
+      padding: 8px 16px;
+      margin: 10px 0;
+      color: #64748b;
+      font-size: 12px;
+    }
+    
+    .system-message span {
+      background: #f1f5f9;
+      padding: 4px 12px;
+      border-radius: 12px;
+    }
+    
+    /* Empty State */
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: #94a3b8;
+    }
+    
+    .empty-state-icon {
+      font-size: 64px;
+      margin-bottom: 16px;
+    }
+    
+    .empty-state-text {
+      font-size: 16px;
+    }
+    
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>💬 Chat Space</h1>
+      <div class="user-info">
+        <span>用户A - 手机</span>
+        <span id="connectionStatus" class="status-badge offline">离线</span>
+        <button class="btn-icon" onclick="toggleSettings()" title="设置">⚙️</button>
+      </div>
+    </div>
+    
+    <!-- Main -->
+    <div class="main">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="sidebar-tabs">
+          <button class="sidebar-tab active" onclick="switchTab('friends')">私聊</button>
+          <button class="sidebar-tab" onclick="switchTab('groups')">群聊</button>
+        </div>
+        <div class="contact-list" id="contactList">
+          <!-- Contact items will be rendered here -->
+        </div>
+      </div>
+      
+      <!-- Chat Area -->
+      <div class="chat-area">
+        <div class="chat-header">
+          <div class="chat-header-info">
+            <div class="chat-header-avatar" id="chatAvatar">?</div>
+            <div>
+              <div class="chat-header-title" id="chatTitle">选择一个聊天</div>
+              <div class="chat-header-subtitle" id="chatSubtitle">开始你的对话</div>
+            </div>
+          </div>
+          <div class="chat-actions">
+            <button class="btn-icon" onclick="refreshContacts()" title="刷新">🔄</button>
+          </div>
+        </div>
+        
+        <div class="messages-container" id="messagesContainer">
+          <div class="empty-state">
+            <div class="empty-state-icon">💬</div>
+            <div class="empty-state-text">选择一个联系人开始聊天</div>
+          </div>
+        </div>
+        
+        <div class="input-area">
+          <div class="input-toolbar">
+            <button class="btn-icon" title="表情">😊</button>
+            <button class="btn-icon" title="图片">📷</button>
+            <button class="btn-icon" title="文件">📎</button>
+          </div>
+          <div class="input-box">
+            <textarea class="input-field" id="messageInput" placeholder="输入消息..." rows="1"></textarea>
+            <button class="btn-send" id="sendBtn" onclick="sendMessage()" disabled>
+              ➤
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Settings Panel -->
+  <div class="settings-overlay" id="settingsOverlay" onclick="toggleSettings()"></div>
+  <div class="settings-panel" id="settingsPanel">
+    <div class="settings-header">
+      <div class="settings-title">设置</div>
+      <button class="settings-close" onclick="toggleSettings()">×</button>
+    </div>
+    
+    <div class="setting-item">
+      <label class="setting-label">
+        HTTP Base
+        <input type="text" id="httpBase" value="http://127.0.0.1:8001" style="width: 200px; padding: 8px; border: 1px solid #e2e8f0; border-radius: 8px;">
+      </label>
+      <div class="setting-desc">服务端地址</div>
+    </div>
+    
+    <div class="setting-item">
+      <label class="setting-label">
+        <span>所有助手都回复</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="allAgentsReplyToggle">
+          <span class="toggle-slider"></span>
+        </label>
+      </label>
+      <div class="setting-desc">开启后，群聊广播会给所有助手；默认只广播给 topoclaw</div>
+      <button onclick="saveAllAgentsSetting()" style="margin-top: 10px; padding: 8px 16px; background: #667eea; color: white; border: none; border-radius: 8px; cursor: pointer;">保存设置</button>
+    </div>
+    
+    <div class="setting-item">
+      <label class="setting-label">
+        <span>连接状态</span>
+        <button onclick="connectWebSocket()" style="padding: 8px 16px; background: #10b981; color: white; border: none; border-radius: 8px; cursor: pointer;">连接</button>
+      </label>
+      <div class="setting-desc">连接到聊天服务</div>
+    </div>
+  </div>
+
+  <script>
+    // State
+    const state = {
+      httpBase: "http://127.0.0.1:8001",
+      imei: "user-a-imei",
+      imeiId: "000",
+      deviceType: "mobile",
+      ws: null,           // 主 WebSocket (customer-service)
+      agentWs: null,      // Agent WebSocket (mobile-topoclaw-bridge)
+      agentWsConnected: false,
+      currentTab: "friends", // 'friends' | 'groups'
+      currentChat: null, // { type, id, name }
+      friends: [],
+      groups: [],
+      messages: {}, // { chatId: [messages] }
+      allAgentsReply: false,
+    };
+    
+    // Init
+    document.addEventListener("DOMContentLoaded", () => {
+      loadSettings();
+      connectWebSocket();
+      refreshContacts();
+      
+      // Auto-resize textarea
+      const textarea = document.getElementById("messageInput");
+      textarea.addEventListener("input", function() {
+        this.style.height = "auto";
+        this.style.height = Math.min(this.scrollHeight, 120) + "px";
+        updateSendButton();
+      });
+      
+      textarea.addEventListener("keydown", function(e) {
+        if (e.key === "Enter" && !e.shiftKey) {
+          e.preventDefault();
+          sendMessage();
+        }
+      });
+    });
+    
+    // WebSocket Connection
+    function connectWebSocket() {
+      if (state.ws && state.ws.readyState === WebSocket.OPEN) return;
+      
+      const wsBase = state.httpBase.replace(/^http:\/\//, "ws://").replace(/^https:\/\//, "wss://");
+      const url = `${wsBase}/ws/customer-service/${encodeURIComponent(state.imei)}?device=mobile`;
+      
+      state.ws = new WebSocket(url);
+      
+      state.ws.onopen = () => {
+        updateConnectionStatus(true);
+        console.log("Main WebSocket connected");
+      };
+      
+      state.ws.onclose = () => {
+        updateConnectionStatus(false);
+        console.log("Main WebSocket closed");
+        // Auto reconnect after 3s
+        setTimeout(connectWebSocket, 3000);
+      };
+      
+      state.ws.onerror = (e) => {
+        console.error("Main WebSocket error:", e);
+      };
+      
+      state.ws.onmessage = (e) => {
+        handleMessage(JSON.parse(e.data));
+      };
+    }
+    
+    // Agent WebSocket Connection (for mobile-topoclaw-bridge)
+    async function ensureAgentWebSocket() {
+      if (state.agentWs && state.agentWs.readyState === WebSocket.OPEN) {
+        return true;
+      }
+      
+      return new Promise((resolve) => {
+        const wsBase = state.httpBase.replace(/^http:\/\//, "ws://").replace(/^https:\/\//, "wss://");
+        const url = `${wsBase}/ws?imei=${encodeURIComponent(state.imei)}&imei_id=${state.imeiId}`;
+        
+        state.agentWs = new WebSocket(url);
+        
+        // 基础消息处理器（处理注册响应等）
+        state.agentWs.onmessage = (e) => {
+          try {
+            const msg = JSON.parse(e.data);
+            console.log("Agent WS base handler:", msg);
+            
+            if (msg.type === "registered") {
+              console.log("Agent WS registered successfully");
+            } else if (msg.type === "pong") {
+              // 忽略心跳
+            } else if (msg.type === "error") {
+              console.error("Agent WS error:", msg);
+            }
+            // 其他消息（如 chat 响应）由 addEventListener 处理
+          } catch (err) {
+            console.error("Agent WS base handler error:", err);
+          }
+        };
+        
+        state.agentWs.onopen = () => {
+          console.log("Agent WebSocket connected");
+          // Send register frame
+          state.agentWs.send(JSON.stringify({
+            type: "register",
+            thread_id: "",
+            device_id: `${state.imei}-mobile-chatspace`,
+            device_type: "mobile",
+            imei: state.imei,
+            imei_id: state.imeiId,
+          }));
+          state.agentWsConnected = true;
+          resolve(true);
+        };
+        
+        state.agentWs.onclose = () => {
+          console.log("Agent WebSocket closed");
+          state.agentWsConnected = false;
+        };
+        
+        state.agentWs.onerror = (e) => {
+          console.error("Agent WebSocket error:", e);
+          state.agentWsConnected = false;
+          resolve(false);
+        };
+        
+        // Set timeout for connection
+        setTimeout(() => {
+          if (!state.agentWsConnected) {
+            resolve(false);
+          }
+        }, 5000);
+      });
+    }
+    
+    function updateConnectionStatus(online) {
+      const badge = document.getElementById("connectionStatus");
+      badge.textContent = online ? "在线" : "离线";
+      badge.className = "status-badge " + (online ? "online" : "offline");
+    }
+    
+    // Message Handling
+    function handleMessage(msg) {
+      try {
+        console.log("Received:", msg);
+        
+        if (!msg || !msg.type) return;
+        
+        if (msg.type === "friend_message" || msg.type === "friend_sync_message") {
+          const senderId = msg.senderImei || msg.sender_imei || "unknown";
+          const chatId = "friend_" + senderId;
+          
+          // 如果是自己发送的消息，不重复添加（已经在 sendMessage 中添加过了）
+          if (msg.senderImei === state.imei && msg.type === "friend_message") {
+            return;
+          }
+          
+          addMessage(chatId, {
+            id: Date.now() + Math.random(), // 确保唯一
+            type: "received",
+            sender: msg.sender || "好友",
+            content: msg.content || "",
+            time: new Date().toLocaleTimeString(),
+          });
+        } else if (msg.type === "group_message") {
+          const groupId = msg.groupId || "unknown";
+          const chatId = "group_" + groupId;
+          
+          // 如果是自己发送的消息，不重复添加（已经在 sendMessage 中添加过了）
+          if (msg.senderImei === state.imei) {
+            return;
+          }
+          
+          addMessage(chatId, {
+            id: Date.now() + Math.random(),
+            type: "received",
+            sender: msg.sender || msg.senderImei || "群成员",
+            content: msg.content || "",
+            time: new Date().toLocaleTimeString(),
+          });
+        } else if (msg.type === "error") {
+          console.error("Server error:", msg.content || msg.error);
+        }
+      } catch (e) {
+        console.error("handleMessage error:", e);
+      }
+    }
+    
+    // 渲染队列，避免频繁渲染
+    state.renderQueue = new Map(); // chatId -> boolean
+    state.isRendering = false;
+    
+    function queueRender(chatId, incremental = true) {
+      state.renderQueue.set(chatId, incremental);
+      if (!state.isRendering) {
+        state.isRendering = true;
+        requestAnimationFrame(() => {
+          state.renderQueue.forEach((incremental, id) => {
+            if (state.currentChat && getChatId(state.currentChat) === id) {
+              renderMessages(id, incremental);
+            }
+          });
+          state.renderQueue.clear();
+          state.isRendering = false;
+        });
+      }
+    }
+    
+    function addMessage(chatId, message) {
+      if (!state.messages[chatId]) state.messages[chatId] = [];
+      state.messages[chatId].push(message);
+      
+      // 限制消息数量，防止内存泄漏（保留最近200条）
+      if (state.messages[chatId].length > 200) {
+        state.messages[chatId] = state.messages[chatId].slice(-200);
+        lastRenderedCount[chatId] = 0; // 触发全量渲染
+      }
+      
+      // 如果是当前聊天，使用增量渲染
+      if (state.currentChat && getChatId(state.currentChat) === chatId) {
+        queueRender(chatId, true);
+      }
+      
+      // Update contact badge
+      updateContactBadge(chatId);
+    }
+    
+    function getChatId(chat) {
+      return chat.type + "_" + chat.id;
+    }
+    
+    // UI Functions
+    function switchTab(tab) {
+      state.currentTab = tab;
+      document.querySelectorAll(".sidebar-tab").forEach((el, i) => {
+        el.classList.toggle("active", i === (tab === "friends" ? 0 : 1));
+      });
+      renderContactList();
+    }
+    
+    function renderContactList() {
+      const list = document.getElementById("contactList");
+      list.innerHTML = "";
+      
+      const contacts = state.currentTab === "friends" ? state.friends : state.groups;
+      
+      contacts.forEach(contact => {
+        const item = document.createElement("div");
+        item.className = "contact-item" + (state.currentChat && state.currentChat.id === contact.id ? " active" : "");
+        item.onclick = () => selectContact(contact);
+        
+        const isAgent = contact._type === "agent";
+        const isGroup = state.currentTab === "groups";
+        const name = contact.nickname || contact.name || contact.id;
+        const initial = (name[0] || "?").toUpperCase();
+        
+        item.innerHTML = `
+          <div class="contact-avatar ${isAgent ? "agent" : ""} ${isGroup ? "group" : ""}">${initial}</div>
+          <div class="contact-info">
+            <div class="contact-name">${name}</div>
+            <div class="contact-type">${isAgent ? "Agent" : isGroup ? "群组" : "好友"}</div>
+          </div>
+          ${contact.unread ? `<div class="contact-badge">${contact.unread}</div>` : ""}
+        `;
+        
+        list.appendChild(item);
+      });
+    }
+    
+    function selectContact(contact) {
+      state.currentChat = {
+        type: contact._type === "agent" ? "agent" : state.currentTab === "friends" ? "friend" : "group",
+        id: contact.id || contact.imei || contact.group_id,
+        name: contact.nickname || contact.name || contact.id,
+        raw: contact,
+      };
+      
+      // Clear unread
+      contact.unread = 0;
+      renderContactList();
+      
+      // Update header
+      document.getElementById("chatAvatar").textContent = (state.currentChat.name[0] || "?").toUpperCase();
+      document.getElementById("chatTitle").textContent = state.currentChat.name;
+      document.getElementById("chatSubtitle").textContent = state.currentChat.type === "group" ? "群聊" : state.currentChat.type === "agent" ? "Agent 私聊" : "好友";
+      
+      // Render messages (切换聊天时全量渲染)
+      renderMessages(getChatId(state.currentChat), false);
+      updateSendButton();
+      
+      // 聚焦输入框
+      setTimeout(() => {
+        document.getElementById("messageInput")?.focus();
+      }, 100);
+    }
+    
+    // 增量渲染：只渲染新消息
+    let lastRenderedCount = {};
+    
+    function renderMessages(chatId, incremental = false) {
+      try {
+        const container = document.getElementById("messagesContainer");
+        if (!container) return;
+        
+        const messages = state.messages[chatId] || [];
+        
+        if (messages.length === 0) {
+          container.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-state-icon">💬</div>
+              <div class="empty-state-text">还没有消息，开始聊天吧</div>
+            </div>
+          `;
+          lastRenderedCount[chatId] = 0;
+          return;
+        }
+        
+        // 检查是否需要清空（第一次渲染或非增量）
+        const prevCount = lastRenderedCount[chatId] || 0;
+        if (!incremental || prevCount === 0 || messages.length < prevCount) {
+          container.innerHTML = "";
+          lastRenderedCount[chatId] = 0;
+        }
+        
+        // 只渲染新消息
+        const startIdx = lastRenderedCount[chatId] || 0;
+        const newMessages = messages.slice(startIdx);
+        
+        if (newMessages.length === 0) return;
+        
+        // 移除 empty-state 如果存在
+        const emptyState = container.querySelector(".empty-state");
+        if (emptyState) emptyState.remove();
+        
+        // 创建文档片段添加新消息
+        const fragment = document.createDocumentFragment();
+        
+        newMessages.forEach(msg => {
+          const msgDiv = createMessageElement(msg);
+          fragment.appendChild(msgDiv);
+        });
+        
+        container.appendChild(fragment);
+        lastRenderedCount[chatId] = messages.length;
+        
+        // 平滑滚动到底部
+        requestAnimationFrame(() => {
+          const lastMsg = container.lastElementChild;
+          if (lastMsg) {
+            lastMsg.scrollIntoView({ behavior: "smooth", block: "end" });
+          }
+        });
+      } catch (e) {
+        console.error("renderMessages error:", e);
+      }
+    }
+    
+    function createMessageElement(msg) {
+      const msgDiv = document.createElement("div");
+      
+      if (msg.type === "system") {
+        msgDiv.className = "system-message";
+        msgDiv.innerHTML = `<span>${escapeHtml(msg.content)}</span>`;
+      } else {
+        msgDiv.className = "message " + (msg.type === "own" ? "own" : "");
+        
+        const sender = msg.sender || "未知";
+        const content = msg.content || "";
+        const time = msg.time || "";
+        
+        let html = `<div class="message-avatar">${escapeHtml(sender[0] || "?").toUpperCase()}</div>`;
+        html += `<div class="message-content">`;
+        if (msg.type !== "own") {
+          html += `<div class="message-sender">${escapeHtml(sender)}</div>`;
+        }
+        html += `<div class="message-bubble">${escapeHtml(content)}</div>`;
+        html += `<div class="message-time">${escapeHtml(time)}</div>`;
+        html += `</div>`;
+        
+        msgDiv.innerHTML = html;
+      }
+      
+      return msgDiv;
+    }
+    
+    function escapeHtml(text) {
+      if (!text) return "";
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
+    }
+    
+    function updateSendButton() {
+      const input = document.getElementById("messageInput");
+      const btn = document.getElementById("sendBtn");
+      if (!input || !btn) return;
+      // 只要选择了聊天对象就可以发送（即使输入框为空，也启用按钮）
+      btn.disabled = !state.currentChat;
+    }
+    
+    function updateContactBadge(chatId) {
+      // Refresh to show badge
+      renderContactList();
+    }
+    
+    // Actions
+    async function sendMessage() {
+      const input = document.getElementById("messageInput");
+      const content = input.value.trim();
+      if (!content || !state.currentChat) return;
+      
+      const chat = state.currentChat;
+      const chatId = getChatId(chat);
+      
+      // Add to local messages
+      addMessage(chatId, {
+        id: Date.now(),
+        type: "own",
+        sender: "我",
+        content: content,
+        time: new Date().toLocaleTimeString(),
+      });
+      
+      if (chat.type === "agent") {
+        // Agent 私聊 - 使用 Agent WebSocket
+        await sendAgentPrivateMessage(chat, content, chatId);
+      } else {
+        // 好友/群聊 - 使用主 WebSocket
+        if (state.ws && state.ws.readyState === WebSocket.OPEN) {
+          let payload;
+          
+          if (chat.type === "friend") {
+            payload = {
+              type: "friend_message",
+              targetImei: chat.id,
+              content: content,
+              message_type: "text",
+              message_id: "msg_" + Date.now(),
+            };
+          } else if (chat.type === "group") {
+            payload = {
+              type: "group_message",
+              groupId: chat.id,
+              content: content,
+              message_type: "text",
+            };
+          }
+          
+          state.ws.send(JSON.stringify(payload));
+        }
+      }
+      
+      // Clear input
+      input.value = "";
+      input.style.height = "auto";
+      updateSendButton();
+    }
+    
+    // 发送 Agent 私聊消息
+    async function sendAgentPrivateMessage(chat, content, chatId) {
+      // 确保 Agent WebSocket 已连接
+      const connected = await ensureAgentWebSocket();
+      if (!connected) {
+        addMessage(chatId, {
+          id: Date.now(),
+          type: "system",
+          sender: "系统",
+          content: "无法连接到 Agent 服务",
+          time: new Date().toLocaleTimeString(),
+        });
+        return;
+      }
+      
+      const requestId = "private_" + Date.now();
+      const payload = {
+        type: "chat",
+        request_id: requestId,
+        agent_id: chat.id,
+        thread_id: "private_" + state.imei + "_" + chat.id,
+        message: content,
+        images: [],
+      };
+      
+      console.log("Sending agent message:", payload);
+      
+      // 设置消息处理器来接收流式响应
+      let responseText = "";
+      let messageHandler = null;
+      
+      messageHandler = (e) => {
+        try {
+          const msg = JSON.parse(e.data);
+          console.log("Agent WS received:", msg);
+          
+          // 处理 pong 和 registered 消息
+          if (msg.type === "pong" || msg.type === "registered") return;
+          
+          // 检查 request_id 匹配（如果响应中有的话）
+          // 注意：有些响应可能不包含 request_id，所以不强制检查
+          const msgRequestId = msg.request_id || "";
+          if (msgRequestId && msgRequestId !== requestId) {
+            console.log("Request ID mismatch, skipping:", msgRequestId, "!=", requestId);
+            return;
+          }
+          
+          // 处理流式响应
+          if (msg.type === "delta") {
+            responseText += msg.content || "";
+            console.log("Delta received, current text length:", responseText.length);
+          } else if (msg.type === "done") {
+            console.log("Done received, final text:", responseText);
+            // 移除处理器
+            if (state.agentWs) {
+              state.agentWs.removeEventListener("message", messageHandler);
+            }
+            // 添加完整回复到消息列表
+            if (responseText) {
+              console.log("Adding agent response to chat:", responseText.substring(0, 50) + "...");
+              addMessage(chatId, {
+                id: Date.now(),
+                type: "received",
+                sender: chat.name || chat.id,
+                content: responseText,
+                time: new Date().toLocaleTimeString(),
+              });
+            }
+            responseText = "";
+          } else if (msg.type === "error") {
+            console.error("Agent error:", msg);
+            if (state.agentWs) {
+              state.agentWs.removeEventListener("message", messageHandler);
+            }
+            addMessage(chatId, {
+              id: Date.now(),
+              type: "system",
+              sender: "系统",
+              content: "Agent 错误: " + (msg.error || msg.content || "未知错误"),
+              time: new Date().toLocaleTimeString(),
+            });
+            responseText = "";
+          } else if (msg.type === "stopped") {
+            console.log("Agent stopped");
+            if (state.agentWs) {
+              state.agentWs.removeEventListener("message", messageHandler);
+            }
+            if (responseText) {
+              addMessage(chatId, {
+                id: Date.now(),
+                type: "received",
+                sender: chat.name || chat.id,
+                content: responseText,
+                time: new Date().toLocaleTimeString(),
+              });
+            }
+          }
+        } catch (err) {
+          console.error("Agent message parse error:", err);
+        }
+      };
+      
+      // 使用 addEventListener 而不是直接赋值
+      state.agentWs.addEventListener("message", messageHandler);
+      
+      state.agentWs.send(JSON.stringify(payload));
+      console.log("Agent message sent with requestId:", requestId);
+      
+      // 设置超时，防止一直等待
+      setTimeout(() => {
+        if (responseText && state.agentWs) {
+          console.log("Timeout with partial response:", responseText);
+          state.agentWs.removeEventListener("message", messageHandler);
+          addMessage(chatId, {
+            id: Date.now(),
+            type: "received",
+            sender: chat.name || chat.id,
+            content: responseText,
+            time: new Date().toLocaleTimeString(),
+          });
+          responseText = "";
+        }
+      }, 30000); // 30秒超时
+    }
+    
+    async function refreshContacts() {
+      try {
+        // Fetch friends and agents
+        const [friendsRes, agentsRes, groupsRes] = await Promise.all([
+          fetch(`${state.httpBase}/api/friends/list?imei=${encodeURIComponent(state.imei)}`),
+          fetch(`${state.httpBase}/api/custom-assistants?imei=${encodeURIComponent(state.imei)}`),
+          fetch(`${state.httpBase}/api/groups/list?imei=${encodeURIComponent(state.imei)}`),
+        ]);
+        
+        const friendsData = await friendsRes.json();
+        const agentsData = await agentsRes.json();
+        const groupsData = await groupsRes.json();
+        
+        // Merge friends and agents
+        const friends = [
+          ...(friendsData.friends || []).map(f => ({ ...f, _type: "friend", id: f.imei })),
+          ...(agentsData.assistants || []).map(a => ({ ...a, _type: "agent" })),
+        ];
+        
+        state.friends = friends;
+        state.groups = (groupsData.groups || []).map(g => ({ ...g, _type: "group", id: g.group_id }));
+        
+        renderContactList();
+        console.log("Contacts refreshed");
+      } catch (e) {
+        console.error("Failed to refresh contacts:", e);
+      }
+    }
+    
+    // Settings
+    function toggleSettings() {
+      document.getElementById("settingsPanel").classList.toggle("open");
+      document.getElementById("settingsOverlay").classList.toggle("open");
+    }
+    
+    function loadSettings() {
+      const saved = localStorage.getItem("chatSpaceSettings");
+      if (saved) {
+        const settings = JSON.parse(saved);
+        state.httpBase = settings.httpBase || state.httpBase;
+        document.getElementById("httpBase").value = state.httpBase;
+      }
+    }
+    
+    async function saveAllAgentsSetting() {
+      const toggle = document.getElementById("allAgentsReplyToggle");
+      const value = toggle.checked;
+      
+      try {
+        const res = await fetch(`${state.httpBase}/api/user-settings/all_agents_reply`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            imei: state.imei,
+            key: "all_agents_reply",
+            value: value,
+          }),
+        });
+        const data = await res.json();
+        if (data.success) {
+          alert("设置已保存");
+        } else {
+          alert("保存失败: " + (data.detail || "未知错误"));
+        }
+      } catch (e) {
+        alert("保存失败: " + e.message);
+      }
+    }
+  </script>
+</body>
+</html>

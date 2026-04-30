@@ -1,0 +1,1859 @@
+[
+  {
+    "packageName": "com.jingdong.app.mall",
+    "appName": "京东"
+  },
+  {
+    "packageName": "com.taobao.taobao",
+    "appName": "淘宝"
+  },
+  {
+    "packageName": "com.tencent.mm",
+    "appName": "微信"
+  },
+  {
+    "packageName": "com.eg.android.AlipayGphone",
+    "appName": "支付宝"
+  },
+  {
+    "packageName": "com.sankuai.meituan",
+    "appName": "美团"
+  },
+  {
+    "packageName": "com.autonavi.minimap",
+    "appName": "高德地图"
+  },
+  {
+    "packageName": "com.google.android.apps.maps",
+    "appName": "地图"
+  },
+  {
+    "packageName": "com.baidu.BaiduMap",
+    "appName": "百度地图"
+  },
+  {
+    "packageName": "com.ss.android.ugc.aweme",
+    "appName": "抖音"
+  },
+  {
+    "packageName": "com.xingin.xhs",
+    "appName": "小红书"
+  },
+  {
+    "packageName": "com.ss.android.article.news",
+    "appName": "今日头条"
+  },
+  {
+    "packageName": "com.youku.phone",
+    "appName": "优酷视频"
+  },
+  {
+    "packageName": "com.youku.phone",
+    "appName": "优酷"
+  },
+  {
+    "packageName": "com.lemon.lv",
+    "appName": "剪映"
+  },
+  {
+    "packageName": "com.hunantv.imgo.activity",
+    "appName": "芒果TV"
+  },
+  {
+    "packageName": "me.ele",
+    "appName": "饿了么"
+  },
+  {
+    "packageName": "com.oplus.camera",
+    "appName": "相机"
+  },
+  {
+    "packageName": "com.hunantv.imgo.activity",
+    "appName": "芒果tv"
+  },
+  {
+    "packageName": "com.tongcheng.android",
+    "appName": "同程旅行"
+  },
+  {
+    "packageName": "com.achievo.vipshop",
+    "appName": "唯品会"
+  },
+  {
+    "packageName": "com.quark.browser",
+    "appName": "夸克"
+  },
+  {
+    "packageName": "com.sina.weibo",
+    "appName": "微博"
+  },
+  {
+    "packageName": "com.smile.gifmaker",
+    "appName": "快手"
+  },
+  {
+    "packageName": "com.xunmeng.pinduoduo",
+    "appName": "拼多多"
+  },
+  {
+    "packageName": "ctrip.android.view",
+    "appName": "携程旅行"
+  },
+  {
+    "packageName": "ctrip.android.view",
+    "appName": "携程"
+  },
+  {
+    "packageName": "com.qiyi.video",
+    "appName": "爱奇艺"
+  },
+  {
+    "packageName": "com.dragon.read",
+    "appName": "番茄免费小说"
+  },
+  {
+    "packageName": "com.xs.fm",
+    "appName": "番茄畅听"
+  },
+  {
+    "packageName": "com.baidu.searchbox",
+    "appName": "百度"
+  },
+  {
+    "packageName": "com.phoenix.read",
+    "appName": "红果免费短剧"
+  },
+  {
+    "packageName": "com.microsoft.appmanager",
+    "appName": "连接至 Windows"
+  },
+  {
+    "packageName": "com.MobileTicket",
+    "appName": "铁路12306"
+  },
+  {
+    "packageName": "com.MobileTicket",
+    "appName": "12306"
+  },
+  {
+    "packageName": "com.taobao.idlefish",
+    "appName": "闲鱼"
+  },
+  {
+    "packageName": "com.alibaba.wireless",
+    "appName": "阿里巴巴"
+  },
+  {
+    "packageName": "com.taobao.trip",
+    "appName": "飞猪旅行"
+  },
+  {
+    "packageName": "com.taobao.trip",
+    "appName": "飞猪"
+  },
+  {
+    "packageName": "com.cloudcontrol.demo",
+    "appName": "TopoClaw"
+  },
+  {
+    "packageName": "com.wuba",
+    "appName": "58同城"
+  },
+  {
+    "packageName": "com.hpbr.bosszhipin",
+    "appName": "BOSS直聘"
+  },
+  {
+    "packageName": "com.oppo.store",
+    "appName": "OPPO商城"
+  },
+  {
+    "packageName": "com.oppo.store",
+    "appName": "oppo商城"
+  },
+  {
+    "packageName": "com.oppo.store",
+    "appName": "OPPO 商城"
+  },
+  {
+    "packageName": "com.oppo.store",
+    "appName": "oppo 商城"
+  },
+  {
+    "packageName": "com.debug.loggerui",
+    "appName": "DebugLoggerUI"
+  },
+  {
+    "packageName": "com.mfw.roadbook",
+    "appName": "马蜂窝"
+  },
+  {
+    "packageName": "com.zhihu.android",
+    "appName": "知乎"
+  },
+  {
+    "packageName": "com.larus.nova",
+    "appName": "豆包"
+  },
+  {
+    "packageName": "com.deepseek.chat",
+    "appName": "deepseek"
+  },
+  {
+    "packageName": "com.deepseek.chat",
+    "appName": "DeepSeek"
+  },
+  {
+    "packageName": "com.deepseek.chat",
+    "appName": "DEEPSEEK"
+  },
+  {
+    "packageName": "com.tencent.hunyuan.app.chat",
+    "appName": "元宝"
+  },
+  {
+    "packageName": "com.tuyoo.doudizhu.android3d.nearme.gamecenter",
+    "appName": "途游斗地主"
+  },
+  {
+    "packageName": "com.happyelements.AndroidAnimal",
+    "appName": "开心消消乐"
+  },
+  {
+    "packageName": "com.fido.uafclient",
+    "appName": "FIDO UAF1.0 Client"
+  },
+  {
+    "packageName": "com.google.android.gm",
+    "appName": "Gmail"
+  },
+  {
+    "packageName": "com.google.android.apps.maps",
+    "appName": "Maps"
+  },
+  {
+    "packageName": "com.google.android.apps.maps",
+    "appName": "Map"
+  },
+  {
+    "packageName": "com.google.android.apps.maps",
+    "appName": "maps"
+  },
+  {
+    "packageName": "com.google.android.apps.maps",
+    "appName": "map"
+  },
+  {
+    "packageName": "com.google.android.apps.maps",
+    "appName": "谷歌地图"
+  },
+  {
+    "packageName": "com.google.android.apps.maps",
+    "appName": "Google Map"
+  },
+  {
+    "packageName": "com.google.android.apps.maps",
+    "appName": "Google Maps"
+  },
+  {
+    "packageName": "com.google.android.apps.maps",
+    "appName": "google maps"
+  },
+  {
+    "packageName": "com.tencent.wemeet.app",
+    "appName": "腾讯会议"
+  },
+  {
+    "packageName": "com.gotokeep.keep",
+    "appName": "Keep"
+  },
+  {
+    "packageName": "com.moonshot.kimichat",
+    "appName": "Kimi"
+  },
+  {
+    "packageName": "com.immomo.momo",
+    "appName": "MOMO陌陌"
+  },
+  {
+    "packageName": "com.fido.asm",
+    "appName": "MOTO FIDO UAF1.0 ASM"
+  },
+  {
+    "packageName": "com.heytap.health",
+    "appName": "OPPO 健康"
+  },
+  {
+    "packageName": "com.oppo.store",
+    "appName": "OPPO 商城"
+  },
+  {
+    "packageName": "com.oppo.community",
+    "appName": "OPPO 社区"
+  },
+  {
+    "packageName": "com.heytap.yoli",
+    "appName": "OPPO 视频"
+  },
+  {
+    "packageName": "com.tencent.mobileqq",
+    "appName": "QQ"
+  },
+  {
+    "packageName": "com.tencent.mtt",
+    "appName": "QQ浏览器"
+  },
+  {
+    "packageName": "com.tencent.androidqqmail",
+    "appName": "QQ邮箱"
+  },
+  {
+    "packageName": "com.qq.reader",
+    "appName": "QQ阅读"
+  },
+  {
+    "packageName": "com.qq.reader",
+    "appName": "qq阅读"
+  },
+  {
+    "packageName": "com.tencent.qqmusic",
+    "appName": "QQ音乐"
+  },
+  {
+    "packageName": "com.tencent.map",
+    "appName": "腾讯地图"
+  },
+  {
+    "packageName": "com.tencent.qqlive",
+    "appName": "腾讯视频"
+  },
+  {
+    "packageName": "com.android.stk",
+    "appName": "SIM 卡工具包"
+  },
+  {
+    "packageName": "com.seetong.app.seetong",
+    "appName": "Seetong"
+  },
+  {
+    "packageName": "com.tencent.soter.soterserver",
+    "appName": "SoterService"
+  },
+  {
+    "packageName": "cn.soulapp.android",
+    "appName": "Soul"
+  },
+  {
+    "packageName": "com.heytap.market",
+    "appName": "软件商店"
+  },
+  {
+    "packageName": "com.heytap.market",
+    "appName": "应用商店"
+  },
+  {
+    "packageName": "com.teamtalk.im",
+    "appName": "TeamTalk"
+  },
+  {
+    "packageName": "com.teamtalk.im",
+    "appName": "teamtalk"
+  },
+  {
+    "packageName": "com.teamtalk.im",
+    "appName": "Teamtalk"
+  },
+  {
+    "packageName": "com.teamtalk.im",
+    "appName": "tt"
+  },
+  {
+    "packageName": "com.teamtalk.im",
+    "appName": "TT"
+  },
+  {
+    "packageName": "com.UCMobile",
+    "appName": "UC浏览器"
+  },
+  {
+    "packageName": "com.wapi.wapicertmanager",
+    "appName": "WAPI证书"
+  },
+  {
+    "packageName": "cn.wps.moffice_eng",
+    "appName": "WPS Office"
+  },
+  {
+    "packageName": "cn.wps.moffice_eng",
+    "appName": "wps"
+  },
+  {
+    "packageName": "cn.wps.moffice_eng",
+    "appName": "WPS"
+  },
+  {
+    "packageName": "cn.wps.moffice_eng",
+    "appName": "Wps"
+  },
+  {
+    "packageName": "com.mediatek",
+    "appName": "com.mediatek"
+  },
+  {
+    "packageName": "vendor.mediatek.iwlanservice",
+    "appName": "vendor.mediatek.iwlanservice"
+  },
+  {
+    "packageName": "com.kmxs.reader",
+    "appName": "七猫免费小说"
+  },
+  {
+    "packageName": "com.eastmoney.android.berlin",
+    "appName": "东方财富"
+  },
+  {
+    "packageName": "cn.gov.tax.its",
+    "appName": "个人所得税"
+  },
+  {
+    "packageName": "com.ct.client",
+    "appName": "中国电信"
+  },
+  {
+    "packageName": "com.lingan.seeyou",
+    "appName": "美柚"
+  },
+  {
+    "packageName": "com.greenpoint.android.mc10086.activity",
+    "appName": "中国移动"
+  },
+  {
+    "packageName": "com.sinovatech.unicom.ui",
+    "appName": "中国联通"
+  },
+  {
+    "packageName": "com.heytap.themestore",
+    "appName": "主题商店"
+  },
+  {
+    "packageName": "com.heytap.pictorial",
+    "appName": "乐划锁屏"
+  },
+  {
+    "packageName": "com.heytap.book",
+    "appName": "书城"
+  },
+  {
+    "packageName": "com.bankcomm.maidanba",
+    "appName": "买单吧"
+  },
+  {
+    "packageName": "com.unionpay",
+    "appName": "云闪付"
+  },
+  {
+    "packageName": "com.tmri.app.main",
+    "appName": "交管12123"
+  },
+  {
+    "packageName": "com.jd.app.reader",
+    "appName": "京东读书"
+  },
+  {
+    "packageName": "com.jd.jrapp",
+    "appName": "京东金融"
+  },
+  {
+    "packageName": "com.ss.android.article.lite",
+    "appName": "今日头条极速版"
+  },
+  {
+    "packageName": "com.tencent.wework",
+    "appName": "企业微信"
+  },
+  {
+    "packageName": "com.baidu.homework",
+    "appName": "作业帮"
+  },
+  {
+    "packageName": "com.oplus.tips",
+    "appName": "使用技巧"
+  },
+  {
+    "packageName": "com.coloros.note",
+    "appName": "便签"
+  },
+  {
+    "packageName": "com.heytap.quicksearchbox",
+    "appName": "全局搜索"
+  },
+  {
+    "packageName": "com.tencent.karaoke",
+    "appName": "全民K歌"
+  },
+  {
+    "packageName": "com.ifeng.news2",
+    "appName": "凤凰新闻"
+  },
+  {
+    "packageName": "com.aliyun.tongyi",
+    "appName": "千问"
+  },
+  {
+    "packageName": "com.Qunar",
+    "appName": "去哪儿旅行"
+  },
+  {
+    "packageName": "com.Qunar",
+    "appName": "去哪儿"
+  },
+  {
+    "packageName": "com.eques.doorbell",
+    "appName": "叮咚"
+  },
+  {
+    "packageName": "com.yaya.zone",
+    "appName": "叮咚买菜"
+  },
+  {
+    "packageName": "com.hexin.plat.android",
+    "appName": "同花顺"
+  },
+  {
+    "packageName": "com.ss.android.article.video",
+    "appName": "西瓜视频"
+  },
+  {
+    "packageName": "com.cmcc.cmvideo",
+    "appName": "咪咕视频"
+  },
+  {
+    "packageName": "cmccwm.mobilemusic",
+    "appName": "咪咕音乐"
+  },
+  {
+    "packageName": "com.jingyao.easybike",
+    "appName": "哈啰"
+  },
+  {
+    "packageName": "tv.danmaku.bili",
+    "appName": "哔哩哔哩"
+  },
+  {
+    "packageName": "tv.danmaku.bili",
+    "appName": "b站"
+  },
+  {
+    "packageName": "tv.danmaku.bili",
+    "appName": "B站"
+  },
+  {
+    "packageName": "com.android.mms",
+    "appName": "短信"
+  },
+  {
+    "packageName": "com.android.mms",
+    "appName": "信息"
+  },
+  {
+    "packageName": "tv.danmaku.bili",
+    "appName": "bilibili"
+  },
+  {
+    "packageName": "tv.danmaku.bili",
+    "appName": "Bilibili"
+  },
+  {
+    "packageName": "com.ximalaya.ting.android",
+    "appName": "喜马拉雅"
+  },
+  {
+    "packageName": "com.moji.mjweather",
+    "appName": "墨迹天气"
+  },
+  {
+    "packageName": "com.dianping.v1",
+    "appName": "大众点评"
+  },
+  {
+    "packageName": "com.android.settings",
+    "appName": "设置"
+  },
+  {
+    "packageName": "com.android.contacts",
+    "appName": "电话"
+  },
+  {
+    "packageName": "com.android.contacts",
+    "appName": "通讯录"
+  },
+  {
+    "packageName": "com.android.contacts",
+    "appName": "联系人"
+  },
+  {
+    "packageName": "com.android.email",
+    "appName": "邮件"
+  },
+  {
+    "packageName": "com.coloros.compass2",
+    "appName": "指南针"
+  },
+  {
+    "packageName": "com.coloros.calculator",
+    "appName": "计算器"
+  },
+  {
+    "packageName": "com.android.mms",
+    "appName": "短信"
+  },
+  {
+    "packageName": "cn.damai",
+    "appName": "大麦"
+  },
+  {
+    "packageName": "com.hmkqeyj.qgqxx",
+    "appName": "天安好车主"
+  },
+  {
+    "packageName": "com.coloros.weather2",
+    "appName": "天气"
+  },
+  {
+    "packageName": "com.tmall.wireless",
+    "appName": "天猫"
+  },
+  {
+    "packageName": "com.tianyancha.skyeye",
+    "appName": "天眼查"
+  },
+  {
+    "packageName": "com.baidu.haokan",
+    "appName": "好看视频"
+  },
+  {
+    "packageName": "cn.xuexi.android",
+    "appName": "学习强国"
+  },
+  {
+    "packageName": "com.chaoxing.mobile",
+    "appName": "学习通"
+  },
+  {
+    "packageName": "com.msxf.ayh",
+    "appName": "安逸花"
+  },
+  {
+    "packageName": "com.coloros.familyguard",
+    "appName": "家人守护"
+  },
+  {
+    "packageName": "app.podcast.cosmos",
+    "appName": "小宇宙"
+  },
+  {
+    "packageName": "com.heytap.speechassist",
+    "appName": "小布助手"
+  },
+  {
+    "packageName": "com.cainiao.wireless",
+    "appName": "菜鸟"
+  },
+  {
+    "packageName": "com.coloros.shortcuts",
+    "appName": "小布指令"
+  },
+  {
+    "packageName": "com.oplus.aimemory",
+    "appName": "小布记忆"
+  },
+  {
+    "packageName": "com.oplus.play",
+    "appName": "小游戏"
+  },
+  {
+    "packageName": "com.fenbi.android.leo",
+    "appName": "小猿AI"
+  },
+  {
+    "packageName": "com.yueme.itv",
+    "appName": "小翼管家"
+  },
+  {
+    "packageName": "cn.samsclub.app",
+    "appName": "山姆会员商店"
+  },
+  {
+    "packageName": "com.coloros.soundrecorder",
+    "appName": "录音"
+  },
+  {
+    "packageName": "com.coloros.soundrecorder",
+    "appName": "录音机"
+  },
+  {
+    "packageName": "com.le123.ysdq",
+    "appName": "影视大全"
+  },
+  {
+    "packageName": "com.shizhuang.duapp",
+    "appName": "得物"
+  },
+  {
+    "packageName": "com.tencent.weread",
+    "appName": "微信读书"
+  },
+  {
+    "packageName": "com.szzc",
+    "appName": "神州租车"
+  },
+  {
+    "packageName": "com.wuba.zhuanzhuan",
+    "appName": "转转"
+  },
+  {
+    "packageName": "com.ganji.android.haoche_c",
+    "appName": "瓜子二手车"
+  },
+  {
+    "packageName": "com.ganji.android.haoche_c",
+    "appName": "ppt"
+  },
+  {
+    "packageName": "com.ganji.android.haoche_c",
+    "appName": "PPT"
+  },
+  {
+    "packageName": "com.sanmao.newlearnwordpro",
+    "appName": "WORD"
+  },
+  {
+    "packageName": "com.sanmao.newlearnwordpro",
+    "appName": "word"
+  },
+  {
+    "packageName": "com.sanmao.newlearnwordpro",
+    "appName": "Word"
+  },
+  {
+    "packageName": "com.gamawh.exceler",
+    "appName": "excel"
+  },
+  {
+    "packageName": "com.gamawh.exceler",
+    "appName": "Excel"
+  },
+  {
+    "packageName": "com.gamawh.exceler",
+    "appName": "EXCEL"
+  },
+  {
+    "packageName": "com.sf.activity",
+    "appName": "顺丰速运"
+  },
+  {
+    "packageName": "com.fenbi.android.servant",
+    "appName": "粉笔"
+  },
+  {
+    "packageName": "com.kuaiduizuoye.scan",
+    "appName": "快对AI"
+  },
+  {
+    "packageName": "com.nearme.instant.platform",
+    "appName": "快应用服务框架"
+  },
+  {
+    "packageName": "com.kuaishou.nebula",
+    "appName": "快手极速版"
+  },
+  {
+    "packageName": "com.cat.readall",
+    "appName": "悟空浏览器"
+  },
+  {
+    "packageName": "com.oplus.matrix",
+    "appName": "意图执行框架"
+  },
+  {
+    "packageName": "com.ss.android.auto",
+    "appName": "懂车帝"
+  },
+  {
+    "packageName": "com.oplus.member",
+    "appName": "我的 OPPO"
+  },
+  {
+    "packageName": "com.coloros.backuprestore",
+    "appName": "手机搬家"
+  },
+  {
+    "packageName": "com.intsig.camscanner",
+    "appName": "扫描全能王"
+  },
+  {
+    "packageName": "com.ss.android.ugc.livelite",
+    "appName": "抖音商城"
+  },
+  {
+    "packageName": "com.ss.android.ugc.live",
+    "appName": "抖音火山版"
+  },
+  {
+    "packageName": "com.coloros.compass2",
+    "appName": "指南针"
+  },
+  {
+    "packageName": "com.cmbchina.ccd.pluto.cmbActivity",
+    "appName": "掌上生活"
+  },
+  {
+    "packageName": "com.chaozh.iReaderFree",
+    "appName": "掌阅"
+  },
+  {
+    "packageName": "com.sohu.newsclient",
+    "appName": "搜狐新闻"
+  },
+  {
+    "packageName": "com.sohu.sohuvideo",
+    "appName": "搜狐视频"
+  },
+  {
+    "packageName": "com.coloros.filemanager",
+    "appName": "文件管理"
+  },
+  {
+    "packageName": "com.baidu.newapp",
+    "appName": "文心"
+  },
+  {
+    "packageName": "andes.oplus.documentsreader",
+    "appName": "文档"
+  },
+  {
+    "packageName": "air.tv.douyu.android",
+    "appName": "斗鱼"
+  },
+  {
+    "packageName": "com.douban.frodo",
+    "appName": "豆瓣"
+  },
+  {
+    "packageName": "com.sina.news",
+    "appName": "新浪新闻"
+  },
+  {
+    "packageName": "com.coloros.calendar",
+    "appName": "日历"
+  },
+  {
+    "packageName": "com.coloros.alarmclock",
+    "appName": "时钟"
+  },
+  {
+    "packageName": "com.opos.ads",
+    "appName": "智能推荐服务"
+  },
+  {
+    "packageName": "com.oplus.pantanal.ums",
+    "appName": "服务治理框架"
+  },
+  {
+    "packageName": "com.pupumall.customer",
+    "appName": "朴朴超市"
+  },
+  {
+    "packageName": "com.luna.music",
+    "appName": "汽水音乐"
+  },
+  {
+    "packageName": "com.cub",
+    "appName": "汽车之家"
+  },
+  {
+    "packageName": "com.cubic.autohome",
+    "appName": "汽车之家"
+  },
+  {
+    "packageName": "com.heytap.browser",
+    "appName": "浏览器"
+  },
+  {
+    "packageName": "com.netease.cloudmusic",
+    "appName": "网易云音乐"
+  },
+  {
+    "packageName": "com.sdu.didi.psnger",
+    "appName": "滴滴出行"
+  },
+  {
+    "packageName": "com.umetrip.android.msky.app",
+    "appName": "航旅纵横"
+  },
+  {
+    "packageName": "com.webank.wemoney",
+    "appName": "微众银行"
+  },
+  {
+    "packageName": "com.liulishuo.engzo",
+    "appName": "流利说-英语"
+  },
+  {
+    "packageName": "com.lianjia.beike",
+    "appName": "贝壳找房"
+  },
+  {
+    "packageName": "com.lianjia.beike",
+    "appName": "贝壳"
+  },
+  {
+    "packageName": "com.yiche.autoeasy",
+    "appName": "易车"
+  },
+  {
+    "packageName": "com.anjuke.android.app",
+    "appName": "安居客"
+  },
+  {
+    "packageName": "com.baidu.xin.aiqicha",
+    "appName": "爱企查"
+  },
+  {
+    "packageName": "com.huaxiaozhu.rider",
+    "appName": "花小猪打车"
+  },
+  {
+    "packageName": "com.finshell.finance",
+    "appName": "欢太金融"
+  },
+  {
+    "packageName": "com.ganji.android.haoche_c",
+    "appName": "瓜子二手车"
+  },
+  {
+    "packageName": "com.fanli.android.apps",
+    "appName": "返利"
+  },
+  {
+    "packageName": "com.ingka.ikea.app.cn.prod",
+    "appName": "IKEA宜家家居"
+  },
+  {
+    "packageName": "com.hupu.shihuo",
+    "appName": "识货"
+  },
+  {
+    "packageName": "com.cctir.huinongbao",
+    "appName": "惠农宝"
+  },
+  {
+    "packageName": "com.koolearn.zhenxuan",
+    "appName": "东方甄选"
+  },
+  {
+    "packageName": "com.mogujie",
+    "appName": "蘑菇街"
+  },
+  {
+    "packageName": "com.ganji.android",
+    "appName": "赶集招聘"
+  },
+  {
+    "packageName": "com.zhaopin.social",
+    "appName": "智联招聘"
+  },
+  {
+    "packageName": "com.lietou.mishu",
+    "appName": "猎聘"
+  },
+  {
+    "packageName": "com.bohrium.mobile",
+    "appName": "玻尔"
+  },
+  {
+    "packageName": "com.fenbi.android.kyzz",
+    "appName": "粉笔考研"
+  },
+  {
+    "packageName": "com.dangdang.buy2",
+    "appName": "当当"
+  },
+  {
+    "packageName": "com.antgroup.leopard.android",
+    "appName": "灵光"
+  },
+  {
+    "packageName": "com.shusheng.JoJoRead",
+    "appName": "叫叫"
+  },
+  {
+    "packageName": "com.xueersi.parentsmeeting",
+    "appName": "学而思网校"
+  },
+  {
+    "packageName": "com.gaotu100.superclass",
+    "appName": "高途"
+  },
+  {
+    "packageName": "com.huatu.handheld_huatu",
+    "appName": "华图在线"
+  },
+  {
+    "packageName": "com.mampod.ergedd",
+    "appName": "儿歌点点"
+  },
+  {
+    "packageName": "com.peopledailychina.activity",
+    "appName": "人民日报"
+  },
+  {
+    "packageName": "cn.TuHu.android",
+    "appName": "途虎养车"
+  },
+  {
+    "packageName": "vip.chebb.xuefajianfen",
+    "appName": "车主搜题宝典"
+  },
+  {
+    "packageName": "com.geelygalaxy.customer",
+    "appName": "吉利银河"
+  },
+  {
+    "packageName": "com.wepie.ivy",
+    "appName": "青藤之恋"
+  },
+  {
+    "packageName": "com.changan.uni",
+    "appName": "引力域"
+  },
+  {
+    "packageName": "com.sohu.sohuhy",
+    "appName": "狐友"
+  },
+  {
+    "packageName": "com.meelive.ingkee",
+    "appName": "映客直播"
+  },
+  {
+    "packageName": "cn.adidas.app",
+    "appName": "adidas"
+  },
+  {
+    "packageName": "com.yek.android.uniqlo",
+    "appName": "优衣库"
+  },
+  {
+    "packageName": "com.nike.omega",
+    "appName": "Nike 耐克"
+  },
+  {
+    "packageName": "com.icbc",
+    "appName": "中国工商银行"
+  },
+  {
+    "packageName": "com.chinamworld.main",
+    "appName": "中国建设银行"
+  },
+  {
+    "packageName": "com.android.bankabc",
+    "appName": "中国农业银行"
+  },
+  {
+    "packageName": "com.xt.retouch",
+    "appName": "醒图"
+  },
+  {
+    "packageName": "com.xunlei.downloadprovider",
+    "appName": "迅雷"
+  },
+  {
+    "packageName": "com.meitu.meiyancamera",
+    "appName": "美颜相机"
+  },
+  {
+    "packageName": "com.shineyie.aijianji",
+    "appName": "爱剪辑"
+  },
+  {
+    "packageName": "com.yuedong.sport",
+    "appName": "悦动圈"
+  },
+  {
+    "packageName": "com.dailyyoga.cn",
+    "appName": "每日瑜伽"
+  },
+  {
+    "packageName": "com.cloudpower.netsale.activity",
+    "appName": "中国人保"
+  },
+  {
+    "packageName": "io.dcloud.H576E6CC7",
+    "appName": "鱼泡直聘"
+  },
+  {
+    "packageName": "com.wepie.weplay",
+    "appName": "会玩"
+  },
+  {
+    "packageName": "com.avgorange.mailiang",
+    "appName": "橙光阅读器"
+  },
+  {
+    "packageName": "com.mszmapp.detective",
+    "appName": "百变大侦探"
+  },
+  {
+    "packageName": "com.youxiang.soyoungapp",
+    "appName": "新氧医美"
+  },
+  {
+    "packageName": "com.zhongan.insurance",
+    "appName": "众安保险"
+  },
+  {
+    "packageName": "com.meibei.app",
+    "appName": "美呗医美"
+  },
+  {
+    "packageName": "com.gbits.atm.nearme.gamecenter",
+    "appName": "问道"
+  },
+  {
+    "packageName": "com.bestv.app",
+    "appName": "看东方"
+  },
+  {
+    "packageName": "com.smart.app.jijia.worldStory",
+    "appName": "早闻天下事"
+  },
+  {
+    "packageName": "cn.etouch.ecalendar",
+    "appName": "中华万年历"
+  },
+  {
+    "packageName": "com.android.dazhihui",
+    "appName": "大智慧"
+  },
+  {
+    "packageName": "com.tvbc.maiduidui",
+    "appName": "埋堆堆"
+  },
+  {
+    "packageName": "com.ahzywh.oldkingofsongs",
+    "appName": "经典老哥王"
+  },
+  {
+    "packageName": "com.hfssy.joyride",
+    "appName": "自驾兜风"
+  },
+  {
+    "packageName": "com.hm.hmysct",
+    "appName": "盒马畅听"
+  },
+  {
+    "packageName": "com.whxm.controlbus",
+    "appName": "智慧公交"
+  },
+  {
+    "packageName": "com.hellobike.majia",
+    "appName": "哈啰车主"
+  },
+  {
+    "packageName": "com.sdu.didi.gsui",
+    "appName": "滴滴车主"
+  },
+  {
+    "packageName": "com.ihuman.english",
+    "appName": "洪恩英语"
+  },
+  {
+    "packageName": "com.dancefitme.cn",
+    "appName": "热汗舞蹈"
+  },
+  {
+    "packageName": "com.youqi.fjjf",
+    "appName": "饭橘"
+  },
+  {
+    "packageName": "com.app.pinealgland",
+    "appName": "松果倾诉"
+  },
+  {
+    "packageName": "com.app.pinealgland.teachers",
+    "appName": "松果名师"
+  },
+  {
+    "packageName": "com.antgroup.aijk.android",
+    "appName": "AQ"
+  },
+  {
+    "packageName": "com.kwai.videoeditor",
+    "appName": "快影"
+  },
+  {
+    "packageName": "com.kwai.hisense",
+    "appName": "回森"
+  },
+  {
+    "packageName": "com.clover.daysmatter",
+    "appName": "倒数日"
+  },
+  {
+    "packageName": "cn.gov.chinatax.gt4.app",
+    "appName": "电子商务局"
+  },
+  {
+    "packageName": "net.huanci.hsjpro",
+    "appName": "画世界Pro"
+  },
+  {
+    "packageName": "com.sinyee.babybus.recommendapp",
+    "appName": "宝宝巴士"
+  },
+  {
+    "packageName": "com.hicorenational.antifraud",
+    "appName": "国家反诈中心"
+  },
+  {
+    "packageName": "com.xiaomi.smarthome",
+    "appName": "米家"
+  },
+  {
+    "packageName": "com.p1.mobile.putong",
+    "appName": "探探"
+  },
+  {
+    "packageName": "com.ai.obc.cbn.app",
+    "appName": "中国广电"
+  },
+  {
+    "packageName": "me.yidui",
+    "appName": "伊对"
+  },
+  {
+    "packageName": "com.mjmfsonf.zydabdui",
+    "appName": "作业答案帮对"
+  },
+  {
+    "packageName": "com.handsgo.jiakao.android",
+    "appName": "驾考宝典"
+  },
+  {
+    "packageName": "com.bytedance.dreamina",
+    "appName": "即梦AI"
+  },
+  {
+    "packageName": "cn.com.chsi.chsiapp",
+    "appName": "学信网"
+  },
+  {
+    "packageName": "com.lalamove.huolala.client",
+    "appName": "货拉拉"
+  },
+  {
+    "packageName": "com.zuoyebang.knowledge",
+    "appName": "作业帮家长版"
+  },
+  {
+    "packageName": "com.mosheng",
+    "appName": "爱聊"
+  },
+  {
+    "packageName": "com.jiongji.andriod.card",
+    "appName": "百词斩"
+  },
+  {
+    "packageName": "com.xunmeng.merchant",
+    "appName": "拼多多商家版"
+  },
+  {
+    "packageName": "com.tantan.x",
+    "appName": "牵手"
+  },
+  {
+    "packageName": "io.dcloud.yige",
+    "appName": "易手游"
+  },
+  {
+    "packageName": "com.sankuai.movie",
+    "appName": "猫眼"
+  },
+  {
+    "packageName": "com.jxedt",
+    "appName": "驾校一点通"
+  },
+  {
+    "packageName": "com.iflytek.translateapp",
+    "appName": "讯飞翻译"
+  },
+  {
+    "packageName": "com.qihoo.browser",
+    "appName": "360 浏览器"
+  },
+  {
+    "packageName": "dji.mimo",
+    "appName": "DJI Mimo"
+  },
+  {
+    "packageName": "com.hanweb.android.sdzwfw.activity",
+    "appName": "爱山东"
+  },
+  {
+    "packageName": "com.duodian.freehire",
+    "appName": "租号王"
+  },
+  {
+    "packageName": "com.yuantiku.tutor",
+    "appName": "猿辅导"
+  },
+  {
+    "packageName": "com.ss.android.yumme.video",
+    "appName": "抖音精选"
+  },
+  {
+    "packageName": "com.xingye.app",
+    "appName": "星野"
+  },
+  {
+    "packageName": "com.iflytek.inputmethod",
+    "appName": "讯飞输入法"
+  },
+  {
+    "packageName": "com.parallel.odyssey",
+    "appName": "猫箱"
+  },
+  {
+    "packageName": "com.tencent.transfer",
+    "appName": "换机助手"
+  },
+  {
+    "packageName": "com.xhey.xcamera",
+    "appName": "今日水印相机"
+  },
+  {
+    "packageName": "com.meitu.wink",
+    "appName": "Wink"
+  },
+  {
+    "packageName": "com.koudai.weidian.buyer",
+    "appName": "微店"
+  },
+  {
+    "packageName": "com.yiyou.ga",
+    "appName": "TT语音"
+  },
+  {
+    "packageName": "com.sohu.inputmethod.sogou",
+    "appName": "搜狗输入法"
+  },
+  {
+    "packageName": "com.bingyu.mfdjkan",
+    "appName": "免费短剧看"
+  },
+  {
+    "packageName": "cn.hsa.app",
+    "appName": "国家医保服务平台"
+  },
+  {
+    "packageName": "com.uhcjnb.qtqklqyr",
+    "appName": "汽车音乐免费"
+  },
+  {
+    "packageName": "com.xmzned.ddsqgwu",
+    "appName": "多多省钱购物"
+  },
+  {
+    "packageName": "com.netease.moyi",
+    "appName": "心遇"
+  },
+  {
+    "packageName": "com.xingjiabi.shengsheng",
+    "appName": "他趣"
+  },
+  {
+    "packageName": "com.shoujiduoduo.ringtone",
+    "appName": "铃声多多"
+  },
+  {
+    "packageName": "com.jym.gcmall",
+    "appName": "交易猫"
+  },
+  {
+    "packageName": "com.zenmen.palmchat",
+    "appName": "连信"
+  },
+  {
+    "packageName": "pxb7.com",
+    "appName": "螃蟹账号"
+  },
+  {
+    "packageName": "com.lofter.android",
+    "appName": "网易 LOFTER"
+  },
+  {
+    "packageName": "com.tencent.zebra",
+    "appName": "水印相机"
+  },
+  {
+    "packageName": "com.hortor.juliancysj",
+    "appName": "创游世界"
+  },
+  {
+    "packageName": "com.xueersi.aitutor",
+    "appName": "数学天天练"
+  },
+  {
+    "packageName": "my.maya.android",
+    "appName": "多闪"
+  },
+  {
+    "packageName": "com.xueersi.abczone",
+    "appName": "英语天天练"
+  },
+  {
+    "packageName": "io.iftech.lovemo",
+    "appName": "lovemo"
+  },
+  {
+    "packageName": "com.sankuai.meituan.dispatch.crowdsource",
+    "appName": "美团众包"
+  },
+  {
+    "packageName": "cn.jthj.turbobunny",
+    "appName": "迅猛兔加速器"
+  },
+  {
+    "packageName": "com.eduyun.app.factory.ykt",
+    "appName": "智慧中小学"
+  },
+  {
+    "packageName": "com.aitutor.hippo",
+    "appName": "豆包爱学"
+  },
+  {
+    "packageName": "com.pzds.pzds",
+    "appName": "盼之代售"
+  },
+  {
+    "packageName": "com.xunlei.browser",
+    "appName": "迅雷浏览器"
+  },
+  {
+    "packageName": "com.aihuishou.opt",
+    "appName": "拍机堂"
+  },
+  {
+    "packageName": "tech.echoing.kuril",
+    "appName": "千岛"
+  },
+  {
+    "packageName": "com.pingan.carowner",
+    "appName": "平安好车主"
+  },
+  {
+    "packageName": "com.sinyee.babybus.world",
+    "appName": "宝宝巴士世界"
+  },
+  {
+    "packageName": "com.cctv.yangshipin.app.androidp",
+    "appName": "央视频"
+  },
+  {
+    "packageName": "com.fileunzip.zxwknight",
+    "appName": "解压专家"
+  },
+  {
+    "packageName": "com.jjwxc.reader",
+    "appName": "晋江小说阅读"
+  },
+  {
+    "packageName": "com.baidu.input",
+    "appName": "百度输入法"
+  },
+  {
+    "packageName": "com.babycloud.hanju",
+    "appName": "韩小圈"
+  },
+  {
+    "packageName": "com.kugou.android.lite",
+    "appName": "酷狗概念版"
+  },
+  {
+    "packageName": "com.ygkj.chelaile.standard",
+    "appName": "车来了"
+  },
+  {
+    "packageName": "cn.com.langeasy.EasyListen",
+    "appName": "轻听英语"
+  },
+  {
+    "packageName": "com.hlg.daydaytobusiness",
+    "appName": "稿定设计"
+  },
+  {
+    "packageName": "cn.ylkj.zmjh",
+    "appName": "朝暮计划"
+  },
+  {
+    "packageName": "com.smallcircle.yilangdu",
+    "appName": "诗音"
+  },
+  {
+    "packageName": "com.huaxiafengwu.android",
+    "appName": "华夏风物"
+  },
+
+  {
+    "packageName": "com.amap.android.location",
+    "appName": "高德地图定位服务"
+  },
+  {
+    "packageName": "WPS Office（精简版）",
+    "appName": "cn.wps.moffice.lite"
+  },
+  {
+    "packageName": "com.quark.browser",
+    "appName": "夸克浏览器"
+  },
+  {
+    "packageName": "com.sohu.inputmethod.sogouoem",
+    "appName": "搜狗输入法"
+  },
+  {
+    "packageName": "com.baidu.input_oppo",
+    "appName": "百度输入法"
+  },
+  {
+    "packageName": "com.finshell.wallet",
+    "appName": "钱包"
+  },
+  {
+    "packageName": "com.coloros.alarmclock",
+    "appName": "闹钟"
+  },
+  {
+    "packageName": "com.coloros.gallery3d",
+    "appName": "相册"
+  },
+  {
+    "packageName": "com.coloros.video",
+    "appName": "视频播放器"
+  },
+  {
+    "packageName": "com.coloros.note",
+    "appName": "笔记"
+  },
+  {
+    "packageName": "com.oppo.store",
+    "appName": "商城"
+  },
+  {
+    "packageName": "com.heytap.market",
+    "appName": "应用市场"
+  },
+  {
+    "packageName": "com.nearme.gamecenter",
+    "appName": "游戏中心"
+  },
+  {
+    "packageName": "com.heytap.health",
+    "appName": "健康"
+  },
+  {
+    "packageName": "com.heytap.music",
+    "appName": "音乐"
+  },
+  {
+    "packageName": "com.baidu.tieba",
+    "appName": "百度贴吧"
+  },
+  {
+    "packageName": "com.alibaba.android.rimet",
+    "appName": "钉钉"
+  },
+  {
+    "packageName": "com.suning.mobile.ebuy",
+    "appName": "苏宁易购"
+  },
+  {
+    "packageName": "com.taou.maimai",
+    "appName": "脉脉"
+  },
+  {
+    "packageName": "com.kugou.android",
+    "appName": "酷狗音乐"
+  },
+  {
+    "packageName": "com.airbnb.android",
+    "appName": "爱彼迎"
+  },
+  {
+    "packageName": "com.airbnb.android",
+    "appName": "airbnb"
+  },
+  {
+    "packageName": "com.tencent.tmgp.qbrowser",
+    "appName": "QQ浏览器"
+  },
+  {
+    "packageName": "com.tuniu.app.ui",
+    "appName": "途牛"
+  },
+  {
+    "packageName": "com.tuniu.app.ui",
+    "appName": "途牛旅游"
+  },
+  {
+    "packageName": "com.booking",
+    "appName": "booking"
+  },
+  {
+    "packageName": "com.bytedance.dreamina",
+    "appName": "即梦"
+  },
+  {
+    "packageName": "com.wudaokou.hippo",
+    "appName": "盒马"
+  },
+  {
+    "packageName": "com.tencent.news",
+    "appName": "腾讯新闻"
+  },
+  {
+    "packageName": "com.mt.mtxx.mtxx",
+    "appName": "美图秀秀"
+  },
+  {
+    "packageName": "com.ss.android.ugc.aweme.lite",
+    "appName": "抖音极速版"
+  },
+  {
+    "packageName": "com.baidu.searchbox.lite",
+    "appName": "百度极速版"
+  },
+  {
+    "packageName": "com.xs.fm.lite",
+    "appName": "番茄音乐"
+  },
+  {
+    "packageName": "com.nearme.instant.platform",
+    "appName": "快应用"
+  },
+  {
+    "packageName": "com.agoda.mobile.consumer",
+    "appName": "Agoda"
+  },
+  {
+    "packageName": "com.agoda.mobile.consumer",
+    "appName": "agoda"
+  },
+  {
+    "packageName": "com.booking",
+    "appName": "Booking"
+  },
+  {
+    "packageName": "com.booking",
+    "appName": "booking"
+  },
+  {
+    "packageName": "com.tripadvisor.tripadvisor",
+    "appName": "TripAdvisor"
+  },
+  {
+    "packageName": "com.tripadvisor.tripadvisor",
+    "appName": "tripadvisor"
+  },
+  {
+    "packageName": "com.ubercab",
+    "appName": "Uber"
+  },
+  {
+    "packageName": "com.ubercab",
+    "appName": "uber"
+  },
+  {
+    "packageName": "com.ubercab.eats",
+    "appName": "Uber Eats"
+  },
+  {
+    "packageName": "com.yelp.android",
+    "appName": "Yelp"
+  },
+  {
+    "packageName": "com.yelp.android",
+    "appName": "yelp"
+  },
+  {
+    "packageName": "taxi.android.client",
+    "appName": "DiDi"
+  },
+  {
+    "packageName": "taxi.android.client",
+    "appName": "didi"
+  },
+  {
+    "packageName": "ee.mtakso.client",
+    "appName": "Bolt"
+  },
+  {
+    "packageName": "ee.mtakso.client",
+    "appName": "bolt"
+  },
+  {
+    "packageName": "com.cabify.rider",
+    "appName": "Cabify"
+  },
+  {
+    "packageName": "com.cabify.rider",
+    "appName": "cabify"
+  },
+  {
+    "packageName": "com.miravia.android",
+    "appName": "Mercado Libre"
+  },
+  {
+    "packageName": "com.zzkko",
+    "appName": "shein"
+  },
+  {
+    "packageName": "com.zzkko",
+    "appName": "Shein"
+  },
+  {
+    "packageName": "com.zzkko",
+    "appName": "SHEIN"
+  },
+  {
+    "packageName": "com.tencent.mm",
+    "appName": "WeChat"
+  },
+  {
+    "packageName": "com.tencent.mm",
+    "appName": "weChat"
+  },
+  {
+    "packageName": "com.zhiliaoapp.musically",
+    "appName": "TikTok"
+  },
+  {
+    "packageName": "com.zhiliaoapp.musically",
+    "appName": "tikTok"
+  },
+  {
+    "packageName": "com.xingin.xhs",
+    "appName": "rednote"
+  },
+  {
+    "packageName": "com.xingin.xhs",
+    "appName": "RedNote"
+  },
+  {
+    "packageName": "com.xingin.xhs",
+    "appName": "Rednote"
+  },
+  {
+    "packageName": "com.facebook.katana",
+    "appName": "Facebook"
+  },
+  {
+    "packageName": "com.mcdonalds.gma.cn",
+    "appName": "麦当劳"
+  },
+  {
+    "packageName": "com.jd.jdlogistic",
+    "appName": "京东快递"
+  },
+  {
+    "packageName": "com.zmzx.college.search",
+    "appName": "大学搜题酱"
+  },
+  {
+    "packageName": "com.zhihu.vip.android",
+    "appName": "盐言故事"
+  },
+  {
+    "packageName": "com.tripadvisor.tripadvisor",
+    "appName": "tripadvisor"
+  },
+  {
+    "packageName": "com.tripadvisor.tripadvisor",
+    "appName": "Tripadvisor"
+  },
+  {
+    "packageName": "com.zhitiyu.app",
+    "appName": "知体育"
+  },
+  {
+    "packageName": "com.handsgo.jiakao.android",
+    "appName": "驾考宝典"
+  },
+  {
+    "packageName": "com.zybang.zyblinghang",
+    "appName": "好课领航"
+  },
+  {
+    "packageName": "com.facebook.katana",
+    "appName": "facebook"
+  },
+  {
+    "packageName": "com.netflix.mediaclient",
+    "appName": "Netflix"
+  },
+  {
+    "packageName": "com.netflix.mediaclient",
+    "appName": "netflix"
+  },
+  {
+    "packageName": "com.spotify.music",
+    "appName": "Spotify"
+  },
+  {
+    "packageName": "com.spotify.music",
+    "appName": "spotify"
+  },
+  {
+    "packageName": "com.linkedin.android",
+    "appName": "LinkedIn"
+  },
+  {
+    "packageName": "com.linkedin.android",
+    "appName": "linkedIn"
+  },
+  {
+    "packageName": "com.duolingo",
+    "appName": "Duolingo"
+  },
+  {
+    "packageName": "com.duolingo",
+    "appName": "duolingo"
+  },
+  {
+    "packageName": "com.fitbit.FitbitMobile",
+    "appName": "Fitbit"
+  },
+  {
+    "packageName": "com.fitbit.FitbitMobile",
+    "appName": "fitbit"
+  },
+  {
+    "packageName": "io.esim",
+    "appName": "eSIM"
+  },
+  {
+    "packageName": "com.eg.android.AlipayGphone",
+    "appName": "Alipay"
+  },
+  {
+    "packageName": "com.eg.android.AlipayGphone",
+    "appName": "alipay"
+  },
+  {
+    "packageName": "com.openai.chatgpt",
+    "appName": "ChatGPT"
+  },
+  {
+    "packageName": "com.openai.chatgpt",
+    "appName": "chatGPT"
+  }
+]

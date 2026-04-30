@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mock - 六设备联调总览</title>
+  <link rel="stylesheet" href="./dashboard_6_clients.css" />
+</head>
+<body>
+  <header class="page-header">
+    <h1>客服联调六设备总览</h1>
+    <div class="toolbar">
+      <label for="globalHttpBase">HTTP Base</label>
+      <input id="globalHttpBase" value="http://127.0.0.1:8001" />
+      <button id="btnApplyHttpBase">应用到全部设备</button>
+      <button id="btnConnectAll">连接全部聊天WS</button>
+      <button id="btnRefreshAll">刷新全部好友/群组</button>
+      <button id="btnBootstrapFriends">初始化默认好友关系</button>
+    </div>
+    <p class="tip">
+      六个格子分别为：A手机、A电脑、B手机、B电脑、C手机、D手机。默认全员互为好友；仅 A/B 可创建 Agent。
+      用户 A 默认走 TopoClaw 端口 18790（relay node 000），用户 B 默认走 1879（relay node 001）；需在本地各启一个 topoclaw service 且 topomobile 配置对应 nodeId。
+      创建群 / 邀请成员使用勾选列表；群组下拉变更后下方会列出该群用户与小助手。
+    </p>
+  </header>
+
+  <main id="deviceGrid" class="device-grid"></main>
+
+  <template id="deviceCardTemplate">
+    <section class="device-card">
+      <div class="device-title-row">
+        <h2 class="device-title"></h2>
+        <span class="status-badge">未连接</span>
+      </div>
+
+      <div class="meta-line">
+        <span class="meta-label">IMEI:</span>
+        <input type="text" class="imei-input" spellcheck="false" title="当前设备身份标识，修改后新请求/重连 WS 生效" />
+        <span class="meta-label">设备:</span>
+        <span class="device-type-value"></span>
+        <span class="meta-label">TopoClaw:</span>
+        <span class="topoclaw-port-hint"></span>
+      </div>
+
+      <div class="actions-row">
+        <button class="btn-connect-chat">连接聊天WS</button>
+        <button class="btn-refresh-lists">刷新列表</button>
+      </div>
+
+      <div class="section">
+        <h3>聊天窗口</h3>
+        <div class="chat-log"></div>
+      </div>
+
+      <div class="section">
+        <h3>好友列表</h3>
+        <div class="list-row">
+          <select class="friend-select"></select>
+          <button class="btn-refresh-friends">刷新好友</button>
+        </div>
+        <div class="list-row">
+          <input class="add-friend-input" placeholder="输入好友IMEI，如 user-c-imei" />
+          <button class="btn-add-friend">添加好友</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>群组列表</h3>
+        <div class="list-row">
+          <select class="group-select"></select>
+          <button class="btn-refresh-groups">刷新群组</button>
+        </div>
+        <div class="group-detail-panel">
+          <div class="group-detail-title">当前群成员</div>
+          <div class="group-detail-body">请选择群组</div>
+        </div>
+        <div class="list-row list-row-column">
+          <label class="field-label">新建群名称</label>
+          <div class="list-row">
+            <input class="create-group-name-input" placeholder="新群名称，如 A/B/C/D 测试群" />
+            <button class="btn-create-group">创建群组</button>
+          </div>
+        </div>
+        <div class="list-row list-row-column">
+          <label class="field-label">初始成员（勾选好友 / Agent，无需按住 Ctrl）</label>
+          <div class="create-group-member-checkboxes member-checkbox-list"></div>
+        </div>
+        <div class="list-row list-row-column">
+          <label class="field-label">邀请成员（先选上方群组）</label>
+          <div class="invite-member-checkboxes member-checkbox-list"></div>
+          <button class="btn-invite-members">邀请成员</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>发送消息</h3>
+        <div class="list-row">
+          <input class="friend-message-input" placeholder="发送给当前好友的消息" />
+          <button class="btn-send-friend">发好友消息</button>
+        </div>
+        <div class="list-row">
+          <input class="group-message-input" placeholder="发送给当前群组的消息" />
+          <button class="btn-send-group">发群消息</button>
+        </div>
+        <div class="list-row">
+          <label><input type="checkbox" class="mention-assistant-toggle" /> @小助手指定回复</label>
+          <select class="mention-assistant-select"></select>
+          <button class="btn-insert-assistant-mention">插入@语法</button>
+        </div>
+        <div class="list-row">
+          <label><input type="checkbox" class="all-agents-reply-toggle" /> 所有助手都回复（默认只广播给topoclaw）</label>
+          <button class="btn-save-all-agents-setting">保存设置</button>
+        </div>
+      </div>
+
+      <div class="section agent-section">
+        <h3>Agent</h3>
+        <div class="list-row">
+          <label class="relay-label">Relay imei_id</label>
+          <input class="relay-imei-id-input" title="对应 customer_service → TopoClaw 适配器 node_id，与本地 topoclaw channels.topomobile.nodeId 一致" />
+        </div>
+        <div class="list-row">
+          <select class="custom-agent-select"></select>
+          <button class="btn-refresh-agents">刷新已创建Agent</button>
+        </div>
+        <div class="list-row">
+          <input class="agent-id-input" placeholder="agent id" />
+          <button class="btn-connect-agent">连接Agent WS</button>
+          <button class="btn-create-agent">创建Agent</button>
+          <button class="btn-delete-agent" type="button">删除Agent</button>
+        </div>
+        <div class="list-row">
+          <input class="agent-prompt-input" placeholder="Agent Prompt" />
+        </div>
+        <div class="list-row">
+          <input class="agent-thread-input" placeholder="thread id" />
+          <input class="agent-chat-input" placeholder="给Agent发消息" />
+          <button class="btn-chat-agent">发送</button>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <script src="./dashboard_6_clients.js"></script>
+</body>
+</html>

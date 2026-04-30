@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- 技能图标 - 标准正五角星（完全对称，顶部顶点在正上方，底部顶点在正下方） -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M12,2 L14.76,8.76 L21.76,9.24 L16.88,13.24 L18.47,20.18 L12,16.76 L5.53,20.18 L7.12,13.24 L2.24,9.24 L9.24,8.76 Z"/>
+</vector>
+

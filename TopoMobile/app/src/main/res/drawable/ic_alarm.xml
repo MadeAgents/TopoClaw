@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- 闹钟图标：轮廓式设计 -->
+    <!-- 圆形表盘（轮廓） -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#FF000000"
+        android:strokeWidth="1.5"
+        android:pathData="M12,3C7.03,3 3,7.03 3,12s4.03,9 9,9 9,-4.03 9,-9S16.97,3 12,3z"/>
+    <!-- 时针（指向12点） -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M12,7v4"/>
+    <!-- 分针（指向3点） -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M12,12h4"/>
+    <!-- 中心点 -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M12,12m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0"/>
+    <!-- 顶部装饰（两个小圆点） -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M7,2.5m-0.8,0a0.8,0.8 0,1 1,1.6 0a0.8,0.8 0,1 1,-1.6 0"/>
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M17,2.5m-0.8,0a0.8,0.8 0,1 1,1.6 0a0.8,0.8 0,1 1,-1.6 0"/>
+</vector>
+

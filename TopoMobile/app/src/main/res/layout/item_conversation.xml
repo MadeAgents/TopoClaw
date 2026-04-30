@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:orientation="horizontal"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp"
+    android:gravity="center_vertical"
+    android:background="?android:attr/selectableItemBackground">
+
+    <!-- 头像容器（包含头像和未读消息红点） -->
+    <FrameLayout
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="12dp">
+        
+        <!-- 头像 -->
+        <ImageView
+            android:id="@+id/ivAvatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_system_avatar"
+            android:scaleType="centerCrop"
+            android:background="@drawable/circle_background"
+            android:clipToOutline="true" />
+        
+        <!-- 未读消息红点（带数字） -->
+        <TextView
+            android:id="@+id/tvUnreadBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:minWidth="18dp"
+            android:layout_gravity="top|end"
+            android:gravity="center"
+            android:textSize="11sp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/unread_badge_background"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:visibility="gone"
+            android:includeFontPadding="false" />
+    </FrameLayout>
+
+    <!-- 中间：名称和最后消息 -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+        
+        <!-- 名称行：包含名称和置顶标签 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+            
+            <!-- 名称 -->
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:maxLines="1"
+                android:ellipsize="end" />
+            
+            <!-- 在线状态灯泡图标（仅好友显示） -->
+            <ImageView
+                android:id="@+id/ivOnlineStatus"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginStart="2dp"
+                android:src="@drawable/ic_lightbulb"
+                android:contentDescription="在线状态"
+                android:visibility="gone" />
+            
+            <!-- 置顶标签 -->
+            <TextView
+                android:id="@+id/tvPin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pinned"
+                android:textSize="8sp"
+                android:textColor="#999999"
+                android:background="@drawable/pin_label_background"
+                android:visibility="gone"
+                android:layout_marginStart="2dp"
+                android:includeFontPadding="false" />
+            
+            <!-- 占位View，用于推动名称和置顶标签靠左 -->
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+        
+        <!-- 最后消息 -->
+        <TextView
+            android:id="@+id/tvLastMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#999999"
+            android:maxLines="1"
+            android:ellipsize="end" />
+    </LinearLayout>
+
+    <!-- 右侧：时间 -->
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textColor="#999999"
+        android:layout_marginStart="8dp"
+        android:text="@string/just_now" />
+
+</LinearLayout>
+

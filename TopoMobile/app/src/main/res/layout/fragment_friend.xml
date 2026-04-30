@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <!-- 标题栏 -->
+    <LinearLayout
+        android:id="@+id/llTitleBar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical"
+        android:background="#FFF5F5F5"
+        android:elevation="4dp"
+        android:fitsSystemWindows="false">
+        <View
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/contacts"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:gravity="center" />
+        <ImageButton
+            android:id="@+id/btnSearch"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_search"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="搜索"
+            android:tint="@android:color/black"
+            android:padding="16dp"
+            android:layout_marginEnd="-8dp" />
+        <ImageButton
+            android:id="@+id/btnAddFriend"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_add_thin"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/add_friend"
+            android:tint="@android:color/black"
+            android:padding="12dp"
+            android:layout_marginEnd="-8dp" />
+    </LinearLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:padding="12dp"
+            android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            
+            <!-- 朋友入口 -->
+            <LinearLayout
+                android:id="@+id/llFriendRecord"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginBottom="8dp">
+                
+                <TextView
+                    android:id="@+id/tvFriendRecordName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/new_friends"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:gravity="center_vertical" />
+                
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_arrow_forward"
+                    android:contentDescription="查看好友记录"
+                    android:tint="#999999" />
+            </LinearLayout>
+            
+            <!-- 好友列表标题栏 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="8dp"
+                android:layout_marginBottom="8dp">
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/friend_list"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+            
+            <!-- 助手区域 -->
+            <LinearLayout
+                android:id="@+id/llAssistantHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="4dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground">
+                
+                <TextView
+                    android:id="@+id/tvAssistantTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                        android:text="@string/assistant"
+                    android:textSize="12sp"
+                    android:textColor="#999999" />
+                
+                <ImageView
+                    android:id="@+id/ivAssistantArrow"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_arrow_drop_down"
+                    android:tint="#999999"
+                    android:layout_marginEnd="8dp" />
+            </LinearLayout>
+            
+            <!-- 助手内容容器 -->
+            <LinearLayout
+                android:id="@+id/llAssistantContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+            
+                <!-- TopoClaw -->
+                <LinearLayout
+                    android:id="@+id/llFriendAssistant"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_marginBottom="4dp">
+                    
+                    <ImageView
+                        android:id="@+id/ivFriendAssistantAvatar"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/circle_background"
+                        android:clipToOutline="true" />
+                    
+                    <TextView
+                        android:id="@+id/tvFriendAssistantName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/auto_execute_assistant"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/black"
+                        android:layout_marginStart="8dp"
+                        android:gravity="center_vertical" />
+                </LinearLayout>
+                
+                <!-- 技能学习小助手 -->
+                <LinearLayout
+                    android:id="@+id/llFriendSkillLearning"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_marginBottom="4dp">
+                    
+                    <ImageView
+                        android:id="@+id/ivFriendSkillLearningAvatar"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/circle_background"
+                        android:clipToOutline="true" />
+                    
+                    <TextView
+                        android:id="@+id/tvFriendSkillLearningName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/skill_learn_assistant"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/black"
+                        android:layout_marginStart="8dp"
+                        android:gravity="center_vertical" />
+                </LinearLayout>
+                
+                <!-- 人工智能 -->
+                <LinearLayout
+                    android:id="@+id/llFriendCustomerService"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_marginBottom="4dp">
+                    
+                    <ImageView
+                        android:id="@+id/ivFriendCustomerServiceAvatar"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/circle_background"
+                        android:clipToOutline="true" />
+                    
+                    <TextView
+                        android:id="@+id/tvFriendCustomerServiceName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/ai_assistant"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/black"
+                        android:layout_marginStart="8dp"
+                        android:gravity="center_vertical" />
+                </LinearLayout>
+                
+                <!-- 自定义小助手列表（动态添加） -->
+                <LinearLayout
+                    android:id="@+id/llCustomAssistantsList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="8dp">
+                    <!-- 自定义小助手项将动态添加到这里 -->
+                </LinearLayout>
+            </LinearLayout>
+            
+            <!-- 群组区域 -->
+            <LinearLayout
+                android:id="@+id/llGroupHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="4dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground">
+                
+                <TextView
+                    android:id="@+id/tvGroupTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/groups"
+                    android:textSize="12sp"
+                    android:textColor="#999999" />
+                
+                <ImageView
+                    android:id="@+id/ivGroupArrow"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_arrow_drop_down"
+                    android:tint="#999999"
+                    android:layout_marginEnd="8dp" />
+            </LinearLayout>
+            
+            <!-- 群组内容容器 -->
+            <LinearLayout
+                android:id="@+id/llGroupContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+                
+                <!-- 群组列表容器（动态添加群组项） -->
+                <LinearLayout
+                    android:id="@+id/llGroupsList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    
+                    <!-- 群组项将动态添加到这里 -->
+                    
+                </LinearLayout>
+            </LinearLayout>
+            
+            <!-- 好友区域 -->
+            <LinearLayout
+                android:id="@+id/llFriendHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="4dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground">
+                
+                <TextView
+                    android:id="@+id/tvFriendTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/friend"
+                    android:textSize="12sp"
+                    android:textColor="#999999" />
+                
+                <ImageView
+                    android:id="@+id/ivFriendArrow"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_arrow_drop_down"
+                    android:tint="#999999"
+                    android:layout_marginEnd="8dp" />
+            </LinearLayout>
+            
+            <!-- 好友内容容器 -->
+            <LinearLayout
+                android:id="@+id/llFriendContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+                
+                <!-- 好友列表容器（后续动态添加好友） -->
+                <LinearLayout
+                    android:id="@+id/llFriendsList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    
+                    <!-- 好友项将动态添加到这里 -->
+                    
+                </LinearLayout>
+            </LinearLayout>
+            
+        </LinearLayout>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <!-- Fragment层级的底部导航栏 -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_navigation"
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/bottom_nav_icon_tint"
+        app:itemTextColor="@color/bottom_nav_text_color" />
+
+</LinearLayout>
+
+
+

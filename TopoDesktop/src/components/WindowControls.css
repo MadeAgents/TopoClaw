@@ -1,0 +1,94 @@
+.window-controls {
+  display: flex;
+  flex-shrink: 0;
+  margin-left: auto;
+  -webkit-app-region: no-drag !important;
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.window-control {
+  width: 48px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  transition: background 0.15s, color 0.15s;
+  -webkit-app-region: no-drag !important;
+  pointer-events: auto;
+}
+
+.window-control:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.window-control-close:hover {
+  background: #e81123;
+  color: #fff;
+}
+
+.window-control-minimize::before {
+  content: '';
+  width: 8px;
+  height: 1px;
+  background: currentColor;
+  border-radius: 0.5px;
+}
+
+.window-control-maximize {
+  position: relative;
+}
+
+.window-control-maximize::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border: 1px solid currentColor;
+  border-radius: 0.5px;
+}
+
+/* 最大化时显示还原图标：两个重叠的方框 */
+.window-control-maximize.is-maximized::before {
+  width: 6px;
+  height: 6px;
+  border: 1px solid currentColor;
+  border-radius: 0.5px;
+  transform: translate(1px, -1px);
+}
+
+.window-control-maximize.is-maximized::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border: 1px solid currentColor;
+  border-radius: 0.5px;
+  transform: translate(-1px, 1px);
+}
+
+.window-control-close {
+  position: relative;
+}
+
+.window-control-close::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 1px;
+  background: currentColor;
+  transform: rotate(45deg);
+}
+
+.window-control-close::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 1px;
+  background: currentColor;
+  transform: rotate(-45deg);
+}

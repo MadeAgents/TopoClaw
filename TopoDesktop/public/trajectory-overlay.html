@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>轨迹 overlay</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: transparent;
+      -webkit-app-region: no-drag;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    const canvas = document.getElementById('canvas')
+    const ctx = canvas.getContext('2d')
+    let points = []
+    let offsetX = 0
+    let offsetY = 0
+    let mode = 'a'
+    let lastClickX = 0
+    let lastClickY = 0
+    let pendingClickTimer = null
+    let ignoringSimulatedClicks = false
+    const DOUBLE_CLICK_MS = 350
+    const DOUBLE_CLICK_PIXELS = 5
+
+    function resize() {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+      draw()
+    }
+
+    function draw() {
+      if (!ctx) return
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      points.forEach((p, i) => {
+        const x = p.x - offsetX
+        const y = p.y - offsetY
+        ctx.beginPath()
+        ctx.arc(x, y, 8, 0, Math.PI * 2)
+        ctx.fillStyle = p.action === 'right_click' ? 'rgba(255,100,100,0.8)' : p.action === 'double_click' ? 'rgba(100,200,255,0.8)' : 'rgba(100,180,100,0.8)'
+        ctx.fill()
+        ctx.strokeStyle = 'rgba(255,255,255,0.9)'
+        ctx.lineWidth = 2
+        ctx.stroke()
+      })
+    }
+
+    function toScreen(clientX, clientY) {
+      return { x: Math.round(clientX + offsetX), y: Math.round(clientY + offsetY) }
+    }
+
+    function handleModeBClick(clientX, clientY, action) {
+      if (ignoringSimulatedClicks) return
+      const screen = toScreen(clientX, clientY)
+      if (window.trajectoryOverlay && window.trajectoryOverlay.interceptedClick) {
+        ignoringSimulatedClicks = true
+        window.trajectoryOverlay.interceptedClick(screen.x, screen.y, action).finally(() => {
+          setTimeout(() => { ignoringSimulatedClicks = false }, 120)
+        })
+      }
+    }
+
+    function setupModeBListeners() {
+      const onLeftClick = (e) => {
+        if (e.button !== 0) return
+        e.preventDefault()
+        e.stopPropagation()
+        const isDouble = pendingClickTimer &&
+          Math.abs(e.clientX - lastClickX) < DOUBLE_CLICK_PIXELS &&
+          Math.abs(e.clientY - lastClickY) < DOUBLE_CLICK_PIXELS
+        if (isDouble) {
+          clearTimeout(pendingClickTimer)
+          pendingClickTimer = null
+          handleModeBClick(e.clientX, e.clientY, 'double_click')
+        } else {
+          if (pendingClickTimer) clearTimeout(pendingClickTimer)
+          lastClickX = e.clientX
+          lastClickY = e.clientY
+          pendingClickTimer = setTimeout(() => {
+            pendingClickTimer = null
+            handleModeBClick(lastClickX, lastClickY, 'click')
+          }, DOUBLE_CLICK_MS)
+        }
+      }
+      const onRightDown = (e) => {
+        if (e.button !== 2) return
+        e.preventDefault()
+        e.stopPropagation()
+        handleModeBClick(e.clientX, e.clientY, 'right_click')
+      }
+      const onContextMenu = (e) => {
+        e.preventDefault()
+      }
+      document.addEventListener('click', onLeftClick, true)
+      document.addEventListener('mousedown', onRightDown, true)
+      document.addEventListener('contextmenu', onContextMenu, true)
+      return () => {
+        if (pendingClickTimer) clearTimeout(pendingClickTimer)
+        pendingClickTimer = null
+        document.removeEventListener('click', onLeftClick, true)
+        document.removeEventListener('mousedown', onRightDown, true)
+        document.removeEventListener('contextmenu', onContextMenu, true)
+      }
+    }
+
+    if (window.trajectoryOverlay) {
+      let teardownModeB = null
+      window.trajectoryOverlay.onInit((data) => {
+        offsetX = data.offsetX
+        offsetY = data.offsetY
+        mode = data.mode || 'a'
+        resize()
+        if (teardownModeB) { teardownModeB(); teardownModeB = null }
+        if (mode === 'b') teardownModeB = setupModeBListeners()
+      })
+      window.trajectoryOverlay.onSetMode && window.trajectoryOverlay.onSetMode((data) => {
+        mode = data.mode || 'a'
+        if (teardownModeB) { teardownModeB(); teardownModeB = null }
+        if (mode === 'b') teardownModeB = setupModeBListeners()
+      })
+      window.trajectoryOverlay.onPoint((data) => {
+        points.push({ ...data })
+        draw()
+      })
+      window.trajectoryOverlay.onClear(() => {
+        points = []
+        draw()
+      })
+    }
+
+    window.addEventListener('resize', resize)
+    resize()
+  </script>
+</body>
+</html>

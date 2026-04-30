@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="28dp"
+    android:background="@drawable/dialog_background_rounded"
+    android:minWidth="320dp"
+    android:maxWidth="400dp"
+    android:maxHeight="600dp">
+
+    <!-- 标题 -->
+    <TextView
+        android:id="@+id/tvDialogTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/task_complete"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#212121"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:letterSpacing="0.02" />
+
+    <!-- 结果内容区域（ScrollView，高度由代码动态设置） -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp">
+        
+        <TextView
+            android:id="@+id/tvResultText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#212121"
+            android:lineSpacingMultiplier="1.2"
+            android:padding="16dp"
+            android:background="@drawable/text_background_rounded"
+            android:text="任务已完成" />
+    </ScrollView>
+
+    <!-- 按钮区域（固定在底部） -->
+    <LinearLayout
+        android:id="@+id/buttonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="3">
+        
+        <!-- 返回应用按钮（只显示图标，不显示文字） -->
+        <Button
+            android:id="@+id/btnBackToApp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=""
+            android:gravity="center"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:minHeight="56dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:layout_marginEnd="8dp" />
+        
+        <!-- 提问按钮 -->
+        <Button
+            android:id="@+id/btnContinue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/ask"
+            android:textColor="#2196F3"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:minHeight="56dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp" />
+        
+        <!-- 完成按钮 -->
+        <Button
+            android:id="@+id/btnOk"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/done"
+            android:textColor="#2196F3"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:minHeight="56dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+</LinearLayout>
+

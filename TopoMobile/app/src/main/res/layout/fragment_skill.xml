@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <!-- 标题栏 -->
+    <LinearLayout
+        android:id="@+id/llTitleBar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical"
+        android:background="#FFF5F5F5"
+        android:elevation="4dp"
+        android:fitsSystemWindows="false">
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/skill"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <!-- 导航栏容器 -->
+    <LinearLayout
+        android:id="@+id/llNavigationBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFF5F5F5"
+        android:elevation="2dp">
+        
+        <!-- 按钮行 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+            
+            <Button
+                android:id="@+id/btnMySkills"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/my_skills"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#FF000000"
+                android:background="@android:color/transparent"
+                android:stateListAnimator="@null" />
+            
+            <Button
+                android:id="@+id/btnSkillCommunity"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/skill_community"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#FF999999"
+                android:background="@android:color/transparent"
+                android:stateListAnimator="@null" />
+        </LinearLayout>
+        
+        <!-- 指示器下划线 -->
+        <View
+            android:id="@+id/viewIndicator"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            android:background="#FF10AEFF"
+            android:layout_marginStart="0dp" />
+    </LinearLayout>
+
+    <!-- 我的技能页面容器 -->
+    <LinearLayout
+        android:id="@+id/llMySkillsPage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:visibility="visible">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+            
+            <TextView
+                android:id="@+id/tvMySkillsTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/my_skills"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black" />
+            
+            <!-- 多选模式下的选中数量显示 -->
+            <TextView
+                android:id="@+id/tvSelectedCountMySkills"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/selected_count_0"
+                android:textSize="14sp"
+                android:textColor="#FF10AEFF"
+                android:visibility="gone"
+                android:layout_marginEnd="8dp" />
+            
+            <!-- 多选模式下的批量上传按钮 -->
+            <Button
+                android:id="@+id/btnBatchUpload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/upload"
+                android:textSize="14sp"
+                android:textColor="#FF10AEFF"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:visibility="gone"
+                android:layout_marginEnd="8dp" />
+            
+            <!-- 多选模式下的取消按钮 -->
+            <Button
+                android:id="@+id/btnCancelSelectionMySkills"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                android:textSize="14sp"
+                android:textColor="#FF666666"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:visibility="gone"
+                android:layout_marginEnd="8dp" />
+            
+            <ImageButton
+                android:id="@+id/btnUploadMySkills"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_upload_filled"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/cd_upload_skill"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:layout_marginEnd="8dp" />
+            
+            <ImageButton
+                android:id="@+id/btnSearchMySkills"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_search_filled"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/cd_search_my_skills"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true" />
+        </LinearLayout>
+        
+        <!-- 下拉刷新容器 - 我的技能 -->
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayoutMySkills"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            
+            <!-- 技能列表容器（带滚动条） -->
+            <ScrollView
+                android:id="@+id/scrollViewMySkills"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+            
+            <LinearLayout
+                android:id="@+id/llMySkillsList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                
+                <!-- 暂时显示空状态提示 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_skills"
+                    android:textSize="14sp"
+                    android:textColor="#999999" />
+            </LinearLayout>
+            </ScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </LinearLayout>
+    
+    <!-- 技能社区页面容器 -->
+    <LinearLayout
+        android:id="@+id/llSkillCommunityPage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:visibility="gone">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+            
+            <TextView
+                android:id="@+id/tvCommunityTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/skill_community"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black" />
+            
+            <!-- 新热门技能徽章 -->
+            <TextView
+                android:id="@+id/tvHotSkillBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="20dp"
+                android:minHeight="20dp"
+                android:text=""
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:gravity="center"
+                android:background="@drawable/hot_skill_badge_background"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:visibility="gone"
+                android:layout_marginEnd="8dp" />
+            
+            <!-- 多选模式下的选中数量显示 -->
+            <TextView
+                android:id="@+id/tvSelectedCountCommunity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/selected_count_0"
+                android:textSize="14sp"
+                android:textColor="#FF10AEFF"
+                android:visibility="gone"
+                android:layout_marginEnd="8dp" />
+            
+            <!-- 多选模式下的批量下载按钮 -->
+            <Button
+                android:id="@+id/btnBatchDownload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/download"
+                android:textSize="14sp"
+                android:textColor="#FF10AEFF"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:visibility="gone"
+                android:layout_marginEnd="8dp" />
+            
+            <!-- 多选模式下的取消按钮 -->
+            <Button
+                android:id="@+id/btnCancelSelectionCommunity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                android:textSize="14sp"
+                android:textColor="#FF666666"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:visibility="gone"
+                android:layout_marginEnd="8dp" />
+            
+            <ImageButton
+                android:id="@+id/btnDownloadSkills"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_download_arrow"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/cd_download_skill"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:layout_marginEnd="8dp" />
+            
+            <ImageButton
+                android:id="@+id/btnSearchCommunity"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_search_filled"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/cd_search_skill_community"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true" />
+        </LinearLayout>
+        
+        <!-- 下拉刷新容器 - 技能社区 -->
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayoutCommunity"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            
+            <!-- 社区内容容器（带滚动条） -->
+            <ScrollView
+                android:id="@+id/scrollViewCommunity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+            
+            <LinearLayout
+                android:id="@+id/llSkillCommunityList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                
+                <!-- 暂时显示空状态提示 -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_content"
+                    android:textSize="14sp"
+                    android:textColor="#999999" />
+            </LinearLayout>
+            </ScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </LinearLayout>
+
+    <!-- Fragment层级的底部导航栏 -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_navigation"
+        app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/bottom_nav_icon_tint"
+        app:itemTextColor="@color/bottom_nav_text_color" />
+
+</LinearLayout>
+

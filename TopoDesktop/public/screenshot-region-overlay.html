@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>选择截图区域</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        cursor: crosshair;
+        user-select: none;
+        -webkit-user-select: none;
+        background: transparent !important;
+      }
+      /* 未开始拖拽或选区过小时：整屏暗角 */
+      #maskFull {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.35);
+        z-index: 1;
+      }
+      /* 四块遮罩围住选区，中间无 DOM，透明穿透显示桌面原色 */
+      .maskPiece {
+        position: fixed;
+        display: none;
+        background: rgba(0, 0, 0, 0.35);
+        z-index: 1;
+      }
+      #sel {
+        position: fixed;
+        border: 1px solid #38bdf8;
+        background: transparent;
+        display: none;
+        pointer-events: none;
+        box-sizing: border-box;
+        z-index: 2;
+      }
+      #hint {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #e2e8f0;
+        font: 13px/1.4 system-ui, "Microsoft YaHei", "PingFang SC", sans-serif;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+        pointer-events: none;
+        white-space: nowrap;
+        z-index: 3;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="maskFull"></div>
+    <div id="maskTop" class="maskPiece"></div>
+    <div id="maskBottom" class="maskPiece"></div>
+    <div id="maskLeft" class="maskPiece"></div>
+    <div id="maskRight" class="maskPiece"></div>
+    <div id="sel"></div>
+    <div id="hint">拖拽框选区域 · Esc 取消</div>
+    <script>
+      const api = window.screenshotRegionOverlay
+      const sel = document.getElementById('sel')
+      const maskFull = document.getElementById('maskFull')
+      const maskTop = document.getElementById('maskTop')
+      const maskBottom = document.getElementById('maskBottom')
+      const maskLeft = document.getElementById('maskLeft')
+      const maskRight = document.getElementById('maskRight')
+      const MIN = 5
+      let down = false
+      let sx0 = 0
+      let sy0 = 0
+      let cx0 = 0
+      let cy0 = 0
+
+      function updateMasks(left, top, w, h) {
+        const vw = window.innerWidth
+        const vh = window.innerHeight
+        const pieces = [maskTop, maskBottom, maskLeft, maskRight]
+        if (w < MIN || h < MIN) {
+          maskFull.style.display = 'block'
+          for (const m of pieces) {
+            m.style.display = 'none'
+          }
+          return
+        }
+        maskFull.style.display = 'none'
+        maskTop.style.display = 'block'
+        maskTop.style.left = '0px'
+        maskTop.style.top = '0px'
+        maskTop.style.width = vw + 'px'
+        maskTop.style.height = top + 'px'
+
+        maskBottom.style.display = 'block'
+        maskBottom.style.left = '0px'
+        maskBottom.style.top = top + h + 'px'
+        maskBottom.style.width = vw + 'px'
+        maskBottom.style.height = Math.max(0, vh - top - h) + 'px'
+
+        maskLeft.style.display = 'block'
+        maskLeft.style.left = '0px'
+        maskLeft.style.top = top + 'px'
+        maskLeft.style.width = left + 'px'
+        maskLeft.style.height = h + 'px'
+
+        maskRight.style.display = 'block'
+        maskRight.style.left = left + w + 'px'
+        maskRight.style.top = top + 'px'
+        maskRight.style.width = Math.max(0, vw - left - w) + 'px'
+        maskRight.style.height = h + 'px'
+      }
+
+      function showBoxClient(left, top, w, h) {
+        updateMasks(left, top, w, h)
+        if (w < MIN || h < MIN) {
+          sel.style.display = 'none'
+          return
+        }
+        sel.style.display = 'block'
+        sel.style.left = left + 'px'
+        sel.style.top = top + 'px'
+        sel.style.width = w + 'px'
+        sel.style.height = h + 'px'
+      }
+
+      function normScreenRect(x1, y1, x2, y2) {
+        const left = Math.min(x1, x2)
+        const top = Math.min(y1, y2)
+        const width = Math.abs(x2 - x1)
+        const height = Math.abs(y2 - y1)
+        return { x: left, y: top, width, height }
+      }
+
+      document.addEventListener(
+        'mousedown',
+        (e) => {
+          if (e.button !== 0) return
+          e.preventDefault()
+          down = true
+          sx0 = e.screenX
+          sy0 = e.screenY
+          cx0 = e.clientX
+          cy0 = e.clientY
+          showBoxClient(cx0, cy0, 0, 0)
+        },
+        true
+      )
+
+      document.addEventListener(
+        'mousemove',
+        (e) => {
+          if (!down) return
+          const left = Math.min(cx0, e.clientX)
+          const top = Math.min(cy0, e.clientY)
+          const w = Math.abs(e.clientX - cx0)
+          const h = Math.abs(e.clientY - cy0)
+          showBoxClient(left, top, w, h)
+        },
+        true
+      )
+
+      document.addEventListener(
+        'mouseup',
+        (e) => {
+          if (!down || e.button !== 0) return
+          down = false
+          const r = normScreenRect(sx0, sy0, e.screenX, e.screenY)
+          if (r.width < MIN || r.height < MIN) {
+            api.cancel()
+            return
+          }
+          api.confirm(r)
+        },
+        true
+      )
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          e.preventDefault()
+          api.cancel()
+        }
+      })
+
+      document.addEventListener('contextmenu', (e) => e.preventDefault())
+    </script>
+  </body>
+</html>

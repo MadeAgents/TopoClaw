@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Screenshot Assist</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: transparent !important;
+        overflow: hidden;
+        font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+      }
+      .wrap {
+        width: 300px;
+        padding: 8px;
+      }
+      .title-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 6px;
+      }
+      .title {
+        color: #1d4ed8;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .close {
+        width: 20px;
+        height: 20px;
+        border: none;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.92);
+        color: #334155;
+        cursor: pointer;
+      }
+      .panel {
+        display: block;
+        background: #ffffff;
+        border: 1px solid #dbe3ef;
+        border-radius: 10px;
+        box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
+        padding: 8px;
+      }
+      .input {
+        width: 100%;
+        box-sizing: border-box;
+        height: 32px;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        padding: 0 10px;
+        font-size: 12px;
+      }
+      .input:focus {
+        outline: none;
+        border-color: #60a5fa;
+        box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.2);
+      }
+      .actions {
+        margin-top: 8px;
+        display: flex;
+        justify-content: flex-end;
+        gap: 6px;
+      }
+      .btn {
+        border: 1px solid #2563eb;
+        border-radius: 7px;
+        background: #2563eb;
+        color: #fff;
+        height: 28px;
+        padding: 0 10px;
+        font-size: 12px;
+        cursor: pointer;
+      }
+      .btn.ghost {
+        border-color: #cbd5e1;
+        background: #f8fafc;
+        color: #334155;
+      }
+      .btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap" id="root">
+      <div class="title-row">
+        <span class="title">需要我帮忙吗</span>
+        <button class="close" id="closeBtn" type="button">×</button>
+      </div>
+      <div class="panel" id="panel">
+        <input id="input" class="input" type="text" placeholder="说说你想让我做什么..." />
+        <div class="actions">
+          <button id="cancelBtn" class="btn ghost" type="button">取消</button>
+          <button id="saveNoteBtn" class="btn ghost" type="button">保存到随手记</button>
+          <button id="fillBtn" class="btn" type="button" disabled>提问TopoClaw</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      const api = window.screenshotAssistOverlay
+      const root = document.getElementById('root')
+      const panel = document.getElementById('panel')
+      const input = document.getElementById('input')
+      const closeBtn = document.getElementById('closeBtn')
+      const cancelBtn = document.getElementById('cancelBtn')
+      const saveNoteBtn = document.getElementById('saveNoteBtn')
+      const fillBtn = document.getElementById('fillBtn')
+
+      const hideInput = () => api?.close?.()
+
+      setTimeout(() => input.focus(), 0)
+      closeBtn.addEventListener('click', () => api?.close?.())
+      cancelBtn.addEventListener('click', hideInput)
+      input.addEventListener('input', () => {
+        fillBtn.disabled = !input.value.trim()
+      })
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          e.preventDefault()
+          hideInput()
+        }
+        if (e.key === 'Enter') {
+          e.preventDefault()
+          const text = input.value.trim()
+          if (!text) return
+          api?.submit?.(text)
+        }
+      })
+      fillBtn.addEventListener('click', () => {
+        const text = input.value.trim()
+        if (!text) return
+        api?.submit?.(text)
+      })
+      saveNoteBtn.addEventListener('click', () => {
+        const text = input.value.trim()
+        api?.saveToQuickNote?.(text)
+      })
+
+      document.addEventListener('mousedown', (e) => {
+        if (root.contains(e.target)) return
+        hideInput()
+      })
+    </script>
+  </body>
+  </html>

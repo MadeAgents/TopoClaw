@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/dialog_companion_root_padding"
+    android:background="@drawable/dialog_background_rounded"
+    android:minWidth="320dp"
+    android:maxWidth="400dp">
+
+    <!-- 标题区域（包含标题和扩大图标） -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp">
+        
+        <!-- 标题 -->
+        <TextView
+            android:id="@+id/tvDialogTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/companion_dialog_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#212121"
+            android:gravity="center"
+            android:letterSpacing="0.02" />
+        
+        <!-- 扩大图标（右上角） -->
+        <ImageButton
+            android:id="@+id/btnExpand"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="-11dp"
+            android:layout_marginTop="-11dp"
+            android:src="@drawable/ic_expand"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="扩大"
+            android:padding="8dp"
+            android:tint="#757575"
+            android:scaleType="fitCenter" />
+    </RelativeLayout>
+
+    <!-- 输入框 -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/companion_dialog_hint"
+            app:hintTextColor="#757575"
+            app:boxStrokeColor="#2196F3"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxStrokeWidth="1.5dp"
+            app:boxStrokeWidthFocused="2dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCompanionInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:imeOptions="actionSend"
+                android:maxLines="3"
+                android:minLines="1"
+                android:textSize="16sp"
+                android:textColor="#212121"
+                android:padding="16dp"
+                android:paddingEnd="48dp"
+                android:scrollbars="vertical" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <!-- 问屏文字胶囊（最右边） -->
+        <TextView
+            android:id="@+id/btnQueryDropdown"
+            android:layout_width="44dp"
+            android:layout_height="24dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_ask_screen_chip"
+            android:gravity="center"
+            android:text="问屏"
+            android:textColor="#8A94A6"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:contentDescription="@string/ask"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="visible" />
+        <!-- 语音输入图标（在问屏图标左边） -->
+        <ImageButton
+            android:id="@+id/btnVoiceInput"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="3dp"
+            android:src="@drawable/ic_mic"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="语音输入"
+            android:padding="8dp" />
+    </FrameLayout>
+
+    <!-- 语音录制面板（初始隐藏） -->
+    <LinearLayout
+        android:id="@+id/llVoicePanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:padding="32dp"
+        android:visibility="gone"
+        android:minHeight="180dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center">
+        
+        <!-- 提示文字 -->
+        <TextView
+            android:id="@+id/tvVoiceHint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tap_to_speak"
+            android:textSize="14sp"
+            android:textColor="#333333"
+            android:layout_marginBottom="24dp"
+            android:gravity="center" />
+        
+        <!-- 麦克风按钮容器 -->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            
+            <!-- 转圈特效（录音时显示） -->
+            <com.cloudcontrol.demo.RecordingRingView
+                android:id="@+id/ivRecordingRing"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:visibility="gone"
+                android:layout_gravity="center" />
+            
+            <!-- 麦克风按钮（点击开始录音） -->
+            <ImageButton
+                android:id="@+id/btnVoiceRecord"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_mic"
+                android:background="@drawable/voice_record_button_background"
+                android:contentDescription="点击录音"
+                android:paddingTop="22dp"
+                android:paddingBottom="18dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:scaleType="fitCenter"
+                android:tint="#FFFFFF"
+                android:layout_gravity="center" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- 按钮区域 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="24dp"
+        android:gravity="end"
+        android:baselineAligned="false">
+        
+        <!-- 取消按钮 -->
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dialog_companion_button_height"
+            android:layout_weight="1"
+            android:text="@string/cancel"
+            android:textColor="#616161"
+            android:textSize="@dimen/dialog_companion_button_text_size"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="8sp"
+            android:autoSizeMaxTextSize="15sp"
+            android:background="@android:color/transparent"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:layout_marginEnd="@dimen/dialog_companion_button_spacing" />
+        
+        <!-- 接管按钮（仅在call_user时显示） -->
+        <Button
+            android:id="@+id/btnManualTakeover"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dialog_companion_button_height"
+            android:layout_weight="1"
+            android:text="@string/manual_takeover"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/dialog_companion_button_text_size"
+            android:textStyle="bold"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="8sp"
+            android:autoSizeMaxTextSize="15sp"
+            android:background="@drawable/button_takeover_background"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:layout_marginEnd="@dimen/dialog_companion_button_spacing"
+            android:elevation="2dp"
+            android:visibility="gone" />
+        
+        <!-- 发送按钮 -->
+        <Button
+            android:id="@+id/btnSend"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dialog_companion_button_height"
+            android:layout_weight="1"
+            android:text="@string/send"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/dialog_companion_button_text_size"
+            android:textStyle="bold"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="8sp"
+            android:autoSizeMaxTextSize="15sp"
+            android:background="@drawable/button_send_background"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:elevation="2dp" />
+    </LinearLayout>
+
+</LinearLayout>
+

@@ -1,0 +1,305 @@
+.skill-edit-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+}
+
+.skill-edit-modal {
+  background: var(--color-bg);
+  border-radius: var(--radius-xl);
+  width: 420px;
+  max-width: 90vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-modal);
+}
+
+.skill-edit-header {
+  display: flex;
+  align-items: center;
+  padding: var(--space-10) var(--space-10) var(--space-8);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.skill-edit-title {
+  flex: 1;
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.skill-edit-close {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.skill-edit-close:hover {
+  color: var(--color-text);
+}
+
+.skill-edit-body {
+  padding: var(--space-10);
+  overflow-y: auto;
+  flex: 1;
+}
+
+.skill-edit-field {
+  margin-bottom: var(--space-10);
+}
+
+.skill-edit-field:last-of-type {
+  margin-bottom: 0;
+}
+
+.skill-edit-field label {
+  display: block;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+  font-weight: var(--font-weight-medium);
+}
+
+.skill-edit-input,
+.skill-edit-textarea {
+  width: 100%;
+  padding: 8px var(--space-6);
+  font-size: var(--font-size-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  box-sizing: border-box;
+}
+
+.skill-edit-input:focus,
+.skill-edit-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.skill-edit-textarea {
+  resize: vertical;
+  min-height: 48px;
+}
+
+.skill-edit-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.skill-edit-step-row {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.skill-edit-step-input {
+  flex: 1;
+}
+
+.skill-edit-step-remove {
+  flex-shrink: 0;
+  width: 28px;
+  height: 32px;
+  border: none;
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+}
+
+.skill-edit-step-remove:hover {
+  background: #fef2f2;
+  color: var(--color-danger);
+}
+
+.skill-edit-step-add {
+  padding: 8px var(--space-6);
+  font-size: var(--font-size-sm);
+  color: var(--color-primary);
+  background: transparent;
+  border: 1px dashed var(--color-primary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.skill-edit-step-add:hover {
+  background: var(--color-primary-light);
+}
+
+.skill-edit-platform {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.skill-edit-platform-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.skill-edit-platform-item input {
+  margin: 0;
+}
+
+.skill-edit-fixed-platform {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.skill-edit-image-form {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+}
+
+.skill-edit-image-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.skill-edit-image-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.skill-edit-image-item label {
+  margin-bottom: 0;
+}
+
+.skill-edit-image-two-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+.skill-edit-api-row {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.skill-edit-api-row .skill-edit-input {
+  flex: 1;
+}
+
+.skill-edit-api-toggle {
+  white-space: nowrap;
+  padding: 8px var(--space-6);
+}
+
+.skill-edit-image-hint {
+  margin: var(--space-6) 0 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.skill-edit-image-status {
+  font-size: var(--font-size-xs);
+  line-height: 1.4;
+}
+
+.skill-edit-image-status-warning {
+  color: #b45309;
+}
+
+.skill-edit-schedule-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.skill-edit-schedule-status {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.skill-edit-btn {
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s;
+}
+
+.skill-edit-btn-schedule {
+  background: #eff6ff;
+  color: var(--color-info);
+}
+
+.skill-edit-btn-schedule:hover {
+  background: #dbeafe;
+}
+
+.skill-edit-btn-cancel-schedule {
+  background: var(--color-bg);
+  color: var(--color-danger);
+  border: 1px solid var(--color-danger);
+}
+
+.skill-edit-btn-cancel-schedule:hover {
+  background: #fef2f2;
+}
+
+.skill-edit-actions {
+  padding: var(--space-8) var(--space-10);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  display: flex;
+  gap: var(--space-6);
+  justify-content: flex-end;
+}
+
+.skill-edit-btn-secondary {
+  background: var(--color-bg);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.skill-edit-btn-secondary:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.skill-edit-btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.skill-edit-btn-primary:hover {
+  background: var(--color-primary-hover);
+}
+
+@media (max-width: 560px) {
+  .skill-edit-image-two-cols {
+    grid-template-columns: 1fr;
+  }
+}

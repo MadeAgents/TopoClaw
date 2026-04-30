@@ -1,0 +1,107 @@
+.skill-due-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+}
+
+.skill-due-modal {
+  background: var(--color-bg);
+  border-radius: var(--radius-xl);
+  width: 360px;
+  max-width: 90vw;
+  box-shadow: var(--shadow-modal);
+}
+
+.skill-due-header {
+  display: flex;
+  align-items: center;
+  padding: var(--space-10) var(--space-10) var(--space-8);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.skill-due-title {
+  flex: 1;
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.skill-due-close {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.skill-due-close:hover {
+  color: var(--color-text);
+}
+
+.skill-due-body {
+  padding: var(--space-12) var(--space-10);
+}
+
+.skill-due-desc {
+  margin: 0 0 var(--space-6);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.skill-due-hint {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.skill-due-actions {
+  padding: var(--space-8) var(--space-10);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  gap: var(--space-6);
+  justify-content: flex-end;
+}
+
+.skill-due-btn {
+  padding: 8px var(--space-10);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s;
+}
+
+.skill-due-btn-cancel {
+  background: var(--color-bg);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.skill-due-btn-cancel:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.skill-due-btn-execute {
+  background: var(--color-success);
+  color: #fff;
+}
+
+.skill-due-btn-execute:hover:not(:disabled) {
+  background: #15803d;
+}
+
+.skill-due-btn-execute:disabled {
+  background: #bdbdbd;
+  cursor: not-allowed;
+}

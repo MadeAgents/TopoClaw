@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="40dp"
+    android:height="40dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- 显示器外框（深蓝） -->
+    <path
+        android:fillColor="#FF4682B4"
+        android:pathData="M2,4 L22,4 L22,14 L2,14 Z"/>
+    <!-- 显示器屏幕（浅灰蓝） -->
+    <path
+        android:fillColor="#FF87CEEB"
+        android:pathData="M4,6 L20,6 L20,12 L4,12 Z"/>
+    <!-- 显示器支架 -->
+    <path
+        android:fillColor="#FF4682B4"
+        android:pathData="M9,14 L9,17 L15,17 L15,14 Z"/>
+    <!-- 底座 -->
+    <path
+        android:fillColor="#FF4682B4"
+        android:pathData="M8,17 L8,20 L16,20 L16,17 Z"/>
+</vector>

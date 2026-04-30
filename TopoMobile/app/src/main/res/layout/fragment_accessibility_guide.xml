@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <!-- 标题栏 -->
+    <LinearLayout
+        android:id="@+id/llTitleBar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical"
+        android:background="#FFF5F5F5"
+        android:elevation="4dp"
+        android:fitsSystemWindows="false">
+        
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_arrow_back"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="返回"
+            android:tint="@android:color/black"
+            android:padding="12dp"
+            android:layout_marginStart="-8dp" />
+            
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/service_config"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:gravity="center" />
+            
+        <View
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
+    </LinearLayout>
+
+    <!-- 导航栏容器 -->
+    <LinearLayout
+        android:id="@+id/llNavigationBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFF5F5F5"
+        android:elevation="2dp">
+        
+        <!-- 按钮行 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+            
+            <Button
+                android:id="@+id/btnFirstTimeUse"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/tip_accessibility_first_time"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#FF000000"
+                android:background="@android:color/transparent"
+                android:stateListAnimator="@null" />
+            
+            <Button
+                android:id="@+id/btnNormalUse"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/tip_accessibility_normal_use"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#FF999999"
+                android:background="@android:color/transparent"
+                android:stateListAnimator="@null" />
+        </LinearLayout>
+        
+        <!-- 指示器下划线 -->
+        <View
+            android:id="@+id/viewIndicator"
+            android:layout_width="0dp"
+            android:layout_height="3dp"
+            android:layout_weight="1"
+            android:background="#FF10AEFF"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp" />
+    </LinearLayout>
+
+    <!-- 初次使用页面容器 -->
+    <ScrollView
+        android:id="@+id/scrollViewFirstTimeUse"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:padding="16dp"
+        android:visibility="visible">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            
+            <!-- 解除无障碍权限 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tip_accessibility_revoke_title"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#212121"
+                android:layout_marginBottom="12dp" />
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tip_accessibility_revoke_intro"
+                android:textSize="15sp"
+                android:textColor="#424242"
+                android:lineSpacingMultiplier="1.4"
+                android:layout_marginBottom="12dp" />
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tip_accessibility_revoke_step1"
+                android:textSize="15sp"
+                android:textColor="#424242"
+                android:lineSpacingMultiplier="1.4"
+                android:paddingStart="20dp"
+                android:layout_marginBottom="8dp" />
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tip_accessibility_revoke_step2"
+                android:textSize="15sp"
+                android:textColor="#424242"
+                android:lineSpacingMultiplier="1.4"
+                android:paddingStart="20dp"
+                android:layout_marginBottom="12dp" />
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tip_accessibility_revoke_step3"
+                android:textSize="15sp"
+                android:textColor="#424242"
+                android:lineSpacingMultiplier="1.4"
+                android:paddingStart="20dp"
+                android:layout_marginBottom="8dp" />
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tip_accessibility_revoke_step4"
+                android:textSize="15sp"
+                android:textColor="#424242"
+                android:lineSpacingMultiplier="1.4"
+                android:paddingStart="20dp"
+                android:layout_marginBottom="24dp" />
+            
+            <!-- 图片容器 - 居中显示 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="24dp">
+                
+                <ImageView
+                    android:id="@+id/ivAccessibilityPermission"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:contentDescription="无障碍权限设置示意图" />
+                    
+            </LinearLayout>
+            
+            <!-- 屏幕共享保护 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tip_screen_share_title"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#212121"
+                android:layout_marginBottom="12dp" />
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tip_screen_share_content"
+                android:textSize="15sp"
+                android:textColor="#424242"
+                android:lineSpacingMultiplier="1.4"
+                android:layout_marginBottom="24dp" />
+            
+            <!-- 授权悬浮窗权限 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tip_grant_overlay_title"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#212121"
+                android:layout_marginBottom="12dp" />
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tip_grant_overlay_content"
+                android:textSize="15sp"
+                android:textColor="#424242"
+                android:lineSpacingMultiplier="1.4"
+                android:layout_marginBottom="16dp" />
+            
+        </LinearLayout>
+    </ScrollView>
+    
+    <!-- 平时使用页面容器 -->
+    <ScrollView
+        android:id="@+id/scrollViewNormalUse"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:padding="24dp"
+        android:visibility="gone">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            
+            <!-- 文本内容 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tip_normal_use_content"
+                android:textSize="16sp"
+                android:textColor="#424242"
+                android:lineSpacingMultiplier="1.4"
+                android:paddingBottom="24dp" />
+            
+            <!-- 图片容器 - 使用HorizontalScrollView支持横向滑动 -->
+            <HorizontalScrollView
+                android:id="@+id/scrollViewNormalUseImages"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:fadeScrollbars="true"
+                android:fillViewport="true"
+                android:gravity="center">
+                
+                <LinearLayout
+                    android:id="@+id/layoutNormalUseImages"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:minHeight="300dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+                    
+                    <!-- 图片将动态添加到这里 -->
+                    
+                </LinearLayout>
+                
+            </HorizontalScrollView>
+            
+            <!-- 图片滑动指示器 - 当图片数量>2时显示 -->
+            <LinearLayout
+                android:id="@+id/layoutNormalUseImageIndicators"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:paddingTop="12dp"
+                android:paddingBottom="8dp"
+                android:visibility="visible" />
+            
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
+

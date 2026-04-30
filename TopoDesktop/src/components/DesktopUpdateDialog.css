@@ -1,0 +1,96 @@
+.desktop-update-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 18, 28, 0.45);
+  backdrop-filter: blur(4px);
+}
+
+.desktop-update-card {
+  width: min(420px, calc(100vw - 48px));
+  padding: 24px 28px;
+  border-radius: 12px;
+  background: var(--surface-elevated, #fff);
+  color: var(--text-primary, #1a1d26);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+}
+
+.desktop-update-title {
+  margin: 0 0 12px;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.desktop-update-versions {
+  margin: 0 0 16px;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.desktop-update-sep {
+  margin: 0 0.35em;
+  opacity: 0.5;
+}
+
+.desktop-update-message {
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.desktop-update-intro {
+  margin: 0 0 0.65em;
+  font-weight: 500;
+  color: var(--text-primary, #1a1d26);
+}
+
+.desktop-update-bullets {
+  margin: 0;
+  padding-left: 1.15em;
+}
+
+.desktop-update-bullets li {
+  margin-bottom: 0.45em;
+}
+
+.desktop-update-bullets li:last-child {
+  margin-bottom: 0;
+}
+
+.desktop-update-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.desktop-update-btn {
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.desktop-update-btn-primary {
+  background: var(--accent, #3b6cff);
+  color: #fff;
+  border-color: var(--accent, #3b6cff);
+}
+
+.desktop-update-btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+.desktop-update-btn-secondary {
+  background: transparent;
+  border-color: var(--border-subtle, #d8dce6);
+  color: var(--text-primary, #1a1d26);
+}
+
+.desktop-update-btn-secondary:hover {
+  background: rgba(0, 0, 0, 0.04);
+}

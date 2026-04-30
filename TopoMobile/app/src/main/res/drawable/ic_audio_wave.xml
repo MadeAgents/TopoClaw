@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- 音频波形图标：5个垂直条，中间高，两边低 -->
+    <!-- 第1条（左） -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M3,12 L5,12 L5,20 L3,20 Z"/>
+    <!-- 第2条 -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M6,8 L8,8 L8,20 L6,20 Z"/>
+    <!-- 第3条（中间，最高） -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M9,4 L11,4 L11,20 L9,20 Z"/>
+    <!-- 第4条 -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M12,8 L14,8 L14,20 L12,20 Z"/>
+    <!-- 第5条（右） -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M15,12 L17,12 L17,20 L15,20 Z"/>
+</vector>
+

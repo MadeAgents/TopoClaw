@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="520dp"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_rounded_background"
+    android:clipToOutline="true">
+
+    <!-- 标题栏 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:gravity="center_vertical">
+        
+        <TextView
+            android:id="@+id/tvDialogTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/create_group"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:gravity="center_vertical" />
+        
+        <ImageButton
+            android:id="@+id/btnClose"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/close"
+            android:tint="#666666"
+            android:padding="8dp" />
+    </LinearLayout>
+
+    <!-- 分割线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E5E5E5" />
+
+    <!-- 内容区域：固定高度，内部可滚动 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:overScrollMode="ifContentScrolls">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- 群组名称输入框 -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="群组名称"
+                app:boxStrokeColor="@color/wechat_green"
+                app:hintTextColor="@color/wechat_green"
+                app:boxCornerRadiusTopStart="12dp"
+                app:boxCornerRadiusTopEnd="12dp"
+                app:boxCornerRadiusBottomStart="12dp"
+                app:boxCornerRadiusBottomEnd="12dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etGroupName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:textSize="16sp"
+                    android:textColorHint="#999999"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- 选择小助手标题（邀请时可整体隐藏） -->
+            <LinearLayout
+                android:id="@+id/llAssistantSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="16dp">
+                <TextView
+                    android:id="@+id/tvSelectAssistantsTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/select_assistants"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black" />
+
+                <!-- 小助手列表（与好友共享同一滚动区域） -->
+                <LinearLayout
+                    android:id="@+id/llAssistantsList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="8dp" />
+            </LinearLayout>
+
+            <!-- 已选择好友数量提示 -->
+            <TextView
+                android:id="@+id/tvSelectedCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/selected_count_0_people"
+                android:textSize="14sp"
+                android:textColor="#666666" />
+
+            <!-- 好友列表标题 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/select_friends"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black" />
+
+            <!-- 好友列表（与小助手共享同一滚动区域） -->
+            <LinearLayout
+                android:id="@+id/llFriendsList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!-- 好友项将动态添加到这里 -->
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 按钮区域（固定在底部，始终可见） -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="20dp"
+        android:gravity="end">
+        
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginEnd="12dp"
+            android:text="@string/cancel"
+            android:textSize="16sp"
+            android:textColor="#666666"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:minWidth="80dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp" />
+        
+        <Button
+            android:id="@+id/btnCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="@string/create_btn"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_add_friend_background"
+            android:minWidth="100dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:elevation="2dp" />
+    </LinearLayout>
+
+</LinearLayout>

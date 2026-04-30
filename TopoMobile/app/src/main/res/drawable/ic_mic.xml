@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- 麦克风图标（轮廓样式） -->
+    <!-- 麦克风头部（圆润的细长椭圆形，垂直方向） -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#666666"
+        android:strokeWidth="1.5"
+        android:pathData="M12,3 C10.5,3 9.5,3.5 9.5,5.5 C9.5,6.5 9.5,9.5 9.5,10.5 C9.5,12.5 10.5,13 12,13 C13.5,13 14.5,12.5 14.5,10.5 C14.5,9.5 14.5,6.5 14.5,5.5 C14.5,3.5 13.5,3 12,3 Z"/>
+    <!-- 麦克风身体（从头部中心向下延伸的短而直的杆） -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#666666"
+        android:strokeWidth="1.5"
+        android:pathData="M12,13 L12,17"/>
+    <!-- 麦克风底座（水平线） -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#666666"
+        android:strokeWidth="1.5"
+        android:pathData="M9,17 L15,17"/>
+</vector>
+

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- 顶部标题区域 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="32dp">
+
+            <!-- 标题 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="完善您的个人信息"
+                android:textSize="28sp"
+                android:textColor="#212121"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp" />
+
+            <!-- 副标题 - 突出社交属性 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="设置头像和昵称，让朋友们更好地认识您"
+                android:textSize="15sp"
+                android:textColor="#757575"
+                android:lineSpacingExtra="4dp"
+                android:layout_marginBottom="8dp" />
+
+            <!-- 社交提示 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="完善资料，开启个性化自动执行之旅"
+                android:textSize="13sp"
+                android:textColor="#9E9E9E"
+                android:lineSpacingExtra="2dp" />
+        </LinearLayout>
+
+        <!-- 主要内容卡片 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:gravity="center">
+
+                <!-- 头像区域 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginBottom="32dp">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/ivAvatar"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_person"
+                            android:background="@drawable/circle_background"
+                            android:backgroundTint="#F5F5F5"
+                            android:contentDescription="头像"
+                            android:clipToOutline="true"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:elevation="6dp"
+                            android:padding="4dp" />
+
+                        <!-- 更换头像按钮 -->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:layout_alignEnd="@id/ivAvatar"
+                            android:layout_alignBottom="@id/ivAvatar"
+                            android:layout_marginEnd="-4dp"
+                            android:layout_marginBottom="-4dp"
+                            android:padding="4dp"
+                            app:cardCornerRadius="22dp"
+                            app:cardElevation="8dp"
+                            app:cardBackgroundColor="#2196F3">
+
+                            <ImageButton
+                                android:id="@+id/btnChangeAvatar"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="center"
+                                android:src="@android:drawable/ic_menu_camera"
+                                android:background="?android:attr/selectableItemBackgroundBorderless"
+                                android:tint="#FFFFFF"
+                                android:contentDescription="更换头像"
+                                android:padding="6dp" />
+                        </androidx.cardview.widget.CardView>
+                    </RelativeLayout>
+
+                    <!-- 提示文字 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="点击头像或相机图标更换"
+                        android:textSize="12sp"
+                        android:textColor="#9E9E9E" />
+                </LinearLayout>
+
+                <!-- 昵称输入框 -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="昵称"
+                    android:layout_marginBottom="8dp"
+                    app:boxStrokeColor="#2196F3"
+                    app:hintTextColor="#2196F3"
+                    app:boxStrokeWidth="2dp"
+                    app:boxStrokeWidthFocused="2dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNickname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:textSize="16sp"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- 提示信息 -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="💡 昵称将显示在您的个人资料和聊天中"
+                    android:textSize="12sp"
+                    android:textColor="#9E9E9E"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="24dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- 按钮区域 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp">
+
+            <!-- 完成按钮 -->
+            <Button
+                android:id="@+id/btnComplete"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="完成设置"
+                android:textSize="17sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:background="@drawable/button_primary_background"
+                android:layout_marginBottom="16dp"
+                android:elevation="4dp"
+                android:stateListAnimator="@null" />
+
+            <!-- 暂时跳过按钮 -->
+            <TextView
+                android:id="@+id/tvSkip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="暂时跳过"
+                android:textSize="15sp"
+                android:textColor="#757575"
+                android:gravity="center"
+                android:padding="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground" />
+        </LinearLayout>
+
+        <!-- 底部提示 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="您可以稍后在个人资料中完善更多信息"
+            android:textSize="12sp"
+            android:textColor="#BDBDBD"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp" />
+    </LinearLayout>
+</ScrollView>

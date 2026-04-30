@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- 搜索输入框 -->
+    <EditText
+        android:id="@+id/etSearchInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/skill_search_hint"
+        android:inputType="text"
+        android:padding="12dp"
+        android:background="@android:drawable/edit_text"
+        android:textSize="16sp" />
+
+    <!-- 搜索结果列表 -->
+    <ListView
+        android:id="@+id/lvSearchResults"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:minHeight="200dp"
+        android:maxHeight="500dp"
+        android:divider="#E0E0E0"
+        android:dividerHeight="1dp"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false" />
+
+    <!-- 空状态提示 -->
+    <TextView
+        android:id="@+id/tvEmptyResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/no_matching_skill"
+        android:textSize="14sp"
+        android:textColor="#999999"
+        android:gravity="center"
+        android:visibility="gone" />
+
+</LinearLayout>
+
