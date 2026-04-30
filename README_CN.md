@@ -1,8 +1,7 @@
-<p align="center">
-  <img src="./TopoMobile/TopoClaw1.png" alt="TopoClaw" height="72" />
-</p>
-
-<h1 align="center">TopoClaw：你的全场景 AI 数字助手</h1>
+<div align="center">
+  <img src="./TopoMobile/TopoClaw1.png" alt="TopoClaw" height="144" />
+  <h1 style="margin-top: 0.35em;">TopoClaw：你的全场景 AI 数字助手</h1>
+</div>
 
 <p align="center">
   <a href="#-topoclaw-是什么">简介</a> •
