@@ -1,8 +1,7 @@
-<p align="center">
-  <img src="./TopoMobile/TopoClaw1.png" alt="TopoClaw" height="72" />
-</p>
-
-<h1 align="center">TopoClaw: Your All-Scenario AI Digital Assistant</h1>
+<div align="center">
+  <img src="./TopoMobile/TopoClaw1.png" alt="TopoClaw" height="144" />
+  <h1 style="margin-top: 0.35em;">TopoClaw: Your All-Scenario AI Digital Assistant</h1>
+</div>
 
 <p align="center">
   <a href="#-what-is-topoclaw">About</a> •
@@ -176,7 +175,7 @@ Your assistant can execute code on your computer, control your phone's UI, and c
 3. **Bind devices**
    Return to the desktop login page, tap Scan on the mobile app (top-right), then scan the desktop QR code to connect.
 4. **Configure models**
-   In TopoDesktop, open Assistant Plaza and edit TopoClaw model settings. There are two model categories:
+  On PC, click the Settings button in the bottom-left corner, then configure the model under Global Model Configuration. There are two model categories:
    - `Chat`: for general tasks
    - `GUI`: for desktop/mobile GUI tasks (multimodal model)
 
