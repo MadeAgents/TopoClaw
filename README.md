@@ -102,7 +102,7 @@ https://github.com/user-attachments/assets/1ab4f1de-3fdc-4fea-ac03-39fbc73d374f
 
 ## ✨ Core Capabilities
 
-To truly represent you, your digital assistant needs three key abilities: **hands-on execution across devices**, **communicate & collaborate on your behalf**, and **Proactively Sense & Drive**.
+To truly represent you, your digital assistant needs three key abilities: ** execution across devices**, **communicate & collaborate on your behalf**, and **Proactively Sense & Drive**.
 
 ### 🖥️📱 Cross-Device Execution
 
@@ -189,8 +189,8 @@ After these steps, the basic setup is complete.
 
 - **Accessibility and screenshot permissions**: Required for mobile GUI action simulation. You can grant them only when such tasks are actually needed.
 - **TopoClaw keyboard**: Dedicated keyboard for mobile GUI tap simulation; when running GUI tasks, switch keyboards as prompted.
-- **Overlay permission**: After granting, enable "Allow overlay during tasks" and "Companion mode" (enabled by default, keeps the assistant ready in the foreground with a floating control for quick task handoff). A floating ball appears on the desktop; tap it to launch tasks.
-- **Device and app notification permissions**: Required for notification monitoring.
+- **Overlay permission**: After granting, enable "Allow overlay during tasks" and "Companion mode" (enabled by default, keeps the assistant ready in the foreground with a floating control for quick task handoff). A floating ball appears on your phone desktop; tap it to launch tasks.
+- **Device and app notification permissions**: Required for notification monitoring; see **Proactive capabilities** under Core Capabilities below.
 
 #### Core Capabilities
 
@@ -202,6 +202,23 @@ After these steps, the basic setup is complete.
     1) Free speaking mode: all users and assistants can speak freely based on context.
     2) Group manager assistant mode: disable "Workflow Orchestration", "Free Speaking", and "Mute Assistants" to enter this mode; the group manager assistant orchestrates message flow centrally.
     3) Workflow orchestration mode: tap the top-right corner in the group conversation page to enter workflow orchestration. It can be arranged manually by users or auto-arranged by TopoClaw. After setup, assistants in the group collaborate according to the workflow.
+- **Proactive capabilities**
+  - **Notification shade monitoring**: In the mobile app under "Services", enable "Monitor notification shade" and choose target contacts under "Notification monitoring allowlist"; TopoClaw can then respond automatically based on notifications.
+  - **Proactive updates**: TopoClaw surfaces important context it observes (from other chats, groups, IM messages) directly in your TopoClaw conversation so you can handle busy inboxes faster.
+
+#### Pages & Other Features
+
+- **Contacts**: Your assistants, groups, and friends in one place.
+- **Skills (desktop-only right now)**:
+  **My Skills**: Skills currently available to TopoClaw.
+  **Skill community**: Search and fetch skills directly from the open-source community.
+  Note: Skills cannot be configured on mobile yet.
+- **Assistants**:
+  **My assistants**: Edit assistants you've created (including model settings), or create custom assistants from scratch.
+  **Assistant Marketplace**: Browse and use assistants shared by friends.
+- **Scheduled tasks**: View, edit, or create scheduled tasks.
+- **Quick Notes (desktop-only right now)**: Lightweight scratchpad features — capture and summarize any region of your desktop screen anytime (shortcut `Ctrl + Alt + Q`), alongside chat excerpts with your assistant.
+  Note: Quick Notes are supported on desktop only for now.
 
 ### 🛠️ Self-Hosting & Developer Guide
 
@@ -277,6 +294,7 @@ topoclaw service --host 0.0.0.0 --port 18790
 
 ### 📋 Planned
 
+- English-language apps (localized mobile & desktop UX)
 - Workflow flexibility enhancements
 - Heterogeneous multi-device management
 - More platform support (macOS / Linux desktop, iOS mobile)
@@ -286,14 +304,15 @@ topoclaw service --host 0.0.0.0 --port 18790
 
 ## ❓ FAQ
 
-**Q: Do I have to deploy all modules?**
+**Q: Do I need to deploy all modules together?**
 
 **A:**
-Not all of them. For normal usage, TopoClaw and the relay service are bundled inside TopoDesktop, so you do not need to deploy TopoClaw or customer_service separately for desktop chat. Add modules as needed:
-1. **Desktop-only experience**: just TopoDesktop
-2. **Cross-user collaboration**: TopoDesktop + customer_service
-3. **Cross-device execution**: TopoDesktop + TopoMobile + customer_service
-If you are doing secondary development or standalone backend debugging, start TopoClaw or customer_service manually (see the steps above).
+No. In everyday use, TopoDesktop already embeds TopoClaw and the relay service, so you do not need to deploy TopoClaw separately again. Combine the rest as needed:
+1. **Desktop-only**: TopoDesktop alone suffices
+2. **Social collaboration**: TopoDesktop + `customer_service` (self-host **or** use the built-in local relay — note the built-in relay is LAN-only by default)
+3. **Cross-device execution**: TopoDesktop + TopoMobile + `customer_service`
+
+For secondary development or standalone debugging of the services, you can run TopoClaw manually — see **Optional: Standalone Backend Debugging (Developers Only)** above.
 
 **Q: Which platforms are supported?**
 
