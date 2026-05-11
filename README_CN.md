@@ -55,17 +55,17 @@ TopoClaw 是你的 **AI 数字助手**。它不只是一个聊天助手，而是
 ### ▶️ 跨设备执行
 > "我电脑上有一个叫劳务合同的pdf，你帮我找一找里面甲方的姓名和电话，然后发条短信问他什么时候有时间"
 
-https://github.com/MadeAgents/TopoClaw/releases/download/v2.1.1-demo/Cross-Device.Execution.mp4
+https://github.com/user-attachments/assets/44438d42-34ab-47a7-91d3-3fc5c1a33596
 
 ### ▶️ 社交协作
 > "帮我创个群，叫'内部小聚群'，拉好友小B进来，然后问他最近有没有时间一起共进晚餐。"
 
-https://github.com/MadeAgents/TopoClaw/releases/download/v2.1.1-demo/Social.Collaboration.mp4
+https://github.com/user-attachments/assets/3c19ace1-7d43-41e5-a33f-3f62aaf088ba
 
 ### ▶️ 主动感知
 > "我去睡觉去了，如果jack来约我时间，告诉他我明天早上九点到深圳，到了深圳有个会，明天下午五点到六点有空"
 
-https://github.com/MadeAgents/TopoClaw/releases/download/v2.1.1-demo/Proactive.mp4
+https://github.com/user-attachments/assets/edeffd76-e138-4e50-8770-d5c2e4359d29
 
 > 🎥 以上 Demo 视频的加速、裁剪、配音均由 TopoClaw 自身完成。
 

@@ -55,17 +55,17 @@ Your assistant has these core capabilities:
 ### ▶️ Cross-Device Execution
 > "There's a PDF called 'Labor Contract' on my computer — find the name and phone number of Party A, then send a text message asking when they're available."
 
-https://github.com/MadeAgents/TopoClaw/releases/download/v2.1.1-demo/Cross-Device.Execution.mp4
+https://github.com/user-attachments/assets/44438d42-34ab-47a7-91d3-3fc5c1a33596
 
 ### ▶️ Social Collaboration
 > "Create a group called 'Team Hangout', invite my friend B, then ask if they're free for dinner sometime soon."
 
-https://github.com/MadeAgents/TopoClaw/releases/download/v2.1.1-demo/Social.Collaboration.mp4
+https://github.com/user-attachments/assets/3c19ace1-7d43-41e5-a33f-3f62aaf088ba
 
 ### ▶️ Proactive
 > "I'm going to sleep. If Jack asks to schedule with me, tell him I'll arrive in Shenzhen at 9:00 AM tomorrow. I have a meeting after I arrive, and I'm available from 5:00 PM to 6:00 PM tomorrow."
 
-https://github.com/MadeAgents/TopoClaw/releases/download/v2.1.1-demo/Proactive.mp4
+https://github.com/user-attachments/assets/edeffd76-e138-4e50-8770-d5c2e4359d29
 
 > 🎥 All demo videos above were accelerated, trimmed, and voiced over by TopoClaw itself.
 
