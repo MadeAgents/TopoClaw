@@ -26,6 +26,8 @@
 
 ## 💡 What is TopoClaw?
 
+TopoClaw is an open-source cross-device AI agent system for Android and Windows. It combines mobile-use, computer-use, GUI automation, social collaboration, proactive sensing, and customizable assistant skills into one personal AI assistant framework.
+
 TopoClaw is your **AI digital assistant**. It's not just a chatbot — it's an assistant that can **operate your computer and phone, communicate and collaborate with others on your behalf, and proactively keep things moving when you're away**, continuously learning your preferences to become more like you over time.
 
 This repository combines **`TopoMobile`** (mobile) and **`TopoDesktop`** (desktop) products together. You can use the default assistants directly, or create your own assistants and skills to accomplish complex tasks across devices and users.
